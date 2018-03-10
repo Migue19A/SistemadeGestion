@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block menu %}
+{{ block.super }}
+{% block  menuComite %}
+	<script src="{% static 'js/menuCom.js' %}"></script>
+    <script type="text/javascript">
+            menu(1,"InicioComite.html","Proyectos/Registro.html","Entregables/ConsultaEntregabxles.html","Prorrogas/Prorroga.html","ReActivacion/ReActivacion.html", "Historial/HistorialD.html","Historial/HistorialP.html","Configuracioncuenta/ConfiguracionCuenta.html");
+    </script>
+}
+{% endblock menuComite%}
+{% endblock menu %}

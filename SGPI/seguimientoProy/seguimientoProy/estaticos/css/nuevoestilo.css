@@ -1,0 +1,43 @@
+#panelIzquierdo {
+    background-color: white;
+    left: 0;
+    padding: 1em;
+    overflow: auto;
+    padding-bottom: 100px
+}
+
+#ContNotif {
+    overflow: auto;
+    height: 200px;
+}
+
+#notificaciones {
+    left: 0;
+    top: 0;
+    height: 100%;
+
+}
+
+#notificacion {
+    width: 100px;
+    height: 100px;
+    bottom: 0px;
+}
+
+#navObserv {
+    overflow: auto;
+}
+
+.row {
+    margin-top: 40px;
+    padding: 0 10px;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.panel-heading span {
+    margin-top: -20px;
+    font-size: 15px;
+}

@@ -1,0 +1,14 @@
+    {% extends "base.html" %}
+    {% load staticfiles %}
+    {% block menu %}
+
+    {{ block.super }}
+
+    {% block menuDoc %}
+    <script src="{% static 'js/menuDocente.js' %}"></script>
+    <script type="text/javascript">
+            menu(1,"IcioDocente.html","Proyectos/Pre-Registro/PreRegistroProyecto.html","Proyectos/RegistroProyectos.html","Prorroga/Prorroga.html","Proyectos/Seguimiento/ConsultaEntregables.html","Proyectos/CambioColaboradores.html","Consultas/ConsultaProyectos.html","Consultas/ConsultaProyectosCancelados.html","ConfigCuenta.html", "Historial/historialDocente.html");
+        </script>
+    {% endblock menuDoc %}
+
+    {% endblock menu%}

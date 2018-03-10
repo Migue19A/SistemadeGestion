@@ -1,0 +1,2212 @@
+﻿<!DOCTYPE html>
+<html lang="es" ng-app="mwl.calendar.docs">
+    <head>
+        <title>
+            Informe Detallado
+        </title>
+        <script src="../../../MenuIzquierdo/moment.js">
+        </script>
+        <script src="../../../MenuIzquierdo/interactjs@1">
+        </script>
+        <script src="../../../MenuIzquierdo/angular.js">
+        </script>
+        <script src="../../../MenuIzquierdo/angular-animate.js">
+        </script>
+        <script src="../../../MenuIzquierdo/ui-bootstrap-tpls.js">
+        </script>
+        <script src="../../../MenuIzquierdo/rrule@2">
+        </script>
+        <script src="../../../MenuIzquierdo/angular-bootstrap-colorpicker.js">
+        </script>
+        <script src="../../../MenuIzquierdo/angular-bootstrap-calendar.js">
+        </script>
+        <link href="../../../MenuIzquierdo/jquery-3.2.0.min.js" rel="stylesheet" type="text/css"/>
+        <link href="../../../MenuIzquierdo/jquery-3.2.0.js" rel="stylesheet" type="text/css"/>
+        <link href="../../../MenuIzquierdo/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <script src="../../../MenuIzquierdo/script.js">
+        </script>
+        <link href="../../../MenuIzquierdo/bootstrap.css" rel="stylesheet"/>
+        <link href="../../../MenuIzquierdo/angular-bootstrap-calendar.min.css" rel="stylesheet"/>
+        <script src="../../../MenuIzquierdo/example.js">
+        </script>
+        <script src="../../../MenuIzquierdo/helpers.js">
+        </script>
+        <link href="../../../css/nuevoestilo.css" rel="stylesheet" type="text/css"/>
+        <link href="font-awesome.css" rel="stylesheet"/>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../css/sweetalert2.css" rel="stylesheet" type="text/css"/>
+        <script src="../../../js/sweetalert2.min.js">
+        </script>
+        <link href="../../../css/estilos.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../jQuery/jquery-3.2.0.min.js" rel="stylesheet" type="text/css"/>
+        <link href="../../../jQuery/jquery-3.2.0.js" rel="stylesheet" type="text/css"/>
+        <link href="../../../css/styles.css" rel="stylesheet"/>
+        <script src="../../../jQuery/jquery-3.2.0.min.js" type="text/javascript">
+        </script>
+        <script src="../../../  js/script.js">
+        </script>
+        <script src="../../../js/bootstrap.min.js">
+        </script>
+        <link href="../../../img/itsx.ico" rel="shortcut icon" type="image/x-icon"/>
+        <meta charset="utf-8">
+        </meta>
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        </meta>
+    </head>
+    <body>
+        <header id="encabezado">
+            <div class="container">
+                <div class="col-lg-12" id="en">
+                    <img alt="Responsive image" class="img-responsive" src="../../../img/Sin título.png" style="width: 20%; height: auto; float: right; margin-right: -30px;">
+                        <img alt="Responsive image" class="img-responsive" src="../../../img/211.jpg" style="width: 23%; height: auto; float: left; margin-left: -29px;">
+                            <img alt="Responsive image" class="img-responsive center-block" src="../../../img/ws.jpg" style="width: 16%; height: auto; float: center; ">
+                            </img>
+                        </img>
+                    </img>
+                </div>
+            </div>
+        </header>
+        <link href="../../../css/noti.css" rel="stylesheet" type="text/css"/>
+        <style type="text/css">
+            .activar
+      {
+        background: #0984CC;
+      }
+        </style>
+        <script type="text/javascript">
+            function Cancelar()
+      {
+        swal(
+        {
+          title: '¿Desea cancelar la entrega?',
+          text: "",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Sí'
+        }).then(function () 
+        {
+          swal(
+          'Entrega cancelada',
+          '',
+          'success'
+          ).then(function(dimiss)
+          {       
+            if(dimiss==true)
+              {
+                location.href="ConsultaEntregables.html"
+              }
+          })
+        })
+      }
+      function Finalizar()
+      {
+        swal(
+        {
+          title: '¿Finalizar reporte?',
+          text: "",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Si, guardar'
+        }).then(function () 
+        {
+          swal(
+            'Solicitud enviada',
+            '',
+            'success'
+          ).then(function(dimiss)
+          {         
+            if(dimiss==true)
+            {
+              location.href="FinalizarS.html"
+            }
+          })
+        })
+      }
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function()
+        {
+          $('ul.sec li a:first').addClass('activar');
+          $('.sec article').hide();
+          $('.sec article:first').show();
+
+          $('ul.sec li a').click(function()
+          {
+            $('ul.sec li a').removeClass('activar');
+            //$(this).addClass('actives');
+            $('.sec article').hide(); 
+            var activeTab = $(this).attr('href');
+            $(activeTab).show();
+            return false;
+          });
+          $('.contenedor a').click(function()
+          {
+            $('ul.sec li a').removeClass('activar');
+            $('.sec article').hide();           
+            var activeTab2 = $(this).attr('href');
+            $(activeTab2).show();
+            return false;
+          });
+        });
+        </script>
+        <script type="text/javascript">
+        function cambiar(){
+            $('ul.sec li a:first').addClass('morir');
+        }
+
+        function cambiar2(){            
+            $('ul.sec li a').removeClass('morir');
+        }
+        </script>
+        <script src="../../menu.js" type="text/javascript">
+        </script>
+        <script type="text/javascript">
+            menu(3,"../../IcioDocente.html","../Pre-Registro/PreRegistroProyecto.html","../RegistroProyectos.html","../../Prorroga/Prorroga.html","ConsultaEntregables.html","../CambioColaboradores.html","../../Consultas/ConsultaProyectos.html","../../Consultas/ConsultaProyectosCancelados.html","../../ConfigCuenta.html", "../../Historial/HistorialDocente.html");
+        </script>
+        <link href="../../../css/calendario.css" rel="stylesheet" type="text/css"/>
+        <script src="../../../js/calendario.js" type="text/javascript">
+        </script>
+        <script type="text/javascript">
+            calendar();
+        </script>
+        <div class="container col-sm-9" style="display: block; margin-top: -757px;">
+            <div class="contenedor contenido">
+                <ul class="sec">
+                    <li>
+                        <a href="#sec1" id="id1" title="Informe General 1">
+                            <span class="glyphicon glyphicon-arrow-right">
+                            </span>
+                            <span class="sec-text">
+                                <br>
+                                    IG1
+                                </br>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#sec2" title="Informe General 2">
+                            <span class="glyphicon glyphicon-arrow-right">
+                            </span>
+                            <span class="sec-text">
+                                <br>
+                                    IG2
+                                </br>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#sec3" title="Informe General 3">
+                            <span class="glyphicon glyphicon-arrow-right">
+                            </span>
+                            <span class="sec-text">
+                                <br>
+                                    IG3
+                                </br>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#sec4" title="Informe General 4">
+                            <span class="glyphicon glyphicon-arrow-right">
+                            </span>
+                            <span class="sec-text">
+                                <br>
+                                    IG4
+                                </br>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#sec5" title="Informe Detallado 1">
+                            <span class="glyphicon glyphicon-arrow-right">
+                            </span>
+                            <span class="sec-text">
+                                <br>
+                                    ID1
+                                </br>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#sec6" title="Informe Detallado 2">
+                            <span class="glyphicon glyphicon-arrow-right">
+                            </span>
+                            <span class="sec-text">
+                                <br>
+                                    ID2
+                                </br>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#sec7" title="Informe Detallado 3">
+                            <span class="glyphicon glyphicon-arrow-right">
+                            </span>
+                            <span class="sec-text">
+                                <br>
+                                    ID3
+                                </br>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#sec8" title="Informe Detallado 4">
+                            <span class="glyphicon glyphicon-arrow-right">
+                            </span>
+                            <span class="sec-text">
+                                <br>
+                                    ID4
+                                </br>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#sec9" title="Informe Detallado 5">
+                            <span class="glyphicon glyphicon-arrow-right">
+                            </span>
+                            <span class="sec-text">
+                                <br>
+                                    ID5
+                                </br>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#sec10" title="Resumen Ejecutivo 1">
+                            <span class="glyphicon glyphicon-arrow-right">
+                            </span>
+                            <span class="sec-text">
+                                <br>
+                                    RE1
+                                </br>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#sec11" title="Resumen Ejecutivo 2">
+                            <span class="glyphicon glyphicon-arrow-right">
+                            </span>
+                            <span class="sec-text">
+                                <br>
+                                    RE2
+                                </br>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="contenedor sec">
+                    <article id="sec1">
+                        <div class="col-lg-8">
+                            <h1 class="text-center" style="font-weight: Yu Gothic UI Light; margin-bottom: 4px;">
+                                I. Informe general
+                            </h1>
+                            <div class="col-lg-12 well" style="margin-top: 5px;">
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-sm-2 form-group">
+                                            <label>
+                                                Fecha de entrega
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-1 form-group">
+                                            <label>
+                                                02/01/2017
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <label>
+                                                a) Indique las personas que están participando en los trabajos del proyecto:
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div align="center" class="col-sm-4">
+                                            <label>
+                                                Clave
+                                            </label>
+                                        </div>
+                                        <div align="center" class="col-sm-4">
+                                            <label>
+                                                Nombre completo
+                                            </label>
+                                        </div>
+                                        <div align="center" class="col-sm-4">
+                                            <label>
+                                                Participación
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div align="center" class="col-sm-4">
+                                            <label>
+                                                100
+                                            </label>
+                                        </div>
+                                        <div align="center" class="col-sm-4">
+                                            <select class="form-control">
+                                                <option>
+                                                    Eli Taboada Rojas
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div align="center" class="col-sm-4">
+                                            <select class="form-control">
+                                                <option>
+                                                    Responsable
+                                                </option>
+                                                <option>
+                                                    Suplente del responsable
+                                                </option>
+                                                <option>
+                                                    Colaborador
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div align="center" class="col-sm-4">
+                                            <label>
+                                                100
+                                            </label>
+                                        </div>
+                                        <div align="center" class="col-sm-4">
+                                            <select align="center" class="form-control">
+                                                <option>
+                                                    Eli Taboada Rojas
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div align="center" class="col-sm-4">
+                                            <select class="form-control">
+                                                <option>
+                                                    Responsable
+                                                </option>
+                                                <option>
+                                                    Suplente del responsable
+                                                </option>
+                                                <option>
+                                                    Colaborador
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div align="center" class="col-sm-4">
+                                            <label>
+                                                100
+                                            </label>
+                                        </div>
+                                        <div align="center" class="col-sm-4">
+                                            <select class="form-control">
+                                                <option>
+                                                    Eli Taboada Rojas
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div align="center" class="col-sm-4">
+                                            <select class="form-control">
+                                                <option>
+                                                    Responsable
+                                                </option>
+                                                <option>
+                                                    Suplente del responsable
+                                                </option>
+                                                <option>
+                                                    Colaborador
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div align="center" class="col-sm-4">
+                                            <label>
+                                                100
+                                            </label>
+                                        </div>
+                                        <div align="center" class="col-sm-4">
+                                            <select class="form-control">
+                                                <option>
+                                                    Eli Taboada Rojas
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div align="center" class="col-sm-4">
+                                            <select class="form-control">
+                                                <option>
+                                                    Responsable
+                                                </option>
+                                                <option>
+                                                    Suplente del responsable
+                                                </option>
+                                                <option>
+                                                    Colaborador
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="hide">
+                                        <div class="col-sm-12 form-group">
+                                            <label>
+                                                CLAVE: Número de personal, en caso de ser docente o administrativo; o número de control en caso de se alumno o
+                                      egresado.
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-12 form-group">
+                                            <label>
+                                                PARTICIPACIÓN: Responsable, suplente del responsable, colaborador.
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <!-- <div class="col-sm-1">
+                                            <a aria-pressed="true" class="btn btn-default" onclick="Cancelar()" role="button">
+                                                Cancelar
+                                            </a>
+                                        </div> --> 
+                                        <div class="col-sm-1">
+                                            <a aria-pressed="true" class="btn btn-primary" href="#sec2" onclick="cambiar()" id="btnSiguienteS
+                                      " role="button">
+                                                Siguiente
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="sec2">
+                        <div class="col-lg-8">
+                            <h1 class="text-center" style="font-weight: Yu Gothic UI Light; margin-bottom: 4px;">
+                                I. Informe General
+                            </h1>
+                            <div class="col-lg-12 well" style="margin-top: 5px;">
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <label>
+                                                b) Describa de manera general las actividades que se están desarrollando
+                              con relación al proyecto:
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 form-group">
+                                            <table class="table">
+                                                <tr>
+                                                    <td>
+                                                        <label>
+                                                            N°
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <label>
+                                                            Descripción de la actividad
+                                                        </label>
+                                                    </td>
+                                                    <td align="center">
+                                                        <label>
+                                                            Alcance
+                                                        </label>
+                                                        <table class="" width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <label>
+                                                                        Terminada
+                                                                    </label>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <label>
+                                                                        En Proceso
+                                                                    </label>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <td>
+                                                            <label>
+                                                                Observaciones
+                                                            </label>
+                                                        </td>                                                          
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        1
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <table class=" " width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <a aria-pressed="true" class="btn btn-primary" href="#caca" id="btnEvidencia" role="button">Subir Evidencias</a>
+                                                    </td> 
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        2
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <table class="" width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        3
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <table class="" width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        4
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <table class="" width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        5
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <table class="" width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        6
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <table class="" width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-1">
+                                            <a aria-pressed="true" class="btn btn-default" href="#sec1" onclick="cambiar2()" role="button">
+                                                Regresar
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <a aria-pressed="true" class="btn btn-primary" href="#sec3" id="btnSiguiente" role="button">
+                                                Siguiente
+                                            </a>
+                                        </div>
+                                        <br>
+                                        </br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="sec3">
+                        <div class="col-lg-8">
+                            <h1 class="text-center" style="font-weight: Yu Gothic UI Light; margin-bottom: 4px;">
+                                I. Informe General
+                            </h1>
+                            <div class="col-lg-12 well" style="margin-top: 5px;">
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <label>
+                                                c) Describa de manera general los objetivos alcanzados al momento, indicando si sufrieron modificaciones con relación al planteamiento inicial:
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 form-group">
+                                            <table class="table">
+                                                <tr>
+                                                    <td>
+                                                        <label>
+                                                            N°
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <label>
+                                                            Objetivo
+                                                        </label>
+                                                    </td>
+                                                    <td align="center">
+                                                        <label>
+                                                            Alcance
+                                                        </label>
+                                                        <table class="" width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <label>
+                                                                        Alcanzado
+                                                                    </label>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <label>
+                                                                        Cambiado
+                                                                    </label>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <td>
+                                                            <label>
+                                                                Observaciones
+                                                            </label>
+                                                        </td>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        1
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <table class=" " width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        2
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <table class="" width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        3
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <table class="" width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        4
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <table class="" width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        5
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <table class="" width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        6
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <table class="" width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-1">
+                                            <a aria-pressed="true" class="btn btn-default" href="#sec2" role="button">
+                                                Regresar
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <a aria-pressed="true" class="btn btn-primary" href="#sec4" id="btnSiguiente" role="button">
+                                                Siguiente
+                                            </a>
+                                        </div>
+                                        <br>
+                                        </br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="sec4">
+                        <div class="col-lg-8">
+                            <h1 class="text-center" style="font-weight: Yu Gothic UI Light; margin-bottom: 4px;">
+                                I. Informe General
+                            </h1>
+                            <div class="col-lg-12 well" style="margin-top: 5px;">
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <label>
+                                                d) Describa de manera general las metas “y/o” productos alcanzados por el momento.
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 form-group">
+                                            <table class="table">
+                                                <tr>
+                                                    <td>
+                                                        <label>
+                                                            N°
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <label>
+                                                            Objetivo
+                                                        </label>
+                                                    </td>
+                                                    <td align="center">
+                                                        <label>
+                                                            Alcance
+                                                        </label>
+                                                        <table class="" width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <label>
+                                                                        Alcanzado
+                                                                    </label>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <label>
+                                                                        Cambiado
+                                                                    </label>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <td>
+                                                            <label>
+                                                                Observaciones
+                                                            </label>
+                                                        </td>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        1
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <table class="" width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        2
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <table class="" width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        3
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <table class="" width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        4
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <table class="" width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        5
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <table class="" width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        6
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <table class="" width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <input name="1" type="radio"/>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="5">
+                                                            </textarea>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <div class="row">
+                                                <div class="col-sm-1">
+                                                    <a aria-pressed="true" class="btn btn-default" href="#sec3" role="button">
+                                                        Regresar
+                                                    </a>
+                                                </div>
+                                                <div class="col-sm-1">
+                                                    <a aria-pressed="true" class="btn btn-primary" href="#sec5" id="btnSiguiente" role="button">
+                                                        Siguiente
+                                                    </a>
+                                                </div>
+                                                <br>
+                                                </br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="sec5" style="width: 100%;">
+                        <div class="col-lg-8">
+                            <h1 class="text-center" style="font-weight: Yu Gothic UI Light; margin-bottom: 4px;">
+                                II. Informe Detallado
+                            </h1>
+                            <div class="col-lg-12 well" style="margin-top: 5px;">
+                                <label>
+                                    a) Describa de manera general los resultados obtenidos hasta el momento
+                        (anexe tablas, gráficas, memorias de cálculo y lo que considere pertinente para apoyar sus resultados)
+                                </label>
+                                <div class="row">
+                                    <div class="col-sm-12 form-group">
+                                        <div class="form-group">
+                                            <textarea class="form-control" rows="15">
+                                            </textarea>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-1">
+                                                <a aria-pressed="true" class="btn btn-primary" href="#caca" id="btnSubir" role="button">
+                                                    Subir Archivos
+                                                </a>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <a aria-pressed="true" class="btn btn-default" href="#sec4" id="btnRegresarS" role="button">
+                                                    Regresar
+                                                </a>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <a aria-pressed="true" class="btn btn-primary" href="#sec6" id="btnSiguienteS" role="button">
+                                                    Siguiente
+                                                </a>
+                                                <br>
+                                                </br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="sec6">
+                        <div class="col-lg-8">
+                            <h1 class="text-center" style="font-weight: Yu Gothic UI Light; margin-bottom: 4px;">
+                                II. Informe Detallado
+                            </h1>
+                            <div class="col-lg-12 well" style="margin-top: 5px;">
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <label>
+                                                b) Logros de conocimiento
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 form-group">
+                                            <table class="table">
+                                                <tr>
+                                                    <td>
+                                                    </td>
+                                                    <td align="center">
+                                                        <label>
+                                                            ¿Es Patentable?
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox">
+                                                            <label>
+                                                                Avances en el conocimiento científico
+                                                            </label>
+                                                        </input>
+                                                    </td>
+                                                    <td align="center">
+                                                        <table width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    Si
+                                                                </td>
+                                                                <td align="center">
+                                                                    No
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <input type="radio"/>
+                                                                </td>
+                                                                <td align="center">
+                                                                    <input type="radio"/>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox">
+                                                            <label>
+                                                                Desarrollo de tecnología (innovación, adaptación,
+                            asimilación)
+                                                            </label>
+                                                        </input>
+                                                    </td>
+                                                    <td align="center">
+                                                        <table width="100%">
+                                                            <td align="center">
+                                                                <input type="radio"/>
+                                                            </td>
+                                                            <td align="center">
+                                                                <input type="radio"/>
+                                                            </td>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox">
+                                                            <label>
+                                                                Creación de infraestructura tecnológica (maquinaria, herramienta y/o equipo para la docencia e
+                            investigación)
+                                                            </label>
+                                                        </input>
+                                                    </td>
+                                                    <td align="center">
+                                                        <table width="100%">
+                                                            <td align="center">
+                                                                <input type="radio"/>
+                                                            </td>
+                                                            <td align="center">
+                                                                <input type="radio"/>
+                                                            </td>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <div class="row">
+                                                <div class="col-sm-1">
+                                                    <a aria-pressed="true" class="btn btn-default" href="#sec5" role="button">
+                                                        Regresar
+                                                    </a>
+                                                </div>
+                                                <div class="col-sm-1">
+                                                    <a aria-pressed="true" class="btn btn-primary" href="#sec7" id="btnSiguiente" role="button">
+                                                        Siguiente
+                                                    </a>
+                                                    
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <button class="btn btn-primary btn-file">Subir archivos</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="sec7">
+                        <div class="col-lg-8">
+                            <h1 class="text-center" style="font-weight: Yu Gothic UI Light; margin-bottom: 4px;">
+                                II. Informe Detallado
+                            </h1>
+                            <div class="col-lg-12 well" style="margin-top: 5px;">
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <label>
+                                                c) Logros en formación de recursos humanos (anexe copia de la carta de examen de grado y/o carta de liberación de residencia o servicio social, si el titulante no ha terminado la tesis puede anexar la carta de aceptación
+                            del tema)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div align="center" class="col-sm-3">
+                                            <label>
+                                                N° Control
+                                            </label>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <label>
+                                                Nombre del alumno
+                                            </label>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <label>
+                                                Nombre del trabajo
+                                            </label>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <label>
+                                                Categoría
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div align="center" class="col-sm-3">
+                                            <input class="form-control" name="" type="text" value="147O00580">
+                                            </input>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <input class="form-control" name="" type="text" value="Eli Taboada Rojas">
+                                            </input>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <input class="form-control" name="" type="text" value="Proyecto">
+                                            </input>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <select class="form-control">
+                                                <option>
+                                                    Servicio social
+                                                </option>
+                                                <option>
+                                                    Residencia profesional
+                                                </option>
+                                                <option>
+                                                    Tesis de licenciatura
+                                                </option>
+                                                <option>
+                                                    Tesis de especialización
+                                                </option>
+                                                <option>
+                                                    Tesis de maestría
+                                                </option>
+                                                <option>
+                                                    Tesis doctoral
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div align="center" class="col-sm-3">
+                                            <input class="form-control" name="" type="text" value="147O00580">
+                                            </input>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <input class="form-control" name="" type="text" value="Eli Taboada Rojas">
+                                            </input>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <input class="form-control" name="" type="text" value="Proyecto">
+                                            </input>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <select class="form-control">
+                                                <option>
+                                                    Servicio social
+                                                </option>
+                                                <option>
+                                                    Residencia profesional
+                                                </option>
+                                                <option>
+                                                    Tesis de licenciatura
+                                                </option>
+                                                <option>
+                                                    Tesis de especialización
+                                                </option>
+                                                <option>
+                                                    Tesis de maestría
+                                                </option>
+                                                <option>
+                                                    Tesis doctoral
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div align="center" class="col-sm-3">
+                                            <input class="form-control" name="" type="text" value="147O00580">
+                                            </input>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <input class="form-control" name="" type="text" value="Eli Taboada Rojas">
+                                            </input>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <input class="form-control" name="" type="text" value="Proyecto">
+                                            </input>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <select class="form-control">
+                                                <option>
+                                                    Servicio social
+                                                </option>
+                                                <option>
+                                                    Residencia profesional
+                                                </option>
+                                                <option>
+                                                    Tesis de licenciatura
+                                                </option>
+                                                <option>
+                                                    Tesis de especialización
+                                                </option>
+                                                <option>
+                                                    Tesis de maestría
+                                                </option>
+                                                <option>
+                                                    Tesis doctoral
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div align="center" class="col-sm-3">
+                                            <input class="form-control" name="" type="text" value="147O00580">
+                                            </input>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <input class="form-control" name="" type="text" value="Eli Taboada Rojas">
+                                            </input>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <input class="form-control" name="" type="text" value="Proyecto">
+                                            </input>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <select class="form-control">
+                                                <option>
+                                                    Servicio social
+                                                </option>
+                                                <option>
+                                                    Residencia profesional
+                                                </option>
+                                                <option>
+                                                    Tesis de licenciatura
+                                                </option>
+                                                <option>
+                                                    Tesis de especialización
+                                                </option>
+                                                <option>
+                                                    Tesis de maestría
+                                                </option>
+                                                <option>
+                                                    Tesis doctoral
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div align="center" class="col-sm-3">
+                                            <input class="form-control" name="" type="text" value="147O00580">
+                                            </input>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <input class="form-control" name="" type="text" value="Eli Taboada Rojas">
+                                            </input>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <input class="form-control" name="" type="text" value="Proyecto">
+                                            </input>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <select class="form-control">
+                                                <option>
+                                                    Servicio social
+                                                </option>
+                                                <option>
+                                                    Residencia profesional
+                                                </option>
+                                                <option>
+                                                    Tesis de licenciatura
+                                                </option>
+                                                <option>
+                                                    Tesis de especialización
+                                                </option>
+                                                <option>
+                                                    Tesis de maestría
+                                                </option>
+                                                <option>
+                                                    Tesis doctoral
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div align="center" class="col-sm-3">
+                                            <input class="form-control" name="" type="text" value="147O00580">
+                                            </input>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <input class="form-control" name="" type="text" value="Eli Taboada Rojas">
+                                            </input>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <input class="form-control" name="" type="text" value="Proyecto">
+                                            </input>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <select class="form-control">
+                                                <option>
+                                                    Servicio social
+                                                </option>
+                                                <option>
+                                                    Residencia profesional
+                                                </option>
+                                                <option>
+                                                    Tesis de licenciatura
+                                                </option>
+                                                <option>
+                                                    Tesis de especialización
+                                                </option>
+                                                <option>
+                                                    Tesis de maestría
+                                                </option>
+                                                <option>
+                                                    Tesis doctoral
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div align="center" class="col-sm-3">
+                                            <input class="form-control" name="" type="text" value="147O00580">
+                                            </input>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <input class="form-control" name="" type="text" value="Eli Taboada Rojas">
+                                            </input>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <input class="form-control" name="" type="text" value="Proyecto">
+                                            </input>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <select class="form-control">
+                                                <option>
+                                                    Servicio social
+                                                </option>
+                                                <option>
+                                                    Residencia profesional
+                                                </option>
+                                                <option>
+                                                    Tesis de licenciatura
+                                                </option>
+                                                <option>
+                                                    Tesis de especialización
+                                                </option>
+                                                <option>
+                                                    Tesis de maestría
+                                                </option>
+                                                <option>
+                                                    Tesis doctoral
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-1">
+                                            <a aria-pressed="true" class="btn btn-default" href="#sec6" role="button">
+                                                Regresar
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <a aria-pressed="true" class="btn btn-primary" href="#sec8" id="btnSiguiente" role="button">
+                                                Siguiente
+                                            </a>
+                                            <br>
+                                            </br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="sec8">
+                        <div class="col-lg-8">
+                            <h1 class="text-center" style="font-weight: Yu Gothic UI Light; margin-bottom: 4px;">
+                                II. Informe Detallado
+                            </h1>
+                            <div class="col-lg-12 well" style="margin-top: 5px;">
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <label>
+                                                d) Logros en divulgación por publicaciones (anexe copia del artículo y constancia de su
+                              publicación)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div align="center" class="col-sm-2">
+                                            <label>
+                                                Título del artículo
+                                            </label>
+                                        </div>
+                                        <div align="center" class="col-sm-2">
+                                            <label>
+                                                Tipo de publicación
+                                            </label>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <label>
+                                                Nombre de la publicación
+                                            </label>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <label>
+                                                Lugar (Indicar si es WEB)
+                                            </label>
+                                        </div>
+                                        <div align="center" class="col-sm-2">
+                                            <label>
+                                                Fecha
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div align="center" class="col-sm-2">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-2">
+                                            <select class="form-control">
+                                                <option>
+                                                    Revista arbitrada
+                                                </option>
+                                                <option>
+                                                    Revista sin arbitraje
+                                                </option>
+                                                <option>
+                                                    Boletín
+                                                </option>
+                                                <option>
+                                                    Memoria
+                                                </option>
+                                                <option>
+                                                    Libro
+                                                </option>
+                                                <option>
+                                                    Periódico
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-2">
+                                            <input class="form-control" name="" type="date">
+                                            </input>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div align="center" class="col-sm-2">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-2">
+                                            <select class="form-control">
+                                                <option>
+                                                    Revista arbitrada
+                                                </option>
+                                                <option>
+                                                    Revista sin arbitraje
+                                                </option>
+                                                <option>
+                                                    Boletín
+                                                </option>
+                                                <option>
+                                                    Memoria
+                                                </option>
+                                                <option>
+                                                    Libro
+                                                </option>
+                                                <option>
+                                                    Periódico
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-2">
+                                            <input class="form-control" name="" type="date">
+                                            </input>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div align="center" class="col-sm-2">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-2">
+                                            <select class="form-control">
+                                                <option>
+                                                    Revista arbitrada
+                                                </option>
+                                                <option>
+                                                    Revista sin arbitraje
+                                                </option>
+                                                <option>
+                                                    Boletín
+                                                </option>
+                                                <option>
+                                                    Memoria
+                                                </option>
+                                                <option>
+                                                    Libro
+                                                </option>
+                                                <option>
+                                                    Periódico
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-2">
+                                            <input class="form-control" name="" type="date">
+                                            </input>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div align="center" class="col-sm-2">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-2">
+                                            <select class="form-control">
+                                                <option>
+                                                    Revista arbitrada
+                                                </option>
+                                                <option>
+                                                    Revista sin arbitraje
+                                                </option>
+                                                <option>
+                                                    Boletín
+                                                </option>
+                                                <option>
+                                                    Memoria
+                                                </option>
+                                                <option>
+                                                    Libro
+                                                </option>
+                                                <option>
+                                                    Periódico
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-2">
+                                            <input class="form-control" name="" type="date">
+                                            </input>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 form-group">
+                                            <label>
+                                                Tipo de publicación: Revista arbitrada, revista sin arbitraje, boletín, memoria, libro, periódico.
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-1">
+                                            <a aria-pressed="true" class="btn btn-default" href="#sec7" role="button">
+                                                Regresar
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <a aria-pressed="true" class="btn btn-primary" href="#sec9" id="btnSiguiente" role="button">
+                                                Siguiente
+                                            </a>
+                                        </div>
+                                        <br>
+                                        </br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="sec9">
+                        <div class="col-lg-8">
+                            <h1 class="text-center" style="font-weight: Yu Gothic UI Light; margin-bottom: 4px;">
+                                II. Informe Detallado
+                            </h1>
+                            <div class="col-lg-12 well" style="margin-top: 5px;">
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <label>
+                                                e) Logros en presentaciones en eventos (anexe copia del reconocimiento, invitación y programa)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div align="center" class="col-sm-2">
+                                            <label>
+                                                Título de ponencia
+                                            </label>
+                                        </div>
+                                        <div align="center" class="col-sm-2">
+                                            <label>
+                                                Tipo de ponencia
+                                            </label>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <label>
+                                                Nombre del evento
+                                            </label>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <label>
+                                                Lugar
+                                            </label>
+                                        </div>
+                                        <div align="center" class="col-sm-2">
+                                            <label>
+                                                Fecha
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div align="center" class="col-sm-2">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-2">
+                                            <select class="form-control">
+                                                <option>
+                                                    Conferencia magistral
+                                                </option>
+                                                <option>
+                                                    Mesa redonda
+                                                </option>
+                                                <option>
+                                                    Cartel
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-2">
+                                            <input class="form-control" name="" type="date">
+                                            </input>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div align="center" class="col-sm-2">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-2">
+                                            <select class="form-control">
+                                                <option>
+                                                    Conferencia magistral
+                                                </option>
+                                                <option>
+                                                    Mesa redonda
+                                                </option>
+                                                <option>
+                                                    Cartel
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-2">
+                                            <input class="form-control" name="" type="date">
+                                            </input>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div align="center" class="col-sm-2">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-2">
+                                            <select class="form-control">
+                                                <option>
+                                                    Conferencia magistral
+                                                </option>
+                                                <option>
+                                                    Mesa redonda
+                                                </option>
+                                                <option>
+                                                    Cartel
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-2">
+                                            <input class="form-control" name="" type="date">
+                                            </input>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div align="center" class="col-sm-2">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-2">
+                                            <select class="form-control">
+                                                <option>
+                                                    Conferencia magistral
+                                                </option>
+                                                <option>
+                                                    Mesa redonda
+                                                </option>
+                                                <option>
+                                                    Cartel
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-3">
+                                            <textarea class="form-control" rows="2" style="resize:none">
+                                            </textarea>
+                                        </div>
+                                        <div align="center" class="col-sm-2">
+                                            <input class="form-control" name="" type="date">
+                                            </input>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 form-group">
+                                            <label>
+                                                Tipo de ponencia: Conferencia magistral, mesa redonda, cartel.
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-1">
+                                            <a aria-pressed="true" class="btn btn-default" href="#sec8" role="button">
+                                                Regresar
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <a aria-pressed="true" class="btn btn-primary" href="#sec10" id="btnSiguiente" role="button">
+                                                Siguiente
+                                            </a>
+                                        </div>
+                                        <br>
+                                        </br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="sec10">
+                        <div class="col-lg-8">
+                            <h1 class="text-center" style="font-weight: Yu Gothic UI Light; margin-bottom: 4px;">
+                                III. Resumen Ejecutivo
+                            </h1>
+                            <div class="col-lg-12 well" style="margin-top: 5px;">
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <label>
+                                                Con la finalidad de difundir su investigación, explique en forma clara y concisa en
+                                qué consiste su proyecto, incluyendo los beneficios obtenidos hasta el momento
+                                (de preferencia utilice un máximo de veinte renglones).
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 form-group">
+                                            <div class="form-group">
+                                                <textarea class="form-control" rows="20">
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-1">
+                                            <a aria-pressed="true" class="btn btn-default" href="#sec9" role="button">
+                                                Regresar
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <a aria-pressed="true" class="btn btn-primary" href="#sec11" id="btnSiguiente" role="button">
+                                                Siguiente
+                                            </a>
+                                        </div>
+                                        <br>
+                                        </br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="sec11">
+                        <div class="col-lg-8">
+                            <h1 class="text-center" style="font-weight: Yu Gothic UI Light; margin-bottom: 4px;">
+                                III. Resumen Ejecutivo
+                            </h1>
+                            <div class="col-lg-12 well" style="margin-top: 5px;">
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <label>
+                                                OBSERVACIONES: Utilice este espacio para sus comentarios y sugerencias.
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 form-group">
+                                            <div class="form-group">
+                                                <textarea class="form-control" rows="20">
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-1">
+                                            <a aria-pressed="true" class="btn btn-default" href="#sec10" role="button">
+                                                Regresar
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <a href="#sec10" aria-pressed="true" class="btn btn-primary" id="btnSiguiente" onclick="Finalizar()" role="button">
+                                                Finalizar
+                                            </a>
+                                        </div>
+                                        <br>
+                                        </br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+        <footer class="container-fluid text-center" id="pie">
+            <div class="copyrights">
+                <span>
+                    Sección 5A Reserva Territorial s/n, Col. Santa Bárbara, CP 91096, Xalapa, Veracruz, México
+                    <br>
+                        Tel. (228) 165-0525 © 2010-2014
+                        <br>
+                            www.itsx.edu.mx
+                        </br>
+                    </br>
+                </span>
+            </div>
+        </footer>
+    </body>
+</html>

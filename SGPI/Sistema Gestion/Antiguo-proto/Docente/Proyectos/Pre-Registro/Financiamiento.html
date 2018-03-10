@@ -1,0 +1,427 @@
+﻿<!DOCTYPE html>
+<html lang="es" ng-app="mwl.calendar.docs">
+<head>
+  <title>Financiamientos</title>
+  <script src="../../../MenuIzquierdo/moment.js"></script>
+    <script src="../../../MenuIzquierdo/interactjs@1"></script>
+    <script src="../../../MenuIzquierdo/angular.js"></script>
+    <script src="../../../MenuIzquierdo/angular-animate.js"></script>
+    <script src="../../../MenuIzquierdo/ui-bootstrap-tpls.js"></script>
+    <script src="../../../MenuIzquierdo/rrule@2"></script>
+    <script src="../../../MenuIzquierdo/angular-bootstrap-colorpicker.js"></script>
+    <script src="../../../MenuIzquierdo/angular-bootstrap-calendar.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../MenuIzquierdo/jquery-3.2.0.min.js">
+    <link rel="stylesheet" type="text/css" href="../../../MenuIzquierdo/jquery-3.2.0.js">
+    <link rel="stylesheet" type="text/css" href="../../../MenuIzquierdo/bootstrap.min.css">
+    <script src="../../../MenuIzquierdo/script.js"></script>
+    <link href="../../../MenuIzquierdo/bootstrap.css" rel="stylesheet">
+    <link href="../../../MenuIzquierdo/angular-bootstrap-calendar.min.css" rel="stylesheet">
+    <script src="../../../MenuIzquierdo/example.js"></script>
+    <script src="../../../MenuIzquierdo/helpers.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../css/nuevoestilo.css">
+
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../../css/estilos.css">
+  <link rel="stylesheet" type="text/css" href="../../../jQuery/jquery-3.2.0.min.js">
+<link rel="stylesheet" type="text/css" href="../../../jQuery/jquery-3.2.0.js">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<link rel="stylesheet" href="../../../css/styles.css">
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script src="../../../js/script.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../../img/itsx.ico">
+  <meta charset="utf-8">
+  <script type="text/javascript">
+  	function sumar(){
+	    var valor1=verificar("infraestructura");
+	    var valor2=verificar("consumibles");
+	    var valor3=verificar("licencias");
+	    var valor4=verificar("viaticos");    
+	    var valor5=verificar("publicaciones");    
+	    var valor6=verificar("equipo");    
+	    var valor7=verificar("patentes");
+	    var valor8=verificar("otros");        
+	    document.getElementById("total").value=parseFloat(valor1)+parseFloat(valor2)+parseFloat(valor3)+parseFloat(valor4)+parseFloat(valor5)+parseFloat(valor6)+parseFloat(valor7)+parseFloat(valor8);
+	}
+
+	function verificar(id){
+	    var obj=document.getElementById(id);
+	    if(obj.value=="")
+	        value="0";
+	    else
+	        value=obj.value;
+	        if(validate_importe(value,1)){
+	        obj.style.borderColor="#808080";
+	        return value;
+	    }else{
+	        obj.style.borderColor="#f00";
+	        return 0;
+	    }
+	}
+	 
+	function validate_importe(value,decimal){
+	    if(decimal==undefined)
+	        decimal=0;
+	        if(decimal==1){
+	        var patron=new RegExp("^[0-9]+((,|\.)[0-9]{1,2})?$");
+	        }else{    
+	            var patron=new RegExp("^([0-9])*$")
+	        }
+	        if(value && value.search(patron)==0){
+	            return true;
+	        }
+	    return false;
+	}
+  </script>
+</head>
+	<body>
+    <header id="encabezado">
+        <div class="container" >
+        <div class="col-lg-12" id="en">
+          <img src="../../../img/Sin título.png" class="img-responsive" alt="Responsive image" style="width: 20%; height: auto; float: right; margin-right: -30px;">  
+          <img src="../../../img/211.jpg" class="img-responsive" alt="Responsive image" style="width: 23%; height: auto; float: left; margin-left: -29px;">  
+          <img src="../../../img/ws.jpg" class="img-responsive center-block" alt="Responsive image" style="width: 16%; height: auto; float: center; ">          
+        </div>
+    </div>
+    <style type="text/css">
+      #en{
+        background: white;
+      }
+    </style>
+  </header>
+<link rel="stylesheet" type="text/css" href="../../../css/noti.css">
+    <script type="text/javascript" >
+$(document).ready(function()
+{
+$("#notificationLink").click(function()
+{
+$("#notificationContainer").fadeToggle(300);
+$("#notification_count").fadeOut("slow");
+return false;
+});
+
+//Document Click
+$(document).click(function()
+{
+//$("#notificationContainer").hide();
+});
+//Popup Click
+$("#notificationContainer").click(function()
+{
+//return false
+});
+
+});
+</script>
+     <script type="text/javascript" src="../../menu.js"> </script>
+<script type="text/javascript">
+  menu(2,"../../IcioDocente.html","PreRegistroProyecto.html","../RegistroProyectos.html","../../Prorroga/Prorroga.html","../Seguimiento/ConsultaEntregables.html","../CambioColaboradores.html","../../Consultas/ConsultaProyectos.html","../../Consultas/ConsultaProyectosCancelados.html","../../ConfigCuenta.html");   
+</script>
+
+<div class="col-lg-4" id="panelIzquierdo">
+<div class="panel panel-default" id="notificaciones">
+    <div class="panel-heading" align="center">
+      </h5>Notificaciones</h5>
+    </div>
+    <div class="panel-body" id="ContNotif">
+        
+            <div class='alert alert-success  alert-dismissable fade in' id='#notificacion' >
+              <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+              <h5 class='item-title'>El proyecto "Pelador de Chayotes"  ha sido aceptado</h5>
+              <a class='item-info'><h6>Ver en seguimiento de proyectos</h6></a>
+            </div>
+            <div class='alert alert-success alert-dismissable fade in' id='#notificacion'>
+              <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+              <h5 class='item-title'>La prórroga de la etapa 2 del proyecto "Hamburguesa" ha sido aceptada</h5>
+              <a class='item-info'<h6>Consultar nueva fecha de entrega en seguimiento de proyectos</h6></a>
+            </div>
+
+            <div class='alert alert-danger alert-dismissable fade in' id='#notificacion'>
+              <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+              <h5 class='item-title'>Faltan 3 días para la entrega de reporte del Proyecto Comida Enlatada</h5>
+              <a class='item-info'><h6>Realizar entrega en seguimiento de proyectos</h6></a>
+              </div>
+          
+            <div class='alert alert-success alert-dismissable fade in' id='#notificacion'>
+              <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+              <h5 class='item-title'>El proyecto "Pelador de Chayotes" ha sido aceptado</h5>
+              <a class='item-info'><h6>Ver en seguimiento de proyectos</h6></a>
+            </div>
+
+            <div class='alert alert-success alert-dismissable fade in' id='#notificacion'>
+              <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+              <h5 class='item-title'>La prórroga de la etapa 2 del proyecto "Hamburguesa" ha sido aceptada</h5>
+              <a class='item-info'><h6>Consultar nueva fecha de entrega en seguimiento de proyectos</h6></a>
+            </div>
+
+            <div class='alert alert-danger alert-dismissable fade in' id='#notificacion'>
+              <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+              <h5 class='item-title'>Faltan 3 días para la entrega de reporte del Proyecto Comida Enlatada</h5>
+              <a class='item-info'><h6>Realizar entrega en Seguimiento de Proyectos</h6></a>
+            </div>
+          </div>
+
+
+
+<div class="panel panel-default" id="calendarioPeq">
+<div class="panel-heading" align="center">
+      </h5>Calendario</h5>
+    </div>
+<script type="text/ng-template" id="modalContent.html">
+      <div class="modal-header">
+        <h3 class="modal-title">Event action occurred!</h3>
+      </div>
+      <div class="modal-body">
+        <p>Action:
+        <pre>{{ vm.action }}</pre>
+        </p>
+        <p>Event:
+        <pre>{{ vm.event | json }}</pre>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="$close()">OK</button>
+      </div>
+    </script>
+
+<div style="overflow:hidden;">
+    
+
+           
+             <div ng-controller="KitchenSinkCtrl as vm">
+                <h4 class="text-center" align="center">{{ vm.calendarTitle }}</h4>
+                <mwl-calendar
+    events="vm.events"
+    view="vm.calendarView"
+    view-title="vm.calendarTitle"
+    view-date="vm.viewDate"
+    on-event-click="vm.eventClicked(calendarEvent)"
+    on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+    cell-is-open="vm.cellIsOpen"
+    day-view-start="06:00"
+    day-view-end="22:59"
+    day-view-split="30"
+    cell-modifier="vm.modifyCell(calendarCell)"
+    cell-auto-open-disabled="true"
+    on-timespan-click="vm.timespanClicked(calendarDate, calendarCell)"
+    on-view-change-click="vm.viewChangeClicked(calendarNextView)">
+  </mwl-calendar>
+            
+    
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+		<div class="col-lg-8">
+		<h1 class="text-center" style="font-weight: Yu Gothic UI Light; margin-top: 2px">Financiamiento Requerido</h1>
+		<div class="col-lg-12 well" style="margin-top: 10px;">
+			<div class="row">
+				<form action="FormularioResponsable.html" method="GET">
+					<div class="col-sm-12">
+						<div class="row">
+							<div class="col-sm-5 form-group">
+								<label>*¿Existe actualmente algún financiamiento del proyecto?</label>
+							</div>
+							<div class="col-sm-2 form-group">
+								<label>Si</label>
+								<input type="radio" name="boton" value="si">
+							</div>
+							<div class="col-sm-2 form-group">
+								<label>No</label>
+								<input type="radio" name="boton" value="no">
+							</div>							
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<h5>En caso de que la respuesta sea sí</h5>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-2 form-group">
+								<label>Interno</label>
+								<input type="checkbox" name="">
+							</div>
+							<div class="col-sm-2 form-group">
+								<label>Externo</label>
+								<input type="checkbox" name="">
+							</div>	
+							<div class="col-sm-1 form-group">
+								<label>Especificar:</label>
+							</div>
+							<div class="col-sm-6 form-group">
+								<input type="text" name="" class="form-control" style="margin-left: 18px;" disabled="false" id="descripcion">								
+							</div>				
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<h5>En caso de que la respuesta sea no Desglose($)</h5>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-2 form-group">
+								<label>Infraestructura:</label>								
+							</div>
+							<div class="col-sm-2 form-group">							
+								<div class="input-group">
+        							<span class="input-group-addon">$</span>
+        							<input type="text" class="form-control"  aria-describedby="inputGroupSuccess2Status" id="infraestructura" onkeyup="sumar();" disabled="false">
+      								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-2 form-group">
+								<label>Consumibles:</label>								
+							</div>
+							<div class="col-sm-2 form-group">							
+								<div class="input-group">
+        							<span class="input-group-addon">$</span>
+        							<input type="text" class="form-control" aria-describedby="inputGroupSuccess2Status" id="consumibles" onkeyup="sumar();" disabled="false">
+      								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-2 form-group">
+								<label>Licencias:</label>								
+							</div>
+							<div class="col-sm-2 form-group">							
+								<div class="input-group">
+        							<span class="input-group-addon">$</span>
+        							<input type="text" class="form-control" aria-describedby="inputGroupSuccess2Status" id="licencias" onkeyup="sumar();" disabled="false">
+      								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-2 form-group">
+								<label>Viáticos:</label>								
+							</div>
+							<div class="col-sm-2 form-group">							
+								<div class="input-group">
+        							<span class="input-group-addon">$</span>
+        							<input type="text" class="form-control" aria-describedby="inputGroupSuccess2Status" id="viaticos" onkeyup="sumar();" disabled="false">
+      								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-2 form-group">
+								<label>Publicaciones:</label>								
+							</div>
+							<div class="col-sm-2 form-group">							
+								<div class="input-group">
+        							<span class="input-group-addon">$</span>
+        							<input type="text" class="form-control" aria-describedby="inputGroupSuccess2Status" id="publicaciones" onkeyup="sumar();" disabled="false">
+      								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-2 form-group">
+								<label>Equipo:</label>								
+							</div>
+							<div class="col-sm-2 form-group">							
+								<div class="input-group">
+        							<span class="input-group-addon">$</span>
+        							<input type="text" class="form-control" aria-describedby="inputGroupSuccess2Status" id="equipo" onkeyup="sumar();" disabled="false">
+      								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-2 form-group">
+								<label>Patentes/derechos de autor:</label>								
+							</div>
+							<div class="col-sm-2 form-group">							
+								<div class="input-group">
+        							<span class="input-group-addon">$</span>
+        							<input type="text" class="form-control" aria-describedby="inputGroupSuccess2Status" id="patentes" onkeyup="sumar();" disabled="false">
+      								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-2 form-group">
+								<label>Otros(Especifique):</label>								
+							</div>
+							<div class="col-sm-2 form-group">							
+								<div class="input-group">
+        							<span class="input-group-addon">$</span>
+        							<input type="text" class="form-control" aria-describedby="inputGroupSuccess2Status" id="otros" onkeyup="sumar();" disabled="false">
+      								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-2 form-group">
+								<label>Total:</label>								
+							</div>
+							<div class="col-sm-2 form-group">						
+								<div class="input-group">
+        							<span class="input-group-addon">$</span>
+        							<input type="text" class="form-control" aria-describedby="inputGroupSuccess2Status" id="total" disabled="false">
+      							</div>
+							</div>
+						</div>						
+						<a href="Etapas.html" class="btn btn-secondary btn-default" role="button" aria-pressed="true">Regresar</a>
+						<a href="Alumno.html" class="btn btn-primary" role="button" aria-pressed="true" style="margin-top: 0">Siguiente</a>			
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+					</div>
+				</form>
+			</div>
+		</div>
+			<!--<form>
+			    <div class="form-group" action="" method="GET">
+			        <div class="col-md-5"><label>*Numero de Recepcion</label><input class="form-control" type="text"/></div>
+			        <div class="col-md-5"><label>*Fecha de Recepcion</label><input class="form-control" type="date"/></div>
+			        <div class="col-md-3"><label>*Recibio</label></div>
+			        <div class="col-md-3"><label>*Nombre(s)</label><input class="form-control" type="text"></div>
+			        <div class="col-md-3"><label>Firma</label><input class="form-control" type="text"></div>
+			        <div class="col-md-3"><label>Sello</label><input class="form-control" type="text" style="height: 150px"></div>
+			        </div>
+			    </div>
+			    <div class="container" ><button type="submit" class="btn btn-primary" style="margin-top:5px;">Siguiente</button></div>
+			</form>-->
+		</div>
+		<footer class="container-fluid text-center" id="pie">
+
+        <div class="copyrights" style="margin-top: 38px;">
+            <p>Sección 5A Reserva Territorial s/n, Col. Santa Bárbara, CP 91096, Xalapa, Veracruz, México
+                <br>
+                <span>Tel. (228) 165-0525 © 2010-2014<br>www.itsx.edu.mx</span></p> 
+
+        </div>
+</footer>
+	</body>
+	<script type="text/javascript">
+		$('input[name="boton"]').change( function(){
+			if($(this).val() == 'si'){
+				$('#descripcion').prop('disabled',false);
+				$('#infraestructura').prop('disabled',true);
+				$('#consumibles').prop('disabled',true);
+				$('#licencias').prop('disabled',true);
+				$('#viaticos').prop('disabled',true);
+				$('#publicaciones').prop('disabled',true);
+				$('#equipo').prop('disabled',true);				
+				$('#patentes').prop('disabled',true);				
+				$('#otros').prop('disabled',true);
+				$('#total').prop('disabled',true);
+			}else{
+				$('#descripcion').prop('disabled',true);
+				$('#infraestructura').prop('disabled',false);
+				$('#consumibles').prop('disabled',false);
+				$('#licencias').prop('disabled',false);
+				$('#viaticos').prop('disabled',false);
+				$('#publicaciones').prop('disabled',false);
+				$('#equipo').prop('disabled',false);				
+				$('#patentes').prop('disabled',false);				
+				$('#otros').prop('disabled',false);
+				$('#total').prop('disabled',false);				
+			}
+		});
+	</script>
+</html>

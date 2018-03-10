@@ -1,0 +1,1696 @@
+﻿<!DOCTYPE html>
+<html lang="es" ng-app="mwl.calendar.docs">
+    <head>
+        <title>
+            Registro de Proyectos
+        </title>
+        <link href="../../MenuIzquierdo/bootstrap.css" rel="stylesheet"/>
+        <link href="../../MenuIzquierdo/angular-bootstrap-calendar.min.css" rel="stylesheet"/>
+        <script src="../../MenuIzquierdo/jquery-3.2.0.min.js" type="text/javascript"></script>
+        <script src="../../MenuIzquierdo/jquery.min.js" type="text/javascript"></script>
+        <script src="../../MenuIzquierdo/jquery-3.2.0.js" type="text/javascript"></script>
+        <link href="../../MenuIzquierdo/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../css/nuevoestilo.css" rel="stylesheet" type="text/css"/>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../css/styles.css" rel="stylesheet" type="text/css"/>
+        <link href="../../css/estilos.css" rel="stylesheet" type="text/css"/>
+        <link href="../../css/sweetalert2.css" rel="stylesheet" type="text/css"/>
+        <link href="../../css/calendario.css" rel="stylesheet" type="text/css"/>
+        <link href="../../css/arcordeon.css" rel="stylesheet" type="text/css"/>
+        <link href="../../img/itsx.ico" rel="shortcut icon" type="image/x-icon"/>
+        <link href="../../css/noti.css" rel="stylesheet" type="text/css"/>
+        <link href="../../img/logo.png" rel="shortcut icon" type="image/x-icon"/>
+        <script src="../../MenuIzquierdo/moment.js">
+        </script>
+        
+        <script src="../../MenuIzquierdo/angular.js">
+        </script>
+        <script src="../../MenuIzquierdo/angular-animate.js">
+        </script>
+        <script src="../../MenuIzquierdo/ui-bootstrap-tpls.js">
+        </script>
+        <script src="../../MenuIzquierdo/rrule@2.2.0.js">
+        </script>
+        <script src="../../MenuIzquierdo/angular-bootstrap-colorpicker.js">
+        </script>
+        <script src="../../MenuIzquierdo/angular-bootstrap-calendar.js">
+        </script>
+        <script src="../../MenuIzquierdo/script.js">
+        </script>
+        <script src="../../MenuIzquierdo/example.js">
+        </script>
+        <script src="../../MenuIzquierdo/helpers.js">
+        </script>
+        <script src="../../jQuery/jquery-3.2.0.min.js" type="text/javascript">
+        </script>
+        <script src="../../js/script.js">
+        </script>
+        <script src="../../js/bootstrap.min.js" type="text/javascript">
+        </script>
+        <script src="../../js/sweetalert2.min.js" type="text/javascript">
+        </script>
+        <script src="../../js/sweetalert2.min.js" type="text/javascript"></script>
+        <meta charset="utf-8">
+   
+    </head>
+    <body>
+        <header id="encabezado">
+            <div class="container">
+                <div class="col-lg-12" id="en">
+                    <img alt="Responsive image" class="img-responsive" src="../../img/Sin título.png" style="width: 20%; height: auto; float: right; margin-right: -30px;">
+                        <img alt="Responsive image" class="img-responsive" src="../../img/211.jpg" style="width: 23%; height: auto; float: left; margin-left: -29px;">
+                            <img alt="Responsive image" class="img-responsive center-block" src="../../img/ws.jpg" style="width: 16%; height: auto; float: center; ">
+                     
+                </div>
+            </div>
+            <style type="text/css">
+                #en{
+        background: white;
+      }
+            </style>
+        </header>
+        <script src="../menu.js" type="text/javascript">
+        </script>
+        <script type="text/javascript">
+            menu(2,"../IcioDocente.html","Pre-Registro/PreRegistroProyecto.html","RegistroProyectos.html","../Prorroga/Prorroga.html","Seguimiento/ConsultaEntregables.html","CambioColaboradores.html","../Consultas/ConsultaProyectos.html","../Consultas/ConsultaProyectosCancelados.html","../ConfigCuenta.html", "../Historial/HistorialDocente.html");
+        function FinalizarReactivacion()
+        {
+         swal(
+         {
+            title: '¿Finalizar reactivación?',
+            text: "",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, finalizar'
+        }).then(function () 
+        {
+            swal(
+            'Solicitud enviada',
+            '',
+            'success'
+            )
+            $('#myModal2').modal('hide')
+        })
+          } 
+                function FinalizarCorrecciones()
+          {
+         swal({
+          title: '¿Finalizar correcciones?',
+          text: "",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Si, finalizar'
+        }).then(function () {
+          swal(
+            'Solicitud enviada',
+            '',
+            'success'
+          )
+          $('#myModal').modal('hide')
+        })
+          }
+        </script>
+        <script type="text/javascript">
+        function cambiar(){
+            $('ul.tabs li a:first').addClass('morir');
+        }
+
+        function cambiar2(){            
+            $('ul.tabs li a').removeClass('morir');
+        }
+    </script>
+        <link href="../../css/calendario.css" rel="stylesheet" type="text/css"/>
+        <script src="../../js/calendario.js" type="text/javascript">
+        </script>
+        <script type="text/javascript">
+            calendar();
+        </script>
+<div class="container" style="margin-top: 12px;">
+    <div class="col-md-9">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="text-center" style="font-weight: Yu Gothic UI Light;">Pre-Registro de Proyectos</h2>
+                </div>
+                <div class="panel-body">
+                    <div class="container">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>N°</th>
+                                        <th>Nombre del proyecto</th>
+                                        <th>Estado</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th><input type="checkbox" name="selection_1"></th>
+                                        <td>1</td>
+                                        <td></td>
+                                        <td></td>                                        
+                                        <td><a class="btn btn-primary" href="PreRegistro.pdf" target="_blank" type="submit">Imprimir</a></td>
+                                    </tr>
+                                    <tr>
+                                        <th><input type="checkbox" name="selection_2"></th>
+                                        <td>2</td>
+                                        <td></td>
+                                        <td></td>                                        
+                                        <td><button class="btn btn-warning" data-target="#myModal" data-toggle="modal" type="submit">Corregir</button></td>
+                                    </tr>
+                                    <tr>
+                                        <th><input type="checkbox" name="selection_3"></th>
+                                        <td>3</td>
+                                        <td></td>
+                                        <td></td>                                        
+                                        <td><a href="Pre-Registro/PreRegistroProyecto.html"><button class="btn btn-success" type="submit">Continuar</button></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>             
+                        
+                        
+                        <a class="btn btn-info" href="ContratoConf.pdf" target="_blank" type="submit">Imprimir acuerdo de confidencialidad</a>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="modal fade" id="myModal" role="dialog" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal" type="button">
+                        ×
+                    </button>
+                    <h4 class="modal-title" style="text-align: center;">
+                        Reporte
+                    </h4>
+                    <div class="modal-body">
+                        <form action="" class="ng-pristine ng-valid" method="get">
+                            <div class="container" style="margin-top: 0;">
+                                <div class="col-lg-12" style="margin-top: 10px;">
+                                    <div class="col-lg-8 well">
+                                        <div class="row">
+                                            <h3 class="text-center" id="inicioP" style="font-weight: bold;">
+                                                Proyecto
+                                            </h3>
+                                            <div class="col-lg-4 form-group">
+                                                <label>
+                                                    Fecha de presentación
+                                                </label>
+                                                <input class="form-control" name="" readonly="" type="date">
+                                    
+                                            </div>
+                                            <div class="col-lg-5 form-group">
+                                                <label>
+                                                    Convocatoria CPR
+                                                </label>
+                                                <input class="form-control" name="" readonly="" type="text">
+                                 
+                                            </div>
+                                        </div>
+                                        <div class="row container col-lg-6">
+                                            <div class=" form-group">
+                                                <label>
+                                                    Tipo de investigación
+                                                </label>
+                                                <div class="">
+                                                    <input name="Aplicada" readonly="" type="checkbox">
+                                                        <label>
+                                                            A. Investigación aplicada
+                                                        </label>
+                              
+                                                </div>
+                                                <div class="">
+                                                    <input name="Experimental" readonly="" type="checkbox">
+                                                        <label>
+                                                            B. Desarrollo experimental
+                                                        </label>
+                                      
+                                                </div>
+                                                <div class="">
+                                                    <input name="Basica" readonly="" type="checkbox">
+                                                        <label>
+                                                            C. Investigación básica
+                                                        </label>
+       
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row container col-lg-6">
+                                            <div class="form-group">
+                                                <label>
+                                                    Tipo de Sector
+                                                </label>
+                                                <div class="">
+                                                    <input name="Aplicada" readonly="" type="checkbox">
+                                                        <label>
+                                                            Publico
+                                                        </label>
+                          
+                                                </div>
+                                                <div class="">
+                                                    <input name="Aplicada" readonly="" type="checkbox">
+                                                        <label>
+                                                            Social
+                                                        </label>
+                       
+                                                </div>
+                                                <div class="">
+                                                    <input name="Aplicada" readonly="" type="checkbox">
+                                                        <label>
+                                                            Privado
+                                                        </label>
+                                         
+                                                </div>
+                                                <div class="">
+                                                    <input name="Aplicada" readonly="" type="checkbox">
+                                                        <label>
+                                                            Productivo
+                                                        </label>
+                           
+                                                </div>
+                                                <div class="">
+                                                    <input name="Aplicada" readonly="" type="checkbox">
+                                                        <label>
+                                                            Educativo
+                                                        </label>
+                                     
+                                                </div>
+                                                <div class="">
+                                                    <input name="Aplicada" readonly="" type="checkbox">
+                                                        <label>
+                                                            Otro
+                                                        </label>
+                               
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>
+                                                        Especifique
+                                                    </label>
+                                                    <input class="form-control" name="" readonly="" type="text">
+                      
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-9">
+                                                    <label>
+                                                        Linea de investigación
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-9">
+                                                    <input name="01" readonly="" type="checkbox">
+                                                        <label>
+                                                            LIIADT-01 Cómputo en la nube
+                                                        </label>
+                                        
+                                                </div>
+                                                <div class="col-lg-9">
+                                                    <input name="02" readonly="" type="checkbox">
+                                                        <label>
+                                                            LIIADT-02 Cómputo intensivo
+                                                        </label>
+                                   
+                                                </div>
+                                                <div class="col-lg-9">
+                                                    <input name="03" readonly="" type="checkbox">
+                                                        <label>
+                                                            LIIADT-03 Sistemas inteligentes de automatización
+                                                        </label>
+                                           
+                                                </div>
+                                                <div class="col-lg-9">
+                                                    <input name="04" readonly="" type="checkbox">
+                                                        <label>
+                                                            LIIADT-04 Desarrollo de tecnología e innovación
+                                                        </label>
+                                                  
+                                                </div>
+                                                <div class="col-lg-9">
+                                                    <input name="05" readonly="" type="checkbox">
+                                                        <label>
+                                                            LIIADT-05 Control y automatización
+                                                        </label>
+                                                 
+                                                </div>
+                                                <div class="col-lg-9">
+                                                    <input name="06" readonly="" type="checkbox">
+                                                        <label>
+                                                            LIIADT-06 Desarrollo e innovación en tecnologías de producción
+                                                        </label>
+                                         
+                                                </div>
+                                                <div class="col-lg-9">
+                                                    <input name="07" readonly="" type="checkbox">
+                                                        <label>
+                                                            LIIADT-07 Desarrollo e innovación de productos biotecnológicos y Tecnológicos
+                                                        </label>
+                                       
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12 form-group">
+                                                    <label>
+                                                        Nombre del proyecto
+                                                    </label>
+                                                    <input class="form-control" name="" readonly="" type="text">
+                                              
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <label>
+                                                        Duración:
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-4 form-group">
+                                                    <label>
+                                                        Inicio
+                                                    </label>
+                                                    <input class="form-control" name="" readonly="" type="date">
+                                            
+                                                </div>
+                                                <div class="col-lg-4 form-group">
+                                                    <label>
+                                                        Fin
+                                                    </label>
+                                                    <input class="form-control" name="" readonly="" type="date">
+                                              
+                                                </div>
+                                                <div class="col-lg-12" style="background:#000">
+                                                </div>
+                                            </div>
+
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+                                            <div class="row">
+                                                <h3 class="text-center" id="recep" style="font-weight: bold;">
+                                                    Recepción
+                                                </h3>
+                                                <div class="col-lg-5 form-group">
+                                                    <label>
+                                                        Numero de Recepción
+                                                    </label>
+                                                    <input class="form-control" readonly="" type="text">
+                                       
+                                                </div>
+                                                <div class="col-lg-5 form-group">
+                                                    <label>
+                                                        Fecha de Recepción
+                                                    </label>
+                                                    <input class="form-control" readonly="" type="date">
+                                       
+                                                </div>
+                                                <div class="col-lg-9" style="text-align: left;">
+                                                    <label>
+                                                        Recibió
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-4 form-group">
+                                                    <label>
+                                                        Nombre(s)
+                                                    </label>
+                                                    <input class="form-control" readonly="" type="text">
+                         
+                                                </div>
+                                                <div class="col-lg-5 form-group">
+                                                    <label>
+                                                        Firma
+                                                    </label>
+                                                    <input class="form-control" readonly="" type="text">
+                 
+                                                </div>
+                                                <div class="col-lg-3 form-group">
+                                                    <label>
+                                                        Sello
+                                                    </label>
+                                                    <input class="form-control" readonly="" style="height: 150px" type="text">
+                                
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12" style="background:#000">
+                                            </div>
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+                                            <div class="row">
+                                                <h3 class="text-center" style="font-weight: bold;">
+                                                    Responsable
+                                                </h3>
+                                                <div class="col-lg-4 form-group">
+                                                    <label>
+                                                        Apellido paterno
+                                                    </label>
+                                                    <input class="form-control" readonly="" type="text">
+                                     
+                                                </div>
+                                                <div class="col-lg-4 form-group">
+                                                    <label>
+                                                        Apellido materno
+                                                    </label>
+                                                    <input class="form-control" readonly="" type="text">
+                                      
+                                                </div>
+                                                <div class="col-lg-4 form-group">
+                                                    <label>
+                                                        Nombre(s)
+                                                    </label>
+                                                    <input class="form-control" readonly="" type="text">
+                                           
+                                                </div>
+                                                <div class="col-lg-6 form-group">
+                                                    <label>
+                                                        Grado máximo de estudios:
+                                                    </label>
+                                                    <input class="form-control" readonly="" style="width:100%;" type="text">
+                                             
+                                                </div>
+                                                <div class="col-lg-6 form-group">
+                                                    <label>
+                                                        Academia a la que pertenece
+                                                    </label>
+                                                    <input class="form-control" readonly="" type="text">
+                                                  
+                                                </div>
+                                                <div class="col-lg-2 form-group">
+                                                    <label>
+                                                        No. de personal
+                                                    </label>
+                                                    <input class="form-control" readonly="" type="text">
+                                             
+                                                </div>
+                                                <div class="col-lg-3 form-group">
+                                                    <label>
+                                                        Móvil
+                                                    </label>
+                                                    <input class="form-control" readonly="" type="text">
+                                       
+                                                </div>
+                                                <div class="col-lg-3" form-group="">
+                                                    <label>
+                                                        Correo institucional
+                                                    </label>
+                                                    <input class="form-control" readonly="" type="text">
+                                         
+                                                </div>
+                                                <div class="col-lg-4" form-group="">
+                                                    <label>
+                                                        Firma del responsable del proyecto
+                                                    </label>
+                                                    <input class="form-control" readonly="" type="text">
+                                           
+                                                </div>
+                                                <div class="col-lg-12" form-group="">
+                                                    <label>
+                                                        Descripción de las principales actividades a desarrollar en el proyecto
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-12" form-group="">
+                                                    <input class="form-control" readonly="" style="height: 150px;" tabindex="4" type="text">
+                                             
+                                                </div>
+                                                <div class="col-lg-3 form-group">
+                                                    <label>
+                                                        Palabras clave:
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-3 form-group">
+                                                    <label>
+                                                        (1)
+                                                    </label>
+                                                    <input class="form-control" name="" readonly="" type="text">
+                                                  
+                                                </div>
+                                                <div class="col-lg-3 form-group">
+                                                    <label>
+                                                        (2)
+                                                    </label>
+                                                    <input class="form-control" name="" readonly="" type="text">
+                                               
+                                                </div>
+                                                <div class="col-lg-3 form-group">
+                                                    <label>
+                                                        (3)
+                                                    </label>
+                                                    <input class="form-control" name="" readonly="" type="text">
+                                             
+                                                </div>
+                                            </div>
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+                                            <div class="row">
+                                                <div class="col-lg-12" style="background:#000">
+                                                </div>
+                                            </div>
+                                            <!-- colaboradores -->
+                                            <h3 class="text-center" id="colab1" style="font-weight: bold;">
+                                                Colaborador
+                                            </h3>
+                                            <div class="row">
+                                                <div class="col-lg-4 form-group">
+                                                    <label>
+                                                        Apellido paterno
+                                                    </label>
+                                                    <input class="form-control" readonly="" type="text">
+                                              
+                                                </div>
+                                                <div class="col-lg-4 form-group">
+                                                    <label>
+                                                        Apellido materno
+                                                    </label>
+                                                    <input class="form-control" readonly="" type="text">
+                                           
+                                                </div>
+                                                <div class="col-lg-4 form-group">
+                                                    <label>
+                                                        Nombre(s)
+                                                    </label>
+                                                    <input class="form-control" readonly="" type="text">
+                                
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 form-group">
+                                                <label>
+                                                    Grado máximo de estudios
+                                                </label>
+                                                <input class="form-control" readonly="" type="text">
+                                
+                                            </div>
+                                            <div class="col-lg-8 form-group">
+                                                <label>
+                                                    Academia a la que pertenece
+                                                </label>
+                                                <input class="form-control" readonly="" type="text">
+                                        
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-2 form-group">
+                                                <label>
+                                                    No. de personal
+                                                </label>
+                                                <input class="form-control" readonly="" type="text">
+                                    
+                                            </div>
+                                            <div class="col-lg-4 form-group">
+                                                <label>
+                                                    Móvil
+                                                </label>
+                                                <input class="form-control" pattern="^\d{10}$" readonly="" type="text">
+                                    
+                                            </div>
+                                            <div class="col-lg-3 form-group">
+                                                <label>
+                                                    Correo
+                                                </label>
+                                                <input class="form-control" readonly="" type="email">
+                                  
+                                            </div>
+                                                <div class="col-lg-3 form-group">
+                                                <label>
+                                                    Correo alternativo
+                                                </label>
+                                                <input class="form-control" readonly="" type="email">
+                                  
+                                            </div>
+                                            </div>
+                                            <div class="col-lg-12 form-group">
+                                                <label>
+                                                    Firma del responsable
+                                                </label>
+                                                <input class="form-control" readonly="" type="text">
+                       
+                                            </div>
+                                            <div class="col-lg-12 form-group">
+                                                <label>
+                                                    Descripción de las principales actividades a desarrollar en el proyecto
+                                                </label>
+                                                <textarea class="form-control" readonly="" rows="4" style="resize:none;">
+                                                </textarea>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12" style="background:#000">
+                                                </div>
+                                            </div>
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+                                            <div class="row">
+                                                <h3 class="text-center" id="objetivos" style="font-weight: bold;">
+                                                    Objetivos
+                                                </h3>
+                                                <div class="col-lg-12 form-group">
+                                                    <label>
+                                                        Indique el objetivo general(No más de 512 caracteres)
+                                                    </label>
+                                                    <textarea class="form-control" readonly="" rows="4" style="resize:none;">
+                                                    </textarea>
+                                                </div>
+                                                <div class="col-lg-12 form-group">
+                                                    <label>
+                                                        Establezca los objetivos específicos, científicos y tecnológicos subyacentes en el proyecto(No más de 512 caracteres)
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-12 form-group">
+                                                    <textarea class="form-control" readonly="" rows="4" style="resize:none;">
+                                                    </textarea>
+                                                </div>
+                                                <div class="col-lg-12 form-group">
+                                                    <label>
+                                                        Indique los resultados esperados en términos concretos(No más de 512 Caracteres)
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-12 form-group">
+                                                    <textarea class="form-control" readonly="" rows="4" style="resize:none;">
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12" style="background:#000">
+                                                </div>
+                                            </div>
+                                            
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------->                                            
+                                            <div class="row">
+                                                <h3 class="text-center" id="vinculacion" style="font-weight: bold;">
+                                                    Vinculación
+                                                </h3>
+                                                <div class="col-lg-2 form-group">
+                                                    <label>
+                                                        Existe convenio:
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-2 form-group">
+                                                    <label>
+                                                        Si
+                                                    </label>
+                                                    <input name="" readonly="" type="checkbox">
+                                                
+                                                </div>
+                                                <div class="col-lg-2 form-group">
+                                                    <label>
+                                                        No
+                                                    </label>
+                                                    <input name="" readonly="" type="checkbox">
+                                         
+                                                </div>
+                                                <div class="col-lg-12 form-group">
+                                                    <label>
+                                                        Nombre de la organización
+                                                    </label>
+                                                    <input class="form-control" name="" readonly="" type="text">
+                                             
+                                                </div>
+                                                <div class="col-lg-12 form-group">
+                                                    <label>
+                                                        Dirección
+                                                    </label>
+                                                    <input class="form-control" name="" readonly="" type="text">
+                                              
+                                                </div>
+                                                <div class="col-lg-4 form-group">
+                                                    <label>
+                                                        Área
+                                                    </label>
+                                                    <input class="form-control" name="" readonly="" type="text">
+                                       
+                                                </div>
+                                                <div class="col-lg-4 form-group">
+                                                    <label>
+                                                        Teléfono
+                                                    </label>
+                                                    <input class="form-control" name="" readonly="" type="text">
+                                               
+                                                </div>
+                                                <div class="col-lg-4 form-group">
+                                                    <label>
+                                                        Nombre del contacto
+                                                    </label>
+                                                    <input class="form-control" name="" readonly="" type="text">
+                                             
+                                                </div>
+                                                <div class="col-lg-12 form-group">
+                                                    <label>
+                                                        Descripción de la organización(No más de 256 caracteres)
+                                                    </label>
+                                                    <textarea class="form-control" name="" readonly="" rows="5" style="resize:none;">
+                                                    </textarea>
+                                                </div>
+                                                <div class="col-lg-5 form-group">
+                                                    <label>
+                                                        Existen aportaciones financieras o en especie de la vinculación:
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-2 form-group">
+                                                    <label>
+                                                        Si
+                                                    </label>
+                                                    <input name="" readonly="" type="checkbox">
+                                       
+                                                </div>
+                                                <div class="col-lg-2 form-group">
+                                                    <label>
+                                                        No
+                                                    </label>
+                                                    <input name="" readonly="" type="checkbox">
+                                          
+                                                </div>
+                                                <div class="col-lg-12 form-group">
+                                                    <label>
+                                                        Si la respuesta es si, describa cuales son(No más de 256 caracteres)
+                                                    </label>
+                                                    <textarea class="form-control" name="" readonly="" rows="5" style="resize:none;">
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12" style="background:#000">
+                                                </div>
+                                            </div>
+        
+        <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        
+                                            <div class="row">
+                                                <h3 class="text-center" id="metas" style="font-weight: bold;">
+                                                    Productos academicos
+                                                </h3>
+                                                <div class="col-lg-3 form-group">
+                                                    <input class="form-group" name="" readonly="" style="margin-left: 18px;" type="checkbox">
+                                                        <label>
+                                                            Servicio social
+                                                        </label>
+                                               
+                                                </div>
+                                                <div class="col-lg-4 form-group">
+                                                    <input class="form-group" name="" readonly="" style="margin-left: 18px;" type="checkbox">
+                                                        <label>
+                                                            Residencia profesional
+                                                        </label>
+                               
+                                                </div>
+                                                <div class="col-lg-3 form-group">
+                                                    <input class="form-group" name="" readonly="" style="margin-left: 18px;" type="checkbox">
+                                                        <label>
+                                                            Tesis
+                                                        </label>
+                                         
+                                                </div>
+                                                <div class="col-lg-12 form-group">
+                                                    <input class="form-group" name="" readonly="" style="margin-left: 18px;" type="checkbox">
+                                                        <label>
+                                                            Ponencias/Conferencias
+                                                        </label>
+                                          
+                                                </div>
+                                                <div class="col-lg-12 form-group">
+                                                    <input class="form-group" name="" readonly="" style="margin-left: 18px;" type="checkbox">
+                                                        <label>
+                                                            Artículos
+                                                        </label>
+                                                  
+                                                </div>
+                                                <div class="col-lg-12 form-group">
+                                                    <input class="form-group" name="" readonly="" style="margin-left: 18px;" type="checkbox">
+                                                        <label>
+                                                            Libros/Manuales
+                                                        </label>
+                                                
+                                                </div>
+                                                <div class="col-lg-3 form-group">
+                                                    <input class="form-group" name="" readonly="" style="margin-left: 18px;" type="checkbox">
+                                                        <label>
+                                                            Propiedad intelectual
+                                                        </label>
+                                       
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <label>
+                                                        Especificar:
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-7 form-group">
+                                                    <input class="form-control" name="" readonly="" style="margin-left: 18px;" type="text">
+                                 
+                                                </div>
+                                                <div class="col-lg-3 form-group">
+                                                    <input class="form-group" name="" readonly="" style="margin-left: 18px;" type="checkbox">
+                                                        <label>
+                                                            Otros
+                                                        </label>
+                                 
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <label>
+                                                        Especificar:
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-7 form-group">
+                                                    <input class="form-control" name="" readonly="" style="margin-left: 18px;" type="text">
+                                       
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12" style="background:#000">
+                                                    </div>
+                                                </div>
+        
+        <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        
+                                                <h1 class="text-center" id="etapa1" style="font-weight: Yu Gothic UI Light; margin-top: 2px">
+                                                    Etapa
+                                                </h1>
+                                                <div class="row">
+                                                    <div class="col-lg-12 form-group">
+                                                        <label>
+                                                            Nombre de la etapa:
+                                                        </label>
+                                                        <input class="form-control" name="" readonly="" style="margin-left: 18px;" type="text">
+                                                    </div>                                                    
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-4 form-group">
+                                                        <label>
+                                                            Fecha de inicio
+                                                        </label>
+                                                        <input class="form-control" name="" readonly="" style="margin-left: 18px;" type="date">
+                                                    </div>                                                    
+                                                    <div class="col-lg-4 form-group">
+                                                        <label>
+                                                            Fecha de fin
+                                                        </label>
+                                                        <input class="form-control" name="" readonly="" style="margin-left: 18px;" type="date">
+                                                    </div>                                                    
+                                                    <div class="col-lg-4 form-group">
+                                                        <label>
+                                                            Total de meses
+                                                        </label>
+                                                        <input class="form-control" name="" readonly="" style="margin-left: 18px;" type="text">
+                                                    </div>                                                            
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12 form-group">
+                                                        <label>
+                                                            Descripción
+                                                        </label>
+                                                        <input class="form-control" name="" readonly="" type="text">
+                                                    </div>                                                    
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-2 form-group">
+                                                        <label>
+                                                            Metas
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-lg-10 form-group">
+                                                        <textarea class="form-control" readonly="" rows="4" style="resize:none;">
+                                                        </textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-2 form-group">
+                                                        <label>
+                                                            Actividades
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-lg-10 form-group">
+                                                        <textarea class="form-control" readonly="" rows="4" style="resize:none;">
+                                                        </textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-2 form-group">
+                                                        <label>
+                                                            Productos
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-lg-10 form-group">
+                                                        <textarea class="form-control" readonly="" rows="4" style="resize:none;">
+                                                        </textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12" style="background:#000">
+                                                    </div>
+                                                </div>
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+                                                <h3 class="text-center" id="financ" style="font-weight: bold; margin-bottom: 9px;">
+                                                    Financiamiento requerido
+                                                </h3>
+                                                <div class="row">
+                                                    <div class="col-lg-5 form-group">
+                                                        <label>
+                                                            ¿Existe actualmente algún financiamiento del proyecto?
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-lg-2 form-group">
+                                                        <label>
+                                                            Si
+                                                        </label>
+                                                        <input name="" readonly="" type="checkbox">
+                                                    
+                                                    </div>
+                                                    <div class="col-lg-2 form-group">
+                                                        <label>
+                                                            No
+                                                        </label>
+                                                        <input name="" readonly="" type="checkbox">
+                                                
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <h5>
+                                                            En caso de que la respuesta sea sí
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-2 form-group">
+                                                    <label>
+                                                        Interno
+                                                    </label>
+                                                    <input name="" readonly="" type="checkbox">
+                                       
+                                                </div>
+                                                <div class="col-lg-2 form-group">
+                                                    <label>
+                                                        Externo
+                                                    </label>
+                                                    <input name="" readonly="" type="checkbox">
+                                                 
+                                                </div>
+                                                <div class="col-lg-1 form-group">
+                                                    <label>
+                                                        Especificar:
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-6 form-group">
+                                                    <input class="form-control" name="" readonly="" style="margin-left: 18px;" type="text">
+                                         
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <h5>
+                                                        En caso de que la respuesta sea no desglose($)
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-2 form-group">
+                                                    <label>
+                                                        Infraestructura:
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-2 form-group">
+                                                    <input class="form-control" name="" readonly="" type="text">
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-2 form-group">
+                                                    <label>
+                                                        Consumibles:
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-2 form-group">
+                                                    <input class="form-control" name="" readonly="" type="text">
+                                
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-2 form-group">
+                                                    <label>
+                                                        Licencias:
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-2 form-group">
+                                                    <input class="form-control" name="" readonly="" type="text">
+                                      
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-2 form-group">
+                                                    <label>
+                                                        Viáticos:
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-2 form-group">
+                                                    <input class="form-control" name="" readonly="" type="text">
+                                              
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-2 form-group">
+                                                    <label>
+                                                        Publicaciones:
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-2 form-group">
+                                                    <input class="form-control" name="" readonly="" type="text">
+                                             
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-2 form-group">
+                                                    <label>
+                                                        Equipo:
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-2 form-group">
+                                                    <input class="form-control" name="" readonly="" type="text">
+                                        
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-2 form-group">
+                                                    <label>
+                                                        Patentes/derechos de autor:
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-2 form-group">
+                                                    <input class="form-control" name="" readonly="" type="text">
+                                               
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-2 form-group">
+                                                    <label>
+                                                        Otros(Especifique):
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-2 form-group">
+                                                    <input class="form-control" name="" readonly="" type="text">
+                                        
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-2 form-group">
+                                                    <label>
+                                                        Total:
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-2 form-group">
+                                                    <input class="form-control" name="" readonly="" type="text">
+                                        
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12" style="background:#000">
+                                                </div>
+                                            </div>
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <h5>
+                                                        <b>
+                                                            *
+                                                        </b>
+                                                        S.S.= Servicio Social, R.P.= Residencia Profesional, T= Tesis
+                                                    </h5>
+                                                    <h3 class="text-center" id="alumnos" style="font-weight: bold; margin-bottom: 9px;">
+                                                        Alumno colaborador
+                                                    </h3>
+                                                    <div class="row">
+                                                        <div class="col-lg-6 form-group">
+                                                            <label>
+                                                                Nombre del Alumno:
+                                                            </label>
+                                                            <input class="form-control" name="" type="text">
+                                                        </div>
+                                                        <div class="col-lg-2 form-group" style="margin-top: 30px;">
+                                                            <label>
+                                                                S.S.
+                                                            </label>
+                                                            <input class="form-group" name="" type="checkbox">
+                                                 
+                                                        </div>
+                                                        <div class="col-lg-2 form-group" style="margin-top: 30px;">
+                                                            <label>
+                                                                R.P.
+                                                            </label>
+                                                            <input class="form-group" name="" type="checkbox">
+                                                 
+                                                        </div>
+                                                        <div class="col-lg-2 form-group" style="margin-top: 30px;">
+                                                            <label>
+                                                                T
+                                                            </label>
+                                                            <input class="form-group" name="" type="checkbox">
+                                              
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-4 form-group">
+                                                            <label>
+                                                                No. control
+                                                            </label>
+                                                            <input class="form-control" name="" readonly="" type="text">
+                                                        </div>
+                                                        <div class="col-lg-4 form-group">
+                                                            <label>
+                                                                Semestre
+                                                            </label>
+                                                            <input class="form-control" name="" readonly="" type="text">
+                                                        </div>
+                                                        <div class="col-lg-4 form-group">
+                                                            <label>
+                                                                Carrera
+                                                            </label>
+                                                            <input class="form-control" name="" readonly="" type="text">
+                                                        </div>
+                                                        <div class=" col-lg-12 form-group">
+                                                            <label>
+                                                                Detalle de actividades
+                                                            </label>
+                                                            <textarea class="form-control" readonly="" rows="3" style="resize:none;">
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                                                                                                                                                                            
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+                                    <div class="col-lg-4" role="complementary">
+                                        <nav class="bs-docs-sidebar hidden-print hidden-sm hidden-xs ">
+                                            <ul class="nav bs-docs-sidenav">
+                                                <div class="container" id="navObserv">
+                                                    <div class="panel panel-primary panel-default">
+                                                        <div class="panel-heading">
+                                                            <h5 class="panel-title">
+                                                                Observaciones del Consejo de Investigación
+                                                            </h5>
+                                                            <span class="pull-right clickable panel-collapsed">
+                                                                <i class="glyphicon glyphicon-chevron-down">
+                                                                </i>
+                                                            </span>
+                                                        </div>
+                                                        <div class="panel-body" style="display: none;">
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#inicioP" style="color: #337ab7">
+                                                                    Proyecto
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                          
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#recep" style="color: #337ab7">
+                                                                    Recepción
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                   
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#colab1" style="color: #337ab7">
+                                                                    Colaboradores
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                            
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#objetivos" style="color: #337ab7">
+                                                                    Objetivos
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                        
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#vinculacion" style="color: #337ab7">
+                                                                    Vinculación
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                         
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#metas" style="color: #337ab7">
+                                                                    Metas
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                     
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#etapa1" style="color: #337ab7">
+                                                                    Etapas
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                      
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#financ" style="color: #337ab7">
+                                                                    Financiamiento
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                    
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#al1" style="color: #337ab7">
+                                                                    Alumnos
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                      
+                                                                </div>
+                                                            </li>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ul>
+                                        </nav>
+                                    </div>
+
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                                    <div class="col-lg-4" role="complementary">
+                                        <nav class="bs-docs-sidebar hidden-print hidden-sm hidden-xs ">
+                                            <ul class="nav bs-docs-sidenav">
+                                                <div class="container" id="navObserv">
+                                                    <div class="panel panel-primary panel-default">
+                                                        <div class="panel-heading">
+                                                            <h5 class="panel-title">
+                                                                Observaciones de Oficina de Seguimiento de Proyectos de Investigación
+                                                            </h5>
+                                                            <span class="pull-right clickable panel-collapsed">
+                                                                <i class="glyphicon glyphicon-chevron-down">
+                                                                </i>
+                                                            </span>
+                                                        </div>
+                                                        <div class="panel-body" style="display: none;">
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#inicioP" style="color: #337ab7">
+                                                                    Proyecto
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                               
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#recep" style="color: #337ab7">
+                                                                    Recepción
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                               
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#colab1" style="color: #337ab7">
+                                                                    Colaboradores
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                                
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#objetivos" style="color: #337ab7">
+                                                                    Objetivos
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                             
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#vinculacion" style="color: #337ab7">
+                                                                    Vinculación
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                        
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#metas" style="color: #337ab7">
+                                                                    Metas
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                           
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#etapa1" style="color: #337ab7">
+                                                                    Etapas
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                                  
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#financ" style="color: #337ab7">
+                                                                    Financiamiento
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                         
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#al1" style="color: #337ab7">
+                                                                    Alumnos
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                             
+                                                                </div>
+                                                            </li>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ul>
+                                        </nav>
+                                    </div>
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+                                    <div class="col-lg-4" role="complementary">
+                                        <nav class="bs-docs-sidebar hidden-print hidden-sm hidden-xs ">
+                                            <ul class="nav bs-docs-sidenav">
+                                                <div class="container" id="navObserv">
+                                                    <div class="panel panel-primary panel-default">
+                                                        <div class="panel-heading">
+                                                            <h5 class="panel-title">
+                                                                Observaciones de Subdirección de Investigación y Posgrado
+                                                            </h5>
+                                                            <span class="pull-right clickable panel-collapsed">
+                                                                <i class="glyphicon glyphicon-chevron-down">
+                                                                </i>
+                                                            </span>
+                                                        </div>
+                                                        <div class="panel-body" style="display: none;">
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#inicioP" style="color: #337ab7">
+                                                                    Proyecto
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                          
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#recep" style="color: #337ab7">
+                                                                    Recepción
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                       
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#colab1" style="color: #337ab7">
+                                                                    Colaboradores
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                          
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#objetivos" style="color: #337ab7">
+                                                                    Objetivos
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                              
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#vinculacion" style="color: #337ab7">
+                                                                    Vinculación
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                  
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#metas" style="color: #337ab7">
+                                                                    Metas
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                 
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#etapa1" style="color: #337ab7">
+                                                                    Etapas
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                            
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#financ" style="color: #337ab7">
+                                                                    Financiamiento
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                          
+                                                                </div>
+                                                            </li>
+                                                            <li class="">
+                                                                <a class="accordion col-lg-4" href="#al1" style="color: #337ab7">
+                                                                    Alumnos
+                                                                </a>
+                                                                <div class="panel2">
+                                                                    <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                    </textarea>
+                                                                    <br>
+                                                                        <br>
+                                                        
+                                                                </div>
+                                                            </li>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ul>
+                                        </nav>
+                                        <div class="col-lg-12">
+                                            <a href="#" onclick="EnviarSubdireccion();" class="btn btn-info btn-block">Enviar a O.S.P.I</a>
+                                        <button data-dismiss="modal" href="" class="btn btn-default btn-block">
+                                            Cerrar
+                                        </button>
+                                        </div>
+                                        <script type="text/javascript">
+                                            function EnviarSubdireccion()
+  {
+  swal({
+  title: '¿Enviar oficina de seguimiento de proyectos de investigacion?',
+  text: "",
+  type: 'info',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Aceptar'
+  }).then(function () {
+  swal(
+    'Enviado correctamente',
+    '',
+    'success'
+  )
+  $('#myModal').modal('hide')
+  })
+  }
+
+
+                                        </script>
+                                    </div>                                                                        
+                                    <script>
+                                        var acc = document.getElementsByClassName("accordion");
+                                          var i;
+                                          for (i = 0; i < acc.length; i++) 
+                                          {
+                                            acc[i].onclick = function() {
+                                              this.classList.toggle("active");
+                                              var panel = this.nextElementSibling;
+                                              if (panel.style.maxHeight){
+                                                panel.style.maxHeight = null;
+                                              } else {
+                                                panel.style.maxHeight = panel.scrollHeight + "px";
+                                              } 
+                                            }
+                                          }
+                                    </script>
+                                    <script type="text/javascript">
+                                        $(document).on('click', '.panel-heading span.clickable', function(e)
+                                          {
+                                            var $this = $(this);
+                                            if(!$this.hasClass('panel-collapsed')) 
+                                            {
+                                              $this.parents('.panel').find('.panel-body').slideUp();
+                                              $this.addClass('panel-collapsed');
+                                              $this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+                                            } 
+                                            else 
+                                            {
+                                              $this.parents('.panel').find('.panel-body').slideDown();
+                                              $this.removeClass('panel-collapsed');
+                                              $this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+                                            }
+                                          })
+                                    </script>
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="container-fluid text-center" id="pie">
+            <div class="copyrights" style="margin-top:25px;">
+                <p>
+                    Sección 5A Reserva Territorial s/n, Col. Santa Bárbara, CP 91096, Xalapa, Veracruz, México
+                    <br>
+                        <span>
+                            Tel. (228) 165-0525 © 2010-2014
+                            <br>
+                                www.itsx.edu.mx
+                           
+                        </span>
+                  
+                </p>
+            </div>
+        </footer>
+        <script>
+            var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].onclick = function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  }
+}
+        </script>
+    </body>
+</html>

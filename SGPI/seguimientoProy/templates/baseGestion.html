@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block menu %}
+
+{{ block.super }}
+{% block menuGest %}
+	<script src="{% static 'js/menuGest.js' %}"></script>
+    <script type="text/javascript">
+            menuGest(1,"InicioGestion.html", "PreRegistro/PreRegistro.html","ConsultaEntregables/ConsultaEntregables.html","Reportes/Reportes.html","Prorrogas/Prorroga.html", "ReActivacion/ReActivacion.html", "CambioColaboradores/CambioColaboradores.html", "Gestion de Usuarios/GestiondeUsuarios.html", "Consulta de Proyectos/Consulta de Proyectos.html", "ConfiguracionCuenta/ConfiguracionCuenta.html","Calendario/Calendario.html", "Historial/HistorialP.html", "Historial/HistorialD.html");
+        </script>
+{% endblock %}
+{% endblock menu%}

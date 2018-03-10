@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="mwl.calendar.docs">
+    <head>
+        <title>
+            Reactivación
+        </title>
+        <script src="../../MenuIzquierdo/moment.js">
+        </script>
+        <script src="../../MenuIzquierdo/interactjs@1">
+        </script>
+        <script src="../../MenuIzquierdo/angular.js">
+        </script>
+        <script src="../../MenuIzquierdo/angular-animate.js">
+        </script>
+        <script src="../../MenuIzquierdo/ui-bootstrap-tpls.js">
+        </script>
+        <script src="../../MenuIzquierdo/rrule@2">
+        </script>
+        <script src="../../MenuIzquierdo/angular-bootstrap-colorpicker.js">
+        </script>
+        <script src="../../MenuIzquierdo/angular-bootstrap-calendar.js">
+        </script>
+        <link href="../../MenuIzquierdo/jquery-3.2.0.min.js" rel="stylesheet" type="text/css"/>
+        <link href="../../MenuIzquierdo/jquery-3.2.0.js" rel="stylesheet" type="text/css"/>
+        <link href="../../MenuIzquierdo/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <script src="../../MenuIzquierdo/script.js">
+        </script>
+        <link href="../../MenuIzquierdo/bootstrap.css" rel="stylesheet"/>
+        <link href="../../MenuIzquierdo/angular-bootstrap-calendar.min.css" rel="stylesheet"/>
+        <script src="../../MenuIzquierdo/example.js">
+        </script>
+        <script src="../../MenuIzquierdo/helpers.js">
+        </script>
+        <link href="../../css/nuevoestilo.css" rel="stylesheet" type="text/css"/>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../css/estilos.css" rel="stylesheet" type="text/css"/>
+        <link href="../../jQuery/jquery-3.2.0.min.js" rel="stylesheet" type="text/css"/>
+        <link href="../../jQuery/jquery-3.2.0.js" rel="stylesheet" type="text/css"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <link href="../../css/styles.css" rel="stylesheet"/>
+        <script src="../../jQuery/jquery-3.2.0.min.js" type="text/javascript">
+        </script>
+        <script src="../../js/script.js">
+        </script>
+        <script src="../../js/bootstrap.min.js">
+        </script>
+        <link href="../../css/sweetalert2.css" rel="stylesheet" type="text/css"/>
+        <script src="../../js/sweetalert2.min.js">
+        </script>
+        <link href="../../img/itsx.ico" rel="shortcut icon" type="image/x-icon"/>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <header id="encabezado">
+            <div class="container">
+                <div class="col-lg-12" id="en">
+                    <img alt="Responsive image" class="img-responsive" src="../../img/Sin título.png" style="width: 20%; height: auto; float: right; margin-right: -30px;"/>
+                    <img alt="Responsive image" class="img-responsive" src="../../img/211.jpg" style="width: 23%; height: auto; float: left; margin-left: -29px;"/>
+                    <img alt="Responsive image" class="img-responsive center-block" src="../../img/ws.jpg" style="width: 16%; height: auto; float: center; "/>
+                </div>
+            </div>
+            <style type="text/css">
+                #en{
+        background: white;
+      }
+            </style>
+        </header>
+        <link href="../../css/noti.css" rel="stylesheet" type="text/css"/>
+        <script src="../menu.js" type="text/javascript">
+        </script>
+        <script type="text/javascript">
+            menu(2, "../InicioGestion.html", "../PreRegistro/PreRegistro.html","../ConsultaEntregables/ConsultaEntregables.html","../Reportes/Reportes.html","../Prorrogas/Prorroga.html", "ReActivacion.html", "../CambioColaboradores/CambioColaboradores.html", "../Gestion de Usuarios/GestiondeUsuarios.html", "../Consulta de Proyectos/Consulta de Proyectos.html", "../ConfiguracionCuenta/ConfiguracionCuenta.html","../Calendario/Calendario.html", "../Historial/HistorialP.html","../Historial/HistorialD.html");  
+  function reactivar()
+  {
+        swal({
+  title: '¿Seguro que desea enviar la solicitud?',
+  text: "",
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Aceptar'
+}).then(function () {
+  swal(
+    'Solicitud enviada',
+    '',
+    'success'
+  )
+  $('#myModal').modal('hide')
+})
+  }
+        </script>
+        <link href="../../css/calendario.css" rel="stylesheet" type="text/css"/>
+        <script src="../calendario.js" type="text/javascript">
+        </script>
+        <script type="text/javascript">
+            $(document).on('click', '.panel-heading span.clickable', function(e)
+        {
+            var $this = $(this);
+            if(!$this.hasClass('panel-collapsed')) 
+            {
+              $this.parents('.panel').find('.panel-body').slideUp();
+              $this.addClass('panel-collapsed');
+              $this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+            } 
+            else 
+            {
+              $this.parents('.panel').find('.panel-body').slideDown();
+              $this.removeClass('panel-collapsed');
+              $this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+            }
+        })
+        </script>
+        <script type="text/javascript">
+            calendar();
+        </script>
+        
+        <div class="container" style="margin-top: 14px;">
+            <div class="col-md-9">
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="text-center">Solicitudes de re activación de proyectos</h3>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>N°.</th>
+                                        <th>Nombre del proyecto</th>
+                                        <th>Nombre del docente</th>
+                                        <th>Folio</th>
+                                        <th>Fecha de cancelación</th>
+                                        <th>Carrera</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><input class="btn btn-primary" data-target="#myModal" data-toggle="modal" name="" type="button" value="Ver solicitud"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal" type="button">×</button>
+                            <h4 class="modal-title" style="text-align: center;">Solicitud de Reactivación</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" method="get">
+                                <div class="container">
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-8 well">
+                                            <form action="" method="get">
+                                                <h1 class="text-center" style="font-weight: Yu Gothic UI Light; margin-bottom: 4px;">Información del proyecto</h1>
+                                                <div class="row">
+                                                    <div class="col-sm-4 form-group">
+                                                        <label>Proyecto</label>
+                                                        <input class="form-control" name="" type="text">
+                                                    </div>
+                                                    <div class="col-sm-4 form-group">
+                                                        <label>Fecha de cancelación</label>
+                                                        <input class="form-control" name="" type="text">
+                                                    </div>
+                                                    <div class="col-sm-4 form-group">
+                                                        <label>Fecha de solicitud</label>
+                                                        <input class="form-control" name="" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Motivos de cancelación</label>
+                                                    <textarea class="form-control" rows="4"></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Motivos de re-activación</label>
+                                                    <textarea class="form-control" rows="4"></textarea>
+                                                </div>
+                                                <div class="row">
+                                                    <h1 class="text-center" style="font-weight: Yu Gothic UI Light; margin-bottom: 4px;">Información del docente responsable</h1>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-md-12">
+                                                        <label>Selecciona un docente</label>
+                                                        <select class="form-control">
+                                                            <option>Docente</option>
+                                                        </select>
+                                                    </div>             
+                                                </div>                           
+                                                <div class="row">
+                                                    <div class="col-sm-4 form-group">
+                                                        <label>Apellido paterno</label>
+                                                        <input class="form-control" name="" type="text">
+                                                    </div>
+                                                    <div class="col-sm-4 form-group">
+                                                        <label>Apellido materno</label>
+                                                        <input class="form-control" name="" type="text">
+                                                    </div>
+                                                    <div class="col-sm-4 form-group">
+                                                        <label>Nombre(s)</label>
+                                                        <input class="form-control" name="" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-3 form-group">
+                                                        <label>N° Personal</label>
+                                                        <input class="form-control" name="" type="text">
+                                                    </div>
+                                                    <div class="col-sm-3 form-group">
+                                                        <label>Carrera</label>
+                                                        <input class="form-control" name="" type="text">
+                                                    </div>
+                                                    <div class="col-sm-3 form-group">
+                                                        <label>Móvil</label>
+                                                        <input class="form-control" name="" type="text">
+                                                    </div>
+                                                    <div class="col-sm-3 form-group">
+                                                        <label>Correo</label>
+                                                        <input class="form-control" name="" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <h4 style="text-align: center;">Historial del docente</h4>                                                         
+                                                    <table class="table" style="float: center;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th></th>
+                                                                <th></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Proyectos activos</td>
+                                                                <td>0</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Proyectos cancelados</td>
+                                                                <td>0</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Retrasos de entregables</td>
+                                                                <td>0</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Prórrogas solicitadas</td>
+                                                                <td>0</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Cambios de colaboradores</td>
+                                                                <td>0</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td> N° de bloqueos</td>
+                                                                <td>0</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>N° de sanciones</td>
+                                                                <td>0</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-6 form-group">
+                                                        <label>Colaborador 1</label>
+                                                        <br>
+                                                        <label>Anterior:</label>
+                                                        <select class="form-control">
+                                                            <option>Colaborador</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-6 form-group">
+                                                        <label>Colaborador 2</label>
+                                                        <br>
+                                                        <label>Anterior:</label>
+                                                        <select class="form-control">
+                                                            <option>Colaborador</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-6 form-group">
+                                                        <label>Colaborador 3</label>
+                                                        <br>
+                                                        <label>Anterior:</label>
+                                                        <select class="form-control">
+                                                            <option>Colaborador</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-6 form-group">
+                                                        <label>Colaborador 4</label>
+                                                        <br>
+                                                        <label>Anterior:</label>
+                                                        <select class="form-control">
+                                                            <option>Colaborador</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="col-lg-4" role="complementary">
+                                            <nav class="bs-docs-sidebar hidden-print hidden-sm hidden-xs affix col-lg-3">
+                                                <ul class="nav bs-docs-sidenav">
+                                                    <div class="container" id="navObserv">
+                                                        <div class="panel panel-primary panel-default">
+                                                            <div class="panel-heading">
+                                                                <h5 class="panel-title">
+                                                                    Realizar Observaciones
+                                                                </h5>
+                                                                <span class="pull-right clickable panel-collapsed">
+                                                                    <i class="glyphicon glyphicon-chevron-down">
+                                                                    </i>
+                                                                </span>
+                                                            </div>
+                                                            <div class="panel-body" style="display: none;">
+                                                                <li class="">
+                                                                    <a class="accordion col-lg-4" href="#inicioP" style="color: #337ab7">
+                                                                        Proyecto
+                                                                    </a>
+                                                                    <div class="panel2">
+                                                                        <textarea class="form-control" name="" rows="5" style="resize:none">
+                                                                        </textarea>
+                                                                    </div>
+                                                                </li>
+                                                            </div>
+                                                        </div>
+                                                        <a href="#" onclick="reactivar()" type="button" class="btn btn-primary btn-block">Enviar revisión a S.I.P</a>
+                                                        <a href="#" onclick="reactivar()" type="button" class="btn btn-info btn-block">Enviar a D.R</a>
+                                                        <a href="#" data-dismiss="modal" type="button" class="btn btn-default btn-block">Cerrar</a>
+                                                    </div>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                           <button class="btn btn-default" data-dismiss="modal" type="button">Cerrar</button> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../Footer.js" type="text/javascript">
+        </script>
+        <script type="text/javascript">
+            Footer(1);
+        </script>
+    </body>
+</html>

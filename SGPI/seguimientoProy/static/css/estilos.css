@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background: #fff;
+    font-family: 'Open sans' padding-bottom:;
+    margin: 0 0 100px;
+}
+
+.wrap {
+    width: 950px;
+    max-width: 90%;
+    margin: 30px 380px;
+}
+
+.container {
+    width: 100%;
+}
+
+.contenido {
+    width: 950px;
+    max-width: 90%;
+    margin: 30px 380px;
+}
+
+
+
+ul.tabs {
+    width: 100%;
+    background: #363636;
+    list-style: none;
+    display: flex;
+}
+
+ul.tabs li {
+    width: 15%;
+}
+
+ul.tabs li a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    display: block;
+    padding: 10px 0px;
+    text-align: center;
+}
+
+ul.tabs li a:hover {
+    background: #0984CC;
+}
+
+.actives {
+    background: #0984CC;
+}
+
+.morir {
+    background: green;
+}
+
+ul.tabs li a .tab-text {
+    margin-left: 3px;
+}
+
+.secciones {
+    width: 100%;
+    background: #fff;
+}
+
+.secciones article {
+    padding: 0px;
+    margin-bottom: 60px;
+}
+
+.secciones article p {
+    text-align: justify;
+}
+
+@media screen and (max-width: 800px) {
+    ul.tabs li {
+        width: none;
+        flex-basis: 0;
+        flex-grow: 1;
+        font-size: 1px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    ul.tabs li a {
+        padding: 10px 0px;
+    }
+    ul.tabs li a .tab-text {
+        font-size: 8px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    ul.tabs li a .tab-text {
+        display: none;
+    }
+}
+
+ul.sec {
+    width: 80%;
+    height: 30%;
+    background: #363636;
+    list-style: none;
+    display: flex;
+    margin-left: 0px;
+    margin-bottom: 0px;
+}
+
+ul.sec li {
+    width: 10%;
+}
+
+ul.sec li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+ul.sec li a:hover {
+    background: #0984CC;
+}
+
+ul.sec li a .sec-text {
+    margin-left: 10px;
+    margin-top: -25px;
+}
+
+.sec {
+    width: 120%;
+    margin-bottom: 50px;
+    background: #fff;
+}
+
+.sec article {
+    padding: 0px;
+    width: 100%;
+    margin-bottom: 60px;
+    margin-left: 0px;
+}
+
+#encabezado {
+    color: #585858;
+    margin-bottom: 5px;
+    border-bottom: solid 3px #ffcc00;
+    background: white;
+}
+
+#pie {
+    color: #fff;
+    border-top: solid 3px #ffcc00;
+    background: #335c7d;
+    font-weight: Yu Gothic UI Light;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+}
+
+#menu {
+    background: #FAFAFA;
+    color: black;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+#btnImprimir {
+    color: black;
+    background: #b0f991;
+}
+
+#btnRegistrar {
+    color: black;
+    background: #cae9fb;
+}
+
+#btnCorregir {
+    color: black;
+    background: #fff398;
+}
+
+#btnContinuar {
+    color: black;
+    background: #fba556;
+}
+
+#btnSiguienteS {
+    margin-left: -50px;
+    margin-top: -30px;
+}
+
+#btnRegresarS{
+    margin-left: -80px;
+    margin-top: -30px;
+}
+
+#btnSubir {
+    margin-top: -30px;
+    margin-left: 700px;
+    margin-bottom: 0px;
+}
+
+#btnEvidencia{
+    margin-top: 50px;
+}
+
+#btnSiguiente {
+    margin-left: 20px;
+}
+
+#btnCancelar {
+    color: black;
+    background: #ff6262;
+}
+
+#tituloP {
+    font-weight: Yu Gothic UI Light;
+    margin-top: 2px;
+    margin-right: 290px;
+}
+
+#tablaNormal {
+    font-weight: normal;
+}
+
+#tablaBold {
+    font-weight: bold;
+}
+
+#en{
+    background: white;
+}
