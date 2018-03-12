@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'bootstrapform',
     'seguimientoProy.apps.SeguimientoproyConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -77,9 +78,9 @@ WSGI_APPLICATION = 'SGPI.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'SGPI',
+        'NAME': 'sgpi',
         'USER': 'postgres',
-        'PASSWORD': 'Rivazul19',
+        'PASSWORD': '4815162342',
         'HOST': 'localhost',
         'PORT': '5432',
     }

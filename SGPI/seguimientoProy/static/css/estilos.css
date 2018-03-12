@@ -242,3 +242,22 @@ html {
 #en{
     background: white;
 }
+#navPre
+{
+    padding-left: 0px;
+    padding-right: 0px;
+    
+
+}
+.barra
+{
+    padding-left: 1px;
+    padding-right: 1px;    
+    
+    text-align:center;
+
+}
+#myNav
+{
+    padding: 0px;
+}

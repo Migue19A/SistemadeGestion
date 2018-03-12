@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import PostProyecto, Docente, Gestion, Consejo, Investigacion
+from .views import PostProyecto, Docente, Gestion, Consejo, Investigacion, PreRegistro
 
 app_name = 'seguimientoProy'
 urlpatterns = [
@@ -12,10 +12,8 @@ urlpatterns = [
         'Gestion/', Gestion.as_view(), name='publicarProyecto'),
     path(
         'Investigacion/', Investigacion.as_view(), name='publicarProyecto'),
-  	path(
+    path(
         'Consejo/', Consejo.as_view(), name='publicarProyecto'),
+    path('Docente/PreRegistro/', PreRegistro.as_view(), name='preRegistro'),
 
-  
 ]
-
-
