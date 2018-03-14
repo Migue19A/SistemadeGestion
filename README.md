@@ -2,7 +2,8 @@
 
 Repositorio para el proyecto.
 
-para poder ejecutarlo necesitas:
+##para poder ejecutarlo necesitas:
+    *instalar PostgreSQL
     *instalar python.
     *instalar pip.
     *crear un ambiente virtual
@@ -30,3 +31,8 @@ para poder ejecutarlo necesitas:
     http://timmyreilly.azurewebsites.net/python-pip-virtualenv-installation-on-windows/
 
     menos la sección donde coloca el PATH de python en las variables de entorno
+
+##instalar los paquetes necesarios
+    dentro de la ubicación del entorno virtual instalar los paquetes de pip
+    necesarios para la ejecución del programa
+    **lista pendiente
