@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'SGPI.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'sgpi',
+        'NAME': 'SGPI',
         'USER': 'postgres',
-        'PASSWORD': '4815162342',
+        'PASSWORD': 'Rivazul19',
         'HOST': 'localhost',
         'PORT': '5432',
     }

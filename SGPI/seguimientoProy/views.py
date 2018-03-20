@@ -29,3 +29,10 @@ class Investigacion(TemplateView):
 class PreRegistro(FormView):
     template_name = 'PreRegistroForm.html'
     form_class = PreRegistroForm
+
+class Finalizar(TemplateView):
+	template_name= "Finalizar.html"
+
+
+
+

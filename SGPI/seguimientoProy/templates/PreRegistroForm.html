@@ -5,6 +5,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js">
     </script>
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css"/>
+    <meta charset="UTF-8">
 
         
 {% block contenido %}
@@ -85,8 +86,8 @@
                                     <div class="col-md-12 col-lg-12">
                                         <div class="col-md-12">
                                             <div class="row">
-                                                <div class="form-group col-md-3 col-lg-5">
-                                                    <div class="input-group date" data-provide="datepicker">
+                                                <div class="form-group col-md-3 col-lg-6">
+                                                    <div class="input-group date" data-provide="datepicker"|>
                                                 {{ form.fecha_presentacion|bootstrap }}
                                             </div>
                                                 </div>
@@ -95,55 +96,48 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-3">                                                    
+                                                <div class="col-md-4">                                                    
                                                     <div class="row">
                                                         {{ form.tipoInvest|bootstrap}} 
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    
-
+                                                <div class="col-md-8">                                                
                                                     <div class="row">
                                                         {{ form.tipoSector|bootstrap}}
+                                                    <label for="id_tipoSector_5"><input id="id_tipoSector_5" onchange="habilitarEspecifique()" type="checkbox" name="tipoSector" value="otro">Otro</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-12 form-group">
-                                                    
-                                                    {{form.especifique|bootstrap}}
-                                                    {# <textarea id="especificar" disabled name="es" class="form-control" rows="7" style="resize: none; width: 98%;" required></textarea> #}
+                                                <div class="col-md-12 form-group"> 
+                                                    {{ form.especifique|bootstrap}}
                                                 </div>
                                             </div>
                                             
 
                                             <div class="row">
-                                                <div class="col-md-3 form-group">
-                                                    
-                                                </div>
                                                 <div class="col-md-12 form-group">
                                                     {{form.lineaInv|bootstrap}}
                                                 </div>    
                                             </div> 
                                             <div class="row">
-                                                <div class="col-md-12">
-                                                    
-
+                                                <div class="col-md-12">                                             
                                                     {{form.nombreProy|bootstrap}}
-                                                    <label>Total de caracteres: 200</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-2 form-group">
                                                     <label>Duracion:</label>
                                                 </div>
+                                                <div class="col-md-5 form-group">
                                                 <div class="input-group date" data-provide="datepicker">
                                                 {{ form.fecha_inicio|bootstrap }}
-                                            </div>
-                                                <div class="input-group date" data-provide="datepicker">
+                                                </div>
+                                                </div>
+                                                <div class=" input-group date" data-provide="datepicker">
                                                 {{ form.fecha_fin|bootstrap }}
-                                            </div>
-                                            </div>                                           
+                                                </div>
+                                                </div>                                           
                                             <div class="row">
                                                 <input onclick="step1Next()" class="btn btn-primary" value="Siguiente" style="float: right;">
                                             </div>
@@ -160,70 +154,59 @@
                                         <div class="col-md-12">
                                             <h2 style="text-align: center; margin-top: -20px; margin-bottom: 50px;">Responsable</h2>
                                             <div class="form-group col-md-4">
-                                                <label>Apellido Paterno</label>
-                                                {{form.nombreDoc}}
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label>Apellido Materno</label>
+                                                <label>*Apellido Paterno</label>
                                                 {{form.apPat}}
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label>Nombre(s)</label>
+                                                <label>*Apellido Materno</label>
                                                 {{form.apMat}}
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <label>Grado maximo de estudios</label>
-                                                <input type="text" class="form-control">
+                                            <div class="form-group col-md-4">
+                                                <label>*Nombre(s)</label>
+                                                {{form.nombreDoc}}
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label>*Grado máximo de estudios</label>
+                                                {{form.estudiosMax}}
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label>Academia a la que pertenece</label>
-                                                <select class="form-control">
-                                                    <option>Ingenieria en sistemas computacionales</option>
-                                                    <option>Ingenieria industrial</option>
-                                                    <option>Ingenieria en industrias alimentarias</option>
-                                                    <option>Ingenieria civil</option>
-                                                    <option>Ingenieria electronica</option>
-                                                    <option>Ingenieria electromecanica</option>
-                                                    <option>Ingenieria bioquimica</option>
-                                                    <option>Ingenieria en gestion empresarial</option>
-                                                    <option>Ingeneiria mecatronica</option>
-                                                    <option>Gastronomia</option>
-                                                </select>
+                                                <label>*Academia a la que pertenece</label>
+                                                {{form.academia}}
                                             </div>
                                             <div class="form-group col-md-2">
-                                                <label>N° personal</label>
-                                                <input type="number" class="form-control">
+                                                <label>*N° personal</label>
+                                                {{form.personal}}
                                             </div>
                                             <div class="form-group col-md-3">
                                                 <label>Movil</label>
-                                                <input type="number" class="form-control" pattern="^\d{10}$">
+                                                {{form.movil}}
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label>Correo intitucional</label>
-                                                <input type="email" class="form-control">
+                                                <label>*Correo intitucional</label>
+                                                {{form.correoI}}
                                             </div>
                                             <div class="form-group col-md-3">
                                                 <label>Correo alternativo</label>
-                                                <input type="email" class="form-control">
+                                                {{form.correoA}}
                                             </div>
                                             <div class="form-group col-md-12">
-                                                <label>Descripción de las principales actividades a desarrollar en el proyecto</label>
-                                                <textarea class="form-control" rows="6" style="resize: none;"></textarea>
+                                                <label>*Descripción de las principales actividades a desarrollar en el proyecto</label>
+                                                {{form.actividades}}
                                             </div>
                                             <div class="form-group col-md-3">
-                                                <label>Palabras clave:</label>
+                                                <label>*Palabras clave:</label>
                                             </div>
                                             <div class="form-group col-md-3">
-                                                <label>(1)</label>
-                                                <input class="form-control" onKeyPress="return palabrasClave(event);" name="" type="text" required/>
+                                                <label>*(1)</label>
+                                                {{form.palabrasClave}}
                                             </div>
                                             <div class="form-group col-md-3">
-                                                <label>(2)</label>
-                                                <input class="form-control" onKeyPress="return palabrasClave(event);" name="" type="text" required/>
+                                                <label>*(2)</label>
+                                                {{form.palabrasClave}}
                                             </div>
                                             <div class="form-group col-md-3">
-                                                <label>(3)</label>
-                                                <input class="form-control" onKeyPress="return palabrasClave(event);" name="" type="text" required/>
+                                                <label>*(3)</label>
+                                                {{form.palabrasClave}}
                                             </div>
                                             <input onclick="prevStep()" class="btn btn-default" value="Regresar">
                                             <input onclick="step2Next()" class="btn btn-primary" value="Siguiente" style="float: right;">
@@ -238,74 +221,56 @@
                                 <div class="row setup-content" id="step-3">
                                     <div class="col-md-12">
                                         <div class="col-md-12">
-                                            <div class="form-group col-md-12">                                            
-                                                <select class="form-control" id="opcion_colabora" onchange="muestra_colaborador();">
-                                                    <option>N° de colaboradores a participar en el proyecto</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                </select>                                                
+                                            <div class="form-group col-md-12">  
+                                                <label>N° de colaboradores a participar en el proyecto</label>
+                                                {{form.ncolaborador}}                                             
                                             </div>                                            
                                             <div class="form-group col-md-12">
                                                 <h3 style="text-align: center;">Colaborador 1°</h3>
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label>Seleccione un docente</label>
-                                                <select class="form-control">
-                                                    <option>Docente</option>
-                                                </select>
+                                                {{form.sDocente}}
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label>Apellido Paterno</label>
-                                                <input type="text" class="form-control" required>
+                                                {{form.apPat}}
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label>Apellido Materno</label>
-                                                <input type="text" class="form-control" required>
+                                                {{form.apMat}}
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label>Nombre(s)</label>
-                                                <input type="text" class="form-control" required>
+                                                {{form.nombreDoc}}
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Grado maximo de estudios</label>
-                                                <input type="text" class="form-control" required>
+                                                {{form.estudiosMax}}
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Academia a la que pertenece</label>
-                                                <select class="form-control" required>
-                                                    <option>Ingenieria en sistemas computacionales</option>
-                                                    <option>Ingenieria industrial</option>
-                                                    <option>Ingenieria en industrias alimentarias</option>
-                                                    <option>Ingenieria civil</option>
-                                                    <option>Ingenieria electronica</option>
-                                                    <option>Ingenieria electromecanica</option>
-                                                    <option>Ingenieria bioquimica</option>
-                                                    <option>Ingenieria en gestion empresarial</option>
-                                                    <option>Ingeneiria mecatronica</option>
-                                                    <option>Gastronomia</option>
-                                                </select>
+                                                {{form.academia}}
                                             </div>
                                             <div class="form-group col-md-2">
                                                 <label>N° personal</label>
-                                                <input type="number" class="form-control" required>
+                                                {{form.personal}}
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label>Movil</label>
-                                                <input type="number" class="form-control" pattern="^\d{10}$" required>
+                                                {{form.movil}}
                                             </div>
                                             <div class="form-grup col-md-3">
                                                 <label>Correo intitucional</label>
-                                                <input type="email" class="form-control" required>
+                                                {{form.correoI}}
                                             </div>
                                             <div class="form-grup col-md-3">
                                                 <label>Correo alternativo</label>
-                                                <input type="email" class="form-control" required>
+                                                {{form.correoA}}
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label>Descripción de las principales actividades a desarrollar en el proyecto</label>
-                                                <textarea class="form-control" rows="6" style="resize: none;" required></textarea>
+                                                {{form.actividades}}
                                             </div>
                                             <div class="hidden" id="colabora2">
                                                 <div class="col-sm-12" style="background:#000">
@@ -320,62 +285,49 @@
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label>Seleccione un docente</label>
-                                                    <select class="form-control">
-                                                        <option>Docente</option>
-                                                    </select>
+                                                    {{form.sDocente}}
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label>Apellido Paterno</label>
-                                                    <input type="text" class="form-control" id="apCol2">
+                                                    {{form.apPat2}}
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label>Apellido Materno</label>
-                                                    <input type="text" class="form-control" id="amCol2">    <!--programaCol2-->
+                                                    {{form.apMat2}}   <!--programaCol2-->
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label>Nombre(s)</label>
-                                                    <input type="text" class="form-control" id="nombresCol2">
+                                                    {{form.nombreDoc2}}
                                                 </div>
                                                 <div class="hidden" id="colabora2.3">
                                                     <div class="form-group col-md-6">
                                                         <label>Grado maximo de estudios</label>
-                                                        <input type="text" class="form-control" id="gradoMCol2">
+                                                        {{form.estudiosMax2}}
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label>Academia a la que pertenece</label>
-                                                        <select class="form-control" id="programaCol2">
-                                                            <option>Ingenieria en sistemas computacionales</option>
-                                                            <option>Ingenieria industrial</option>
-                                                            <option>Ingenieria en industrias alimentarias</option>
-                                                            <option>Ingenieria civil</option>
-                                                            <option>Ingenieria electronica</option>
-                                                            <option>Ingenieria electromecanica</option>
-                                                            <option>Ingenieria bioquimica</option>
-                                                            <option>Ingenieria en gestion empresarial</option>
-                                                            <option>Ingeneiria mecatronica</option>
-                                                            <option>Gastronomia</option>
-                                                        </select>
+                                                        {{form.academia2}}
                                                     </div>
                                                     <div class="form-group col-md-2">
                                                         <label>N° personal</label>
-                                                        <input type="number" class="form-control" id="noPersonalCol2">
+                                                        {{form.personal2}}
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label>Movil</label>
-                                                        <input type="number" class="form-control" pattern="^\d{10}$" id="movilCol2">
+                                                        {{form.movil2}}
                                                     </div>
                                                     <div class="form-grup col-md-3">
                                                         <label>Correo intitucional</label>
-                                                        <input type="email" class="form-control" id="correoCol2">
+                                                        {{form.correoI2}}
                                                     </div>
                                                     <div class="form-grup col-md-3">
                                                         <label>Correo alternativo</label>
-                                                        <input type="email" class="form-control" id="correoAlCol2">
+                                                        {{form.correoA2}}
                                                     </div>
                                                     <div class="hidden" id="colabora2.4">
                                                         <div class="form-group col-md-12">
                                                             <label>Descripción de las principales actividades a desarrollar en el proyecto</label>
-                                                            <textarea class="form-control" rows="6" style="resize: none;" id="actividadesCol2"></textarea>
+                                                            {{form.actividades2}}
                                                         </div>
                                                     </div>
                                                     <div class="hidden" id="colabora3">
@@ -394,62 +346,49 @@
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label>Seleccione un docente</label>
-                                                    <select class="form-control">
-                                                        <option>Docente</option>
-                                                    </select>
+                                                    {{form.sDocente}}
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label>Apellido Paterno</label>
-                                                    <input type="text" class="form-control" id="apCol3">
+                                                    {{form.apPat3}}
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label>Apellido Materno</label>
-                                                    <input type="text" class="form-control" id="amCol3">    <!--programaCol2-->
+                                                    {{form.apMat3}}     <!--programaCol3-->
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label>Nombre(s)</label>
-                                                    <input type="text" class="form-control" id="nombresCol3">
+                                                    {{form.nombreDoc3}}
                                                 </div>
                                                 <div class="hidden" id="colabora3.3">
                                                     <div class="form-group col-md-6">
                                                         <label>Grado maximo de estudios</label>
-                                                        <input type="text" class="form-control" id="gradoMCol3">
+                                                         {{form.estudiosMax3}}
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label>Academia a la que pertenece</label>
-                                                        <select class="form-control" id="programaCol3">
-                                                            <option>Ingenieria en sistemas computacionales</option>
-                                                            <option>Ingenieria industrial</option>
-                                                            <option>Ingenieria en industrias alimentarias</option>
-                                                            <option>Ingenieria civil</option>
-                                                            <option>Ingenieria electronica</option>
-                                                            <option>Ingenieria electromecanica</option>
-                                                            <option>Ingenieria bioquimica</option>
-                                                            <option>Ingenieria en gestion empresarial</option>
-                                                            <option>Ingeneiria mecatronica</option>
-                                                            <option>Gastronomia</option>
-                                                        </select>
+                                                        {{form.academia3}}
                                                     </div>
                                                     <div class="form-group col-md-2">
                                                         <label>N° personal</label>
-                                                        <input type="number" class="form-control" id="noPersonalCol3">
+                                                        {{form.personal3}}
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label>Movil</label>
-                                                        <input type="number" class="form-control" pattern="^\d{10}$" id="movilCol3">
+                                                        {{form.movil3}}
                                                     </div>
                                                     <div class="form-grup col-md-3">
                                                         <label>Correo intitucional</label>
-                                                        <input type="email" class="form-control" id="correoCol3">
+                                                        {{form.correoI3}}
                                                     </div>
                                                     <div class="form-grup col-md-3">
                                                         <label>Correo alternativo</label>
-                                                        <input type="email" class="form-control" id="correoAlCol3">
+                                                        {{form.correoA3}}
                                                     </div>
                                                     <div class="hidden" id="colabora3.4">
                                                         <div class="form-group col-md-12">
                                                             <label>Descripción de las principales actividades a desarrollar en el proyecto</label>
-                                                            <textarea class="form-control" rows="6" style="resize: none;" id="actividadesCol3"></textarea>
+                                                            {{form.actividades3}}
                                                         </div>
                                                     </div>
                                                     <div class="hidden" id="colabora4">
@@ -469,62 +408,48 @@
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label>Seleccione un docente</label>
-                                                    <select class="form-control">
-                                                        <option>Docente</option>
-                                                    </select>
+                                                     {{form.sDocente}}
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label>Apellido Paterno</label>
-                                                    <input type="text" class="form-control" id="apCol4">
+                                                    {{form.apPat4}}
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label>Apellido Materno</label>
-                                                    <input type="text" class="form-control" id="amCol4">    <!--programaCol2-->
+                                                    {{form.apMat4}}     <!--programaCol4-->
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Nombre(s)</label>
-                                                    <input type="text" class="form-control" id="nombresCol4">
+                                                    <label>Nombre(s)</label>                                                 {{form.nombreDoc4}}
                                                 </div>
                                                 <div class="hidden" id="colabora4.3">
                                                      <div class="form-group col-md-6">
                                                         <label>Grado maximo de estudios</label>
-                                                        <input type="text" class="form-control" id="gradoMCol4">
+                                                        {{form.estudiosMax4}}
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label>Academia a la que pertenece</label>
-                                                        <select class="form-control" id="programaCol4">
-                                                            <option>Ingenieria en sistemas computacionales</option>
-                                                            <option>Ingenieria industrial</option>
-                                                            <option>Ingenieria en industrias alimentarias</option>
-                                                            <option>Ingenieria civil</option>
-                                                            <option>Ingenieria electronica</option>
-                                                            <option>Ingenieria electromecanica</option>
-                                                            <option>Ingenieria bioquimica</option>
-                                                            <option>Ingenieria en gestion empresarial</option>
-                                                            <option>Ingeneiria mecatronica</option>
-                                                            <option>Gastronomia</option>
-                                                        </select>
+                                                         {{form.academia4}}
                                                     </div>
                                                     <div class="form-group col-md-2">
                                                         <label>N° personal</label>
-                                                        <input type="number" class="form-control" id="noPersonalCol4">
+                                                        {{form.personal4}}
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label>Movil</label>
-                                                        <input type="number" class="form-control" pattern="^\d{10}$" id="movilCol4">
+                                                        {{form.movil4}}
                                                     </div>
                                                     <div class="form-grup col-md-3">
                                                         <label>Correo intitucional</label>
-                                                        <input type="email" class="form-control" id="correoCol4">
+                                                         {{form.correoI4}}
                                                     </div>
                                                     <div class="form-grup col-md-3">
                                                         <label>Correo alternativo</label>
-                                                        <input type="email" class="form-control" id="correoAlCol4">
+                                                         {{form.correoA4}}
                                                     </div>
                                                     <div class="hidden" id="colabora4.4">
                                                         <div class="form-group col-md-12">
                                                             <label>Descripción de las principales actividades a desarrollar en el proyecto</label>
-                                                            <textarea class="form-control" rows="6" style="resize: none;" id="actividadesCol4"></textarea>
+                                                            {{form.actividades4}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -550,15 +475,15 @@
                                             <h2 style="text-align: center; margin-top: -20px; margin-bottom: 50px;">Objetivos</h2>
                                             <div class="form-group col-md-12">
                                                 <label>*Indique el objetivo general(No más de 512 caracteres)</label>
-                                                <textarea class="form-control" style="resize: none;" rows="6" maxlength="512"></textarea>
+                                                {{form.objetivoG}}
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label>*Establezca los objetivos específicos, científicos y tecnológicos subyacentes en el proyecto(No más de 512 caracteres)</label>
-                                                <textarea class="form-control" style="resize: none;" rows="6" maxlength="512"></textarea>
+                                                {{form.objetivoE}}
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label>*Indique los resultados esperados en términos concretos(No más de 512 Caracteres)</label>
-                                                <textarea class="form-control" style="resize: none;" rows="6" maxlength="512"></textarea>
+                                                {{form.resultados}}
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <input onclick="prevStep()" class="btn btn-default" value="Regresar">
@@ -575,55 +500,49 @@
                                 <div class="row setup-content" id="step-5">
                                     <div class="col-md-12">
                                         <div class="col-md-12">
-                                            <h2 style="text-align: center; margin-top: -20px; margin-bottom: 50px;">Vinculacion</h2>
+                                            <h2 style="text-align: center; margin-top: -20px; margin-bottom: 50px;">Vinculación</h2>
                                             <div class="form-group col-md-3">
-                                                <label>Existse convenio:</label>
+                                                <label>Existe convenio:</label>
                                             </div>
-                                            <div class="form-group col-md-2">
-                                                <label><input id="ExisteConvenio1" name="conve" type="radio" onclick="vinculacionConvenio()" value="si"/>Si</label>
-                                            </div>
-                                            <div class="form-group col-md-2">
-                                                <label><input id="ExisteConvenio2" name="conve" type="radio" onclick="vinculacionConvenio()" value="no" checked/>No</label>
+                                            <div class="form-group col-md-12">
+                                                {{form.convenio}}
                                             </div>
                                             <div class="row hidden" id="vincula">
                                                 <div class="form-group col-md-6">
                                                     <label>Nombre de la organización</label>
-                                                    <input class="form-control"  id="organizacionV" name="organización" type="text">
+                                                    {{form.nombre_organizacion}}
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label>Direccion</label>
-                                                    <input class="form-control"  id="direccionV" type="text">
+                                                    {{form.direccion_organizacion}}
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label>Área</label>
-                                                    <input class="form-control"  id="areaV" type="text">
+                                                    {{form.area_organizacion}}
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label>Telefono</label>
-                                                    <input class="form-control"  id="telefonoV" pattern="^\d{10}$" type="number">
+                                                    {{form.telefono_organizacion}}
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label>Nombre del contacto</label>
-                                                    <input class="form-control"  id="nombreV" type="text">
+                                                    {{form.nombreC_organizacion}}
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label>Descripción de la organización(No más de 256 caracteres)</label>
-                                                    <textarea maxlength="256" class="form-control" rows="6" style="resize: none; width: 98%"></textarea>
+                                                    {{form.descripcion_organizacion}}
                                                 </div>
                                             </div>
-                                            <div class="form-group col-md-6">
+                                            <div class="form-group col-md-10">
                                                 <label>*Existen aportaciones financieras o en especie de la vinculación:</label>
                                             </div>
-                                            <div class="form-group col-md-2">
-                                                <label><input id="aportaciones1" name="aporta" type="radio" onclick="respuestaF()" value="si">Sí</label>
-                                            </div>
-                                            <div class="form-group col-md-2">
-                                                <label><input id="aportaciones2" name="aporta" type="radio" onclick="respuestaF()" value="no" checked>No</label>
+                                            <div class="form-group col-md-8">
+                                               {{form.aporta}}
                                             </div>
                                             <div class="row hidden" id="respuesta">
                                                 <div class="col-md-12 form-group">
                                                     <label>Si la respuesta es si, describa cuales son(No más de 256 caracteres)</label>
-                                                    <textarea maxlength="256" class="form-control" id="descriptionR" name="" style="resize: none; width: 98%" rows="6"></textarea>
+                                                    {{form.describa_aportaciones}}
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-12">
@@ -642,24 +561,7 @@
                                     <div class="col-md-12">
                                         <div class="col-md-12">
                                             <h2 style="text-align: center; margin-top: -20px; margin-bottom: 50px;">Productos académicos</h2>
-                                            <div class="form-group col-md-3">
-                                                <label><input type="checkbox">Servicio social</label>
-                                            </div>
-                                            <div class="form-group col-md-3">
-                                                <label><input type="checkbox">Residencia profesional</label>
-                                            </div>
-                                            <div class="form-group col-md-3">
-                                                <label><input type="checkbox">Tesis</label>
-                                            </div>
-                                            <div class="form-group col-md-12">
-                                                <label><input type="checkbox">Ponencias/Conferencias</label>
-                                            </div>
-                                            <div class="form-group col-md-12">
-                                                <label><input type="checkbox">Articulos</label>
-                                            </div>
-                                            <div class="form-group col-md-12">
-                                                <label><input type="checkbox">Libros/Manuales</label>
-                                            </div>
+                                            {{form.productosA}}
                                             <div class="form-group col-md-3">
                                                 <label><input type="checkbox">Propiedad intelectual</label>
                                             </div>
@@ -667,7 +569,7 @@
                                                 <label>Especificar:</label>
                                             </div>
                                             <div class="form-group col-md-7">
-                                                <input type="text" class="form-control">
+                                                {{form.intelectual}}
                                             </div>
                                             <div class="form-group col-md-3">
                                                 <label><input type="checkbox">Otros</label>
@@ -676,7 +578,7 @@
                                                 <label>Especificar:</label>
                                             </div>
                                             <div class="form-group col-md-7">
-                                                <input type="text" class="form-control">
+                                                {{form.otros}}
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <input onclick="prevStep()" class="btn btn-default" value="Regresar">
@@ -1111,7 +1013,7 @@
                                             </table>
                                             <div class="form-group col-md-12">
                                                 <input onclick="prevStep()" class="btn btn-default" value="Regresar">
-                                                <input class="btn btn-primary" value="Finalizar" style="float: right;" onclick="Finalizar();">
+                                                <input class="btn btn-primary" value="Finalizar" style="float: right;" onclick="Finalizar()">
                                                 <a class="btn btn-info view-pdf" href="Preregistro.pdf" style="float: right; margin-right: 10px;">Vista previa</a>
                                             </div>    
                                         </div>
@@ -1124,4 +1026,4 @@
             </div>
     </div>
 </div>
-        {% endblock contenido %}
+{% endblock contenido %}

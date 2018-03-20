@@ -1,3 +1,4 @@
+
 function palabrasClave(e) {
     var tecla = (document.all) ? e.keyCode : e.which;
     patron = /[A-Z,a-z,á,é,í,ó,ú,Á,É,Í,Ó,Ú]/;
@@ -306,15 +307,15 @@ function validate_importe(value, decimal) {
 }
 
 function habilitarEspecifique() {
-    if (document.getElementById('checkboxOtroRecepcion').checked) {
-        document.getElementById('especificar').removeAttribute('disabled');
+    if (document.getElementById('id_tipoSector_5').checked) {
+        document.getElementById('id_especifique').removeAttribute('disabled');
     } else {
-        document.getElementById('especificar').disabled = "disabled";
+        document.getElementById('id_especifique').disabled = "disabled";
     }
 }
 
 function vinculacionConvenio() {
-    var $elegido = $("input[name=conve]:checked");
+    var $elegido = $("input[name=convenio]:checked");
     var r = $elegido.val();
     if (r == "si") {
         document.getElementById('vincula').className = "row";
