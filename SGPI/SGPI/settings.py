@@ -80,11 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'SGPI',
         'USER': 'postgres',
-<<<<<<< HEAD
         'PASSWORD': '',
-=======
-        'PASSWORD': '',
->>>>>>> c000c074603f42daf38c2c56fa0827abe4e3f7d6
         'HOST': 'localhost',
         'PORT': '5432',
     }
