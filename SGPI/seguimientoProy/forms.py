@@ -1,4 +1,3 @@
-from bootstrap_datepicker.widgets import DatePicker
 from django import forms
 
 
@@ -15,8 +14,8 @@ OPCIONES_SECTOR = (
     ('productivo', 'Productivo'),
 )
 OPCIONES_LineaInvest = (
-    ('nube', 'LIIADT-01 Computo en la nube',),
-    ('comInventsivo', 'LIIADT-02 Computo intensivo'),
+    ('nube', 'LIIADT-01 Cómputo en la nube',),
+    ('comInventsivo', 'LIIADT-02 Cómputo intensivo'),
     ('sisIntel', 'LIIADT-03 Sistemas inteligentes de automatización'),
     ('desTecnol', 'LIIADT-04 Desarrollo de tecnología e innovación',),
     ('ctrlAut', 'LIIADT-05 Control y automatización'),
@@ -25,15 +24,15 @@ OPCIONES_LineaInvest = (
 )
 
 OPCIONES_Academia= (
-    ('sistemas ','Ingeniería en Sistemas Computacionales'),
-    ('industrial','Ingeniería Industrial'),
-    ('alimentarias','Ingeniería en Industrias Alimentarias'),
-    ('civil','Ingeniería Civil'),
-    ('electronica','Ingeniería Electrónica'),
-    ('electromecanica','Ingeniería Electromecánica'),
-    ('bioquimica','Ingeniería Bioquímica'),
-    ('gestion','Ingeniería en Gestión Empresarial'),
-    ('macatronica','Ingeniería Mecatrónica'),
+    ('sistemas ','Ingeniería en sistemas computacionales'),
+    ('industrial','Ingeniería industrial'),
+    ('alimentarias','Ingeniería en industrias alimentarias'),
+    ('civil','Ingeniería civil'),
+    ('electronica','Ingeniería electrónica'),
+    ('electromecanica','Ingeniería electromecánica'),
+    ('bioquimica','Ingeniería bioquímica'),
+    ('gestion','Ingeniería en gestión empresarial'),
+    ('macatronica','Ingeniería mecatrónica'),
     ('gastronomia','Gastronimía'),
 )
 
@@ -61,23 +60,62 @@ OPCIONES_ProductosA= (
     ('libros','Libros/Manuales')
 )
 
+OPCIONES_Financi = (
+    ('interno', 'Interno',),
+    ('externo', 'Externo',),
+)
+
+OPCIONES_Alumno = (
+    ('servs', 'Servicio Social',),
+    ('resip', 'Residencia Profesional',),
+    ('tesis', 'Tesis',),
+)
+
+OPCIONES_Semestre = (
+    ('1', '1°',),
+    ('2', '2°',),
+    ('3', '3°',),
+    ('4', '4°',),
+    ('5', '5°',),
+    ('6', '6°',),
+    ('7', '7°',),
+    ('8', '8°',),
+    ('9', '9°',),
+    ('10', '10°',),
+    ('11', '11°',),
+    ('12', '12°',),
+    ('13', '13°',),
+
+)
+
+OPCIONES_Carrera= (
+    ('sistemas ','Ingeniería en sistemas computacionales'),
+    ('industrial','Ingeniería industrial'),
+    ('alimentarias','Ingeniería en industrias alimentarias'),
+    ('civil','Ingeniería civil'),
+    ('electronica','Ingeniería electrónica'),
+    ('electromecanica','Ingeniería electromecánica'),
+    ('bioquimica','Ingeniería bioquímica'),
+    ('gestion','Ingeniería en gestión empresarial'),
+    ('macatronica','Ingeniería mecatrónica'),
+    ('gastronomia','Gastronimía'),
+)
 
 class PreRegistroForm(forms.Form):
-    #fecha_presentacion= forms.DateField(label="Fecha de presentación", required=True, widget= forms.DateInput(attrs={'class': 'form-group col-md-3', 
-     ##   'format': 'mm/dd/aaaa', 'autoclose': True,}))
-    fecha_presentacion = forms.DateField(
-        label= "*Fecha de presentación",
-        widget=DatePicker(
+    
+    fecha_presentacion = forms.CharField(
+        required= True,
+        max_length= 20,
+        widget= forms.TextInput(
             attrs={
-                "format": "dd/mm/aaaa",
-                "autoclose": True,
+                'type': 'date',
                 'class': 'form-control'
             }
         )
     )
+
     convocatoriaCPR = forms.CharField(
         disabled= True,
-        label= "Convocatoria CPR",
         max_length=50,
         widget=forms.TextInput(
             attrs={
@@ -85,7 +123,6 @@ class PreRegistroForm(forms.Form):
                 'class': 'form-control'  
             }))
     tipoInvest = forms.MultipleChoiceField(
-        label   = "*Tipo de Investigación",
         required=True,
         widget=forms.CheckboxSelectMultiple,
         choices=OPCIONES_INV,)
@@ -96,7 +133,6 @@ class PreRegistroForm(forms.Form):
         choices=OPCIONES_SECTOR)
 
     especifique = forms.CharField(
-        label="Especique",
         max_length=256,
         disabled= True,
         widget=forms.Textarea(
@@ -108,7 +144,6 @@ class PreRegistroForm(forms.Form):
 
             }))
     lineaInv = forms.MultipleChoiceField(
-        label= "*Línea de Investigación",
         required=True,
         widget=forms.CheckboxSelectMultiple,
         choices=OPCIONES_LineaInvest)
@@ -125,27 +160,30 @@ class PreRegistroForm(forms.Form):
                 'class': 'form-control'
 
             }))
-    fecha_inicio = forms.DateField(
-        label= "Fecha Inicio",
-        widget=DatePicker(
-            options={
-                "format": "dd/aa/aaaa",
-                "autoclose": True,
-                "class": "form-group"
+
+    fecha_inicio= forms.CharField(
+        required= True,
+        max_length= 20,
+        widget= forms.TextInput(
+            attrs={
+                'type': 'date',
+                'class': 'form-control'
             }
         )
     )
-    fecha_fin = forms.DateField(
-        label= "Fecha Fin",
-        widget=DatePicker(
-            options={
-                "format": "dd/mm/aaaa",
-                "autoclose": True,
-                "class": "col-md-5 form-group",
-                'class': 'form-group'
+
+    fecha_fin= forms.CharField(
+        required= True,
+        max_length= 20,
+        widget= forms.TextInput(
+            attrs={
+                'type': 'date',
+                'class': 'form-control'
             }
         )
     )
+
+
     nombreDoc = forms.CharField(
         max_length=50,
         required= True,
@@ -669,3 +707,543 @@ class PreRegistroForm(forms.Form):
                 'type': 'text', 
                 'class': 'form-control'  
             }))
+
+
+    sEtapa= forms.ChoiceField(
+        required= True,
+        widget= forms.Select(attrs={'id':'opcion_etapas', 'class': 'form-control', 'onchange':'muestra_etapas()'}),
+        choices= OPCIONES_Colaborador)
+
+    n_Etapa = forms.CharField(
+        required= True,
+        max_length=24,
+        widget=forms.TextInput(
+            attrs={
+                'type': 'text', 
+                'class': 'form-control',  
+            }))
+
+    etapaInicio= forms.CharField(
+        required= True,
+        max_length= 20,
+        widget= forms.TextInput(
+            attrs={
+                'type': 'date',
+                'class': 'form-control'
+            }
+        )
+    )
+
+    etapaTermino= forms.CharField(
+        required= True,
+        max_length= 20,
+        widget= forms.TextInput(
+            attrs={
+                'type': 'date',
+                'class': 'form-control'
+            }
+        )
+    )
+
+    etapaMeses= forms.CharField(
+        disabled=True,
+        max_length= 20,
+        widget= forms.TextInput(
+            attrs={
+                'type': 'number',
+                'class': 'form-control'
+            }
+        )
+    )
+
+    etapaDes = forms.CharField(
+        required= True,
+        max_length=256,
+        widget=forms.Textarea(
+            attrs={
+                'type': 'text',
+                'rows': '4',
+                'cols': '200',
+                'class': 'form-control',
+    }))
+
+    etapaAct = forms.CharField(
+        required= True,
+        max_length=256,
+        widget=forms.Textarea(
+            attrs={
+                'type': 'text',
+                'rows': '4',
+                'cols': '200',
+                'class': 'form-control',
+    }))
+
+    etapaPro = forms.CharField(
+        required= True,
+        max_length=256,
+        widget=forms.Textarea(
+            attrs={
+                'type': 'text',
+                'rows': '4',
+                'cols': '200',
+                'class': 'form-control',
+    }))
+
+    n_Etapa2 = forms.CharField(
+        required= True,
+        max_length=24,
+        widget=forms.TextInput(
+            attrs={
+                'type': 'text', 
+                'class': 'form-control',  
+            }))
+
+    etapaInicio2= forms.CharField(
+        required= True,
+        max_length= 20,
+        widget= forms.TextInput(
+            attrs={
+                'type': 'date',
+                'class': 'form-control'
+            }
+        )
+    )
+
+    etapaTermino2= forms.CharField(
+        required= True,
+        max_length= 20,
+        widget= forms.TextInput(
+            attrs={
+                'type': 'date',
+                'class': 'form-control'
+            }
+        )
+    )
+
+    etapaMeses2= forms.CharField(
+        disabled=True,
+        max_length= 20,
+        widget= forms.TextInput(
+            attrs={
+                'type': 'number',
+                'class': 'form-control'
+            }
+        )
+    )
+
+    etapaDes2 = forms.CharField(
+        required= True,
+        max_length=256,
+        widget=forms.Textarea(
+            attrs={
+                'type': 'text',
+                'rows': '4',
+                'cols': '200',
+                'class': 'form-control',
+    }))
+
+    etapaAct2 = forms.CharField(
+        required= True,
+        max_length=256,
+        widget=forms.Textarea(
+            attrs={
+                'type': 'text',
+                'rows': '4',
+                'cols': '200',
+                'class': 'form-control',
+    }))
+
+    etapaPro2 = forms.CharField(
+        required= True,
+        max_length=256,
+        widget=forms.Textarea(
+            attrs={
+                'type': 'text',
+                'rows': '4',
+                'cols': '200',
+                'class': 'form-control',
+    }))
+
+    n_Etapa3 = forms.CharField(
+        required= True,
+        max_length=24,
+        widget=forms.TextInput(
+            attrs={
+                'type': 'text', 
+                'class': 'form-control',  
+            }))
+
+    etapaInicio3= forms.CharField(
+        required= True,
+        max_length= 20,
+        widget= forms.TextInput(
+            attrs={
+                'type': 'date',
+                'class': 'form-control'
+            }
+        )
+    )
+
+    etapaTermino3= forms.CharField(
+        required= True,
+        max_length= 20,
+        widget= forms.TextInput(
+            attrs={
+                'type': 'date',
+                'class': 'form-control'
+            }
+        )
+    )
+
+    etapaMeses3= forms.CharField(
+        disabled=True,
+        max_length= 20,
+        widget= forms.TextInput(
+            attrs={
+                'type': 'number',
+                'class': 'form-control'
+            }
+        )
+    )
+
+    etapaDes3 = forms.CharField(
+        required= True,
+        max_length=256,
+        widget=forms.Textarea(
+            attrs={
+                'type': 'text',
+                'rows': '4',
+                'cols': '200',
+                'class': 'form-control',
+    }))
+
+    etapaAct3 = forms.CharField(
+        required= True,
+        max_length=256,
+        widget=forms.Textarea(
+            attrs={
+                'type': 'text',
+                'rows': '4',
+                'cols': '200',
+                'class': 'form-control',
+    }))
+
+    etapaPro3 = forms.CharField(
+        required= True,
+        max_length=256,
+        widget=forms.Textarea(
+            attrs={
+                'type': 'text',
+                'rows': '4',
+                'cols': '200',
+                'class': 'form-control',
+    }))
+
+    n_Etapa4 = forms.CharField(
+        required= True,
+        max_length=24,
+        widget=forms.TextInput(
+            attrs={
+                'type': 'text', 
+                'class': 'form-control',  
+            }))
+
+    etapaInicio4= forms.CharField(
+        required= True,
+        max_length= 20,
+        widget= forms.TextInput(
+            attrs={
+                'type': 'date',
+                'class': 'form-control'
+            }
+        )
+    )
+
+    etapaTermino4= forms.CharField(
+        required= True,
+        max_length= 20,
+        widget= forms.TextInput(
+            attrs={
+                'type': 'date',
+                'class': 'form-control'
+            }
+        )
+    )
+
+    etapaMeses4= forms.CharField(
+        disabled=True,
+        max_length= 20,
+        widget= forms.TextInput(
+            attrs={
+                'type': 'number',
+                'class': 'form-control'
+            }
+        )
+    )
+
+    etapaDes4 = forms.CharField(
+        required= True,
+        max_length=256,
+        widget=forms.Textarea(
+            attrs={
+                'type': 'text',
+                'rows': '4',
+                'cols': '200',
+                'class': 'form-control',
+    }))
+
+    etapaAct4 = forms.CharField(
+        required= True,
+        max_length=256,
+        widget=forms.Textarea(
+            attrs={
+                'type': 'text',
+                'rows': '4',
+                'cols': '200',
+                'class': 'form-control',
+    }))
+
+    etapaPro4 = forms.CharField(
+        required= True,
+        max_length=256,
+        widget=forms.Textarea(
+            attrs={
+                'type': 'text',
+                'rows': '4',
+                'cols': '200',
+                'class': 'form-control',
+    }))
+
+
+    etapaMeses4= forms.CharField(
+        disabled=True,
+        max_length= 20,
+        widget= forms.TextInput(
+            attrs={
+                'type': 'text',
+                'class': 'form-control'
+            }
+        )
+    )
+
+    financi = forms.ChoiceField(
+        required=True,
+        widget= forms.RadioSelect(attrs={'onclick': 'muestraFina()'}),
+        choices= OPCIONES_Convenio
+    )
+
+    finanSi = forms.MultipleChoiceField(
+        widget=forms.CheckboxSelectMultiple,
+        choices=OPCIONES_Financi,)
+
+    fEspeci= forms.CharField(
+        widget= forms.TextInput(
+                attrs={
+                    'type': 'text',
+                    'class': 'form-control',
+                }   
+
+            )
+
+        )
+
+    fInfra= forms.CharField(
+        widget= forms.TextInput(
+                attrs={
+                    'aria-describedb': 'inputGroupSuccess2Status',
+                    'type': 'number',
+                    'class': 'form-control',
+                    'id':'infraestructura',
+                    'onkeyup': 'sumar()'
+                }   
+
+            )
+
+        )
+
+    fCon= forms.CharField(
+        widget= forms.TextInput(
+                attrs={
+                    'aria-describedb': 'inputGroupSuccess2Status',
+                    'type': 'number',
+                    'class': 'form-control',
+                    'id':'consumibles',
+                    'onkeyup': 'sumar()'
+                }   
+
+            )
+
+        )
+
+    fLic= forms.CharField(
+        widget= forms.TextInput(
+                attrs={
+                    'aria-describedb': 'inputGroupSuccess2Status',
+                    'type': 'number',
+                    'class': 'form-control',
+                    'id':'licencias',
+                    'onkeyup': 'sumar()'
+                }   
+
+            )
+
+        )
+
+    fVia= forms.CharField(
+        widget= forms.TextInput(
+                attrs={
+                    'aria-describedb': 'inputGroupSuccess2Status',
+                    'type': 'number',
+                    'class': 'form-control',
+                    'id':'viaticos',
+                    'onkeyup': 'sumar()'
+                }   
+
+            )
+
+        )
+
+    fPubli= forms.CharField(
+        widget= forms.TextInput(
+                attrs={
+                    'aria-describedb': 'inputGroupSuccess2Status',
+                    'type': 'number',
+                    'class': 'form-control',
+                    'id':'publicaciones',
+                    'onkeyup': 'sumar()'
+                }   
+
+            )
+
+        )
+
+    fEqui= forms.CharField(
+        widget= forms.TextInput(
+                attrs={
+                    'aria-describedb': 'inputGroupSuccess2Status',
+                    'type': 'number',
+                    'class': 'form-control',
+                    'id':'equipo',
+                    'onkeyup': 'sumar()'
+                }   
+
+            )
+
+        )
+
+    fPat= forms.CharField(
+        widget= forms.TextInput(
+                attrs={
+                    'aria-describedb': 'inputGroupSuccess2Status',
+                    'type': 'number',
+                    'class': 'form-control',
+                    'id':'patentes',
+                    'onkeyup': 'sumar()'
+                }   
+
+            )
+
+        )
+
+    fOtros= forms.CharField(
+        widget= forms.TextInput(
+                attrs={
+                    'aria-describedb': 'inputGroupSuccess2Status',
+                    'type': 'number',
+                    'class': 'form-control',
+                    'id':'otros',
+                    'onkeyup': 'sumar()'
+                }   
+
+            )
+
+        )
+
+    fDesglo= forms.CharField(
+        widget= forms.TextInput(
+                attrs={
+                    'type': 'text',
+                    'class': 'form-control'
+                }   
+
+            )
+
+        )
+
+    fTot= forms.CharField(
+        disabled= True,
+        widget= forms.TextInput(
+                attrs={
+                    'aria-describedb': 'inputGroupSuccess2Status',
+                    'type': 'number',
+                    'class': 'form-control',
+                    'id':'total'
+                }   
+
+            )
+
+        )
+
+    alumTot= forms.CharField(
+        widget= forms.TextInput(
+                attrs={
+                    'type': 'number',
+                    'class': 'form-control',
+                    'id':'totalA',
+                    'max':'20',
+                    'min': '0',
+                    'value': '1',
+                    'onkeyup': 'ValidaMaximo()',  
+                    'onkeypress': 'return validaN(event)'
+                }   
+
+            )
+
+        )
+
+    alumNomb= forms.CharField(
+        widget= forms.TextInput(
+                attrs={
+                    'type': 'text',
+                    'class': 'form-control'
+                }  
+            )
+        )
+
+
+    alumSRT = forms.MultipleChoiceField(
+        widget=forms.CheckboxSelectMultiple,
+        choices=OPCIONES_Alumno,)
+
+    alumControl= forms.CharField(
+        widget= forms.TextInput(
+                attrs={
+                    'type': 'text',
+                    'class': 'form-control'
+                }  
+            )
+        )
+
+    alumSem= forms.ChoiceField(
+        required= True,
+        widget= forms.Select(attrs={'class': 'form-control'}),
+        choices= OPCIONES_Semestre)
+
+    alumCar= forms.ChoiceField(
+        required= True,
+        widget= forms.Select(attrs={'class': 'form-control'}),
+        choices= OPCIONES_Carrera)
+
+    alumActi = forms.CharField(
+        required= True,
+        max_length=256,
+        widget=forms.Textarea(
+            attrs={
+                'type': 'text',
+                'rows': '5',
+                'cols': '200',
+                'class': 'form-control'
+
+            }))
+
+

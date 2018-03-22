@@ -43,7 +43,7 @@
                     <li id="navStep5" class="li-nav disabled col-lg-1 barra" step="#step-5">
                         <a href="#" id="navPre">
                             <span class="glyphicon glyphicon-arrow-right"></span>
-                            <span class="sec-text">Vinculacion</span>
+                            <span class="sec-text">Vinculación</span>
                         </a>
                     </li>
                     <li id="navStep6" class="li-nav disabled col-lg-2 barra" step="#step-6">
@@ -87,55 +87,62 @@
                                         <div class="col-md-12">
                                             <div class="row">
                                                 <div class="form-group col-md-3 col-lg-6">
-                                                    <div class="input-group date" data-provide="datepicker"|>
-                                                {{ form.fecha_presentacion|bootstrap }}
+                                                    <div class="input-group date">
+                                                <label>*Fecha de presentación</label>       
+                                                {{ form.fecha_presentacion}}
                                             </div>
                                                 </div>
-                                                <div class="form-group col-md-5 col-lg-5">                                         
-                                                    {{ form.convocatoriaCPR|bootstrap }}
+                                                <div class="form-group col-md-5 col-lg-5">                                 <label>*Convocatorio CPR</label>        
+                                                    {{ form.convocatoriaCPR}}
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-4">                                                    
                                                     <div class="row">
-                                                        {{ form.tipoInvest|bootstrap}} 
+                                                        <label>*Tipo de investigación</label>
+                                                        {{ form.tipoInvest}} 
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8">                                                
                                                     <div class="row">
-                                                        {{ form.tipoSector|bootstrap}}
+                                                        <label>*Tipo de sector</label>
+                                                        {{ form.tipoSector}}
                                                     <label for="id_tipoSector_5"><input id="id_tipoSector_5" onchange="habilitarEspecifique()" type="checkbox" name="tipoSector" value="otro">Otro</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12 form-group"> 
-                                                    {{ form.especifique|bootstrap}}
+                                                    <label>Especifique</label>
+                                                    {{ form.especifique}}
                                                 </div>
                                             </div>
                                             
 
                                             <div class="row">
                                                 <div class="col-md-12 form-group">
-                                                    {{form.lineaInv|bootstrap}}
+                                                    <label>*Línea de investigación</label>
+                                                    {{form.lineaInv}}
                                                 </div>    
                                             </div> 
                                             <div class="row">
-                                                <div class="col-md-12">                                             
-                                                    {{form.nombreProy|bootstrap}}
+                                                <div class="col-md-12">                             <label>*Nombre del proyecto</label>
+                                                    {{form.nombreProy}}
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-2 form-group">
-                                                    <label>Duracion:</label>
+                                                    <label>Duración:</label>
                                                 </div>
                                                 <div class="col-md-5 form-group">
-                                                <div class="input-group date" data-provide="datepicker">
-                                                {{ form.fecha_inicio|bootstrap }}
+                                                <div class="input-group date">
+                                                <label>Inicio</label>    
+                                                {{ form.fecha_inicio}}
                                                 </div>
                                                 </div>
-                                                <div class=" input-group date" data-provide="datepicker">
-                                                {{ form.fecha_fin|bootstrap }}
+                                                <div class=" input-group date">
+                                                <label>Fin</label>
+                                                {{ form.fecha_fin}}
                                                 </div>
                                                 </div>                                           
                                             <div class="row">
@@ -154,11 +161,11 @@
                                         <div class="col-md-12">
                                             <h2 style="text-align: center; margin-top: -20px; margin-bottom: 50px;">Responsable</h2>
                                             <div class="form-group col-md-4">
-                                                <label>*Apellido Paterno</label>
+                                                <label>*Apellido paterno</label>
                                                 {{form.apPat}}
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label>*Apellido Materno</label>
+                                                <label>*Apellido materno</label>
                                                 {{form.apMat}}
                                             </div>
                                             <div class="form-group col-md-4">
@@ -174,15 +181,15 @@
                                                 {{form.academia}}
                                             </div>
                                             <div class="form-group col-md-2">
-                                                <label>*N° personal</label>
+                                                <label>*N° de personal</label>
                                                 {{form.personal}}
                                             </div>
                                             <div class="form-group col-md-3">
-                                                <label>Movil</label>
+                                                <label>Móvil</label>
                                                 {{form.movil}}
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label>*Correo intitucional</label>
+                                                <label>*Correo institucional</label>
                                                 {{form.correoI}}
                                             </div>
                                             <div class="form-group col-md-3">
@@ -229,47 +236,47 @@
                                                 <h3 style="text-align: center;">Colaborador 1°</h3>
                                             </div>
                                             <div class="form-group col-md-12">
-                                                <label>Seleccione un docente</label>
+                                                <label>*Seleccione un docente</label>
                                                 {{form.sDocente}}
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label>Apellido Paterno</label>
+                                                <label>*Apellido paterno</label>
                                                 {{form.apPat}}
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label>Apellido Materno</label>
+                                                <label>*Apellido materno</label>
                                                 {{form.apMat}}
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label>Nombre(s)</label>
+                                                <label>*Nombre(s)</label>
                                                 {{form.nombreDoc}}
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label>Grado maximo de estudios</label>
+                                                <label>*Grado máximo de estudios</label>
                                                 {{form.estudiosMax}}
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label>Academia a la que pertenece</label>
+                                                <label>*Academia a la que pertenece</label>
                                                 {{form.academia}}
                                             </div>
                                             <div class="form-group col-md-2">
-                                                <label>N° personal</label>
+                                                <label>*N° de Personal</label>
                                                 {{form.personal}}
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label>Movil</label>
+                                                <label>Móvil</label>
                                                 {{form.movil}}
                                             </div>
                                             <div class="form-grup col-md-3">
-                                                <label>Correo intitucional</label>
+                                                <label>*Correo Institucional</label>
                                                 {{form.correoI}}
                                             </div>
                                             <div class="form-grup col-md-3">
-                                                <label>Correo alternativo</label>
+                                                <label>Correo Alternativo</label>
                                                 {{form.correoA}}
                                             </div>
                                             <div class="form-group col-md-12">
-                                                <label>Descripción de las principales actividades a desarrollar en el proyecto</label>
+                                                <label>*Descripción de las principales actividades a desarrollar en el proyecto</label>
                                                 {{form.actividades}}
                                             </div>
                                             <div class="hidden" id="colabora2">
@@ -284,40 +291,40 @@
                                                     <h3 style="text-align: center;" class="hidden" id="colabora2.1">Colaborador 2°</h3>
                                                 </div>
                                                 <div class="form-group col-md-12">
-                                                    <label>Seleccione un docente</label>
+                                                    <label>*Seleccione un docente</label>
                                                     {{form.sDocente}}
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Apellido Paterno</label>
+                                                    <label>*Apellido paterno</label>
                                                     {{form.apPat2}}
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Apellido Materno</label>
+                                                    <label>*Apellido materno</label>
                                                     {{form.apMat2}}   <!--programaCol2-->
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Nombre(s)</label>
+                                                    <label>*Nombre(s)</label>
                                                     {{form.nombreDoc2}}
                                                 </div>
                                                 <div class="hidden" id="colabora2.3">
                                                     <div class="form-group col-md-6">
-                                                        <label>Grado maximo de estudios</label>
+                                                        <label>*Grado máximo de estudios</label>
                                                         {{form.estudiosMax2}}
                                                     </div>
                                                     <div class="form-group col-md-6">
-                                                        <label>Academia a la que pertenece</label>
+                                                        <label>*Academia a la que pertenece</label>
                                                         {{form.academia2}}
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label>N° personal</label>
+                                                        <label>*N° de personal</label>
                                                         {{form.personal2}}
                                                     </div>
                                                     <div class="form-group col-md-4">
-                                                        <label>Movil</label>
+                                                        <label>Móvil</label>
                                                         {{form.movil2}}
                                                     </div>
                                                     <div class="form-grup col-md-3">
-                                                        <label>Correo intitucional</label>
+                                                        <label>*Correo institucional</label>
                                                         {{form.correoI2}}
                                                     </div>
                                                     <div class="form-grup col-md-3">
@@ -326,7 +333,7 @@
                                                     </div>
                                                     <div class="hidden" id="colabora2.4">
                                                         <div class="form-group col-md-12">
-                                                            <label>Descripción de las principales actividades a desarrollar en el proyecto</label>
+                                                            <label>*Descripción de las principales actividades a desarrollar en el proyecto</label>
                                                             {{form.actividades2}}
                                                         </div>
                                                     </div>
@@ -345,40 +352,40 @@
                                                     <h3 style="text-align: center;" class="hidden" id="colabora3.1">Colaborador 3°</h3>
                                                 </div>
                                                 <div class="form-group col-md-12">
-                                                    <label>Seleccione un docente</label>
+                                                    <label>*Seleccione un docente</label>
                                                     {{form.sDocente}}
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Apellido Paterno</label>
+                                                    <label>*Apellido paterno</label>
                                                     {{form.apPat3}}
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Apellido Materno</label>
+                                                    <label>*Apellido materno</label>
                                                     {{form.apMat3}}     <!--programaCol3-->
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Nombre(s)</label>
+                                                    <label>*Nombre(s)</label>
                                                     {{form.nombreDoc3}}
                                                 </div>
                                                 <div class="hidden" id="colabora3.3">
                                                     <div class="form-group col-md-6">
-                                                        <label>Grado maximo de estudios</label>
+                                                        <label>*Grado máximo de estudios</label>
                                                          {{form.estudiosMax3}}
                                                     </div>
                                                     <div class="form-group col-md-6">
-                                                        <label>Academia a la que pertenece</label>
+                                                        <label>*Academia a la que pertenece</label>
                                                         {{form.academia3}}
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label>N° personal</label>
+                                                        <label>*N° de personal</label>
                                                         {{form.personal3}}
                                                     </div>
                                                     <div class="form-group col-md-4">
-                                                        <label>Movil</label>
+                                                        <label>Móvil</label>
                                                         {{form.movil3}}
                                                     </div>
                                                     <div class="form-grup col-md-3">
-                                                        <label>Correo intitucional</label>
+                                                        <label>*Correo institucional</label>
                                                         {{form.correoI3}}
                                                     </div>
                                                     <div class="form-grup col-md-3">
@@ -387,7 +394,7 @@
                                                     </div>
                                                     <div class="hidden" id="colabora3.4">
                                                         <div class="form-group col-md-12">
-                                                            <label>Descripción de las principales actividades a desarrollar en el proyecto</label>
+                                                            <label>*Descripción de las principales actividades a desarrollar en el proyecto</label>
                                                             {{form.actividades3}}
                                                         </div>
                                                     </div>
@@ -407,39 +414,39 @@
                                                     <h3 style="text-align: center;" class="hidden" id="colabora4.1">Colaborador 4°</h3>
                                                 </div>
                                                 <div class="form-group col-md-12">
-                                                    <label>Seleccione un docente</label>
+                                                    <label>*Seleccione un docente</label>
                                                      {{form.sDocente}}
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Apellido Paterno</label>
+                                                    <label>*Apellido paterno</label>
                                                     {{form.apPat4}}
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Apellido Materno</label>
+                                                    <label>*Apellido materno</label>
                                                     {{form.apMat4}}     <!--programaCol4-->
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Nombre(s)</label>                                                 {{form.nombreDoc4}}
+                                                    <label>*Nombre(s)</label>                                                 {{form.nombreDoc4}}
                                                 </div>
                                                 <div class="hidden" id="colabora4.3">
                                                      <div class="form-group col-md-6">
-                                                        <label>Grado maximo de estudios</label>
+                                                        <label>*Grado máximo de estudios</label>
                                                         {{form.estudiosMax4}}
                                                     </div>
                                                     <div class="form-group col-md-6">
-                                                        <label>Academia a la que pertenece</label>
+                                                        <label>*Academia a la que pertenece</label>
                                                          {{form.academia4}}
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label>N° personal</label>
+                                                        <label>*N° de personal</label>
                                                         {{form.personal4}}
                                                     </div>
                                                     <div class="form-group col-md-4">
-                                                        <label>Movil</label>
+                                                        <label>Móvil</label>
                                                         {{form.movil4}}
                                                     </div>
                                                     <div class="form-grup col-md-3">
-                                                        <label>Correo intitucional</label>
+                                                        <label>*Correo institucional</label>
                                                          {{form.correoI4}}
                                                     </div>
                                                     <div class="form-grup col-md-3">
@@ -448,7 +455,7 @@
                                                     </div>
                                                     <div class="hidden" id="colabora4.4">
                                                         <div class="form-group col-md-12">
-                                                            <label>Descripción de las principales actividades a desarrollar en el proyecto</label>
+                                                            <label>*Descripción de las principales actividades a desarrollar en el proyecto</label>
                                                             {{form.actividades4}}
                                                         </div>
                                                     </div>
@@ -502,34 +509,34 @@
                                         <div class="col-md-12">
                                             <h2 style="text-align: center; margin-top: -20px; margin-bottom: 50px;">Vinculación</h2>
                                             <div class="form-group col-md-3">
-                                                <label>Existe convenio:</label>
+                                                <label>*Existe convenio:</label>
                                             </div>
                                             <div class="form-group col-md-12">
                                                 {{form.convenio}}
                                             </div>
                                             <div class="row hidden" id="vincula">
                                                 <div class="form-group col-md-6">
-                                                    <label>Nombre de la organización</label>
+                                                    <label>*Nombre de la organización</label>
                                                     {{form.nombre_organizacion}}
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label>Direccion</label>
+                                                    <label>*Dirección</label>
                                                     {{form.direccion_organizacion}}
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Área</label>
+                                                    <label>*Área</label>
                                                     {{form.area_organizacion}}
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Telefono</label>
+                                                    <label>*Teléfono</label>
                                                     {{form.telefono_organizacion}}
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Nombre del contacto</label>
+                                                    <label>*Nombre del contacto</label>
                                                     {{form.nombreC_organizacion}}
                                                 </div>
                                                 <div class="form-group col-md-12">
-                                                    <label>Descripción de la organización(No más de 256 caracteres)</label>
+                                                    <label>*Descripción de la organización(No más de 256 caracteres)</label>
                                                     {{form.descripcion_organizacion}}
                                                 </div>
                                             </div>
@@ -541,7 +548,7 @@
                                             </div>
                                             <div class="row hidden" id="respuesta">
                                                 <div class="col-md-12 form-group">
-                                                    <label>Si la respuesta es si, describa cuales son(No más de 256 caracteres)</label>
+                                                    <label>Si la respuesta es sí, describa cuales son(No más de 256 caracteres)</label>
                                                     {{form.describa_aportaciones}}
                                                 </div>
                                             </div>
@@ -561,6 +568,7 @@
                                     <div class="col-md-12">
                                         <div class="col-md-12">
                                             <h2 style="text-align: center; margin-top: -20px; margin-bottom: 50px;">Productos académicos</h2>
+                                            <label>*Seleccione al menos uno</label>
                                             {{form.productosA}}
                                             <div class="form-group col-md-3">
                                                 <label><input type="checkbox">Propiedad intelectual</label>
@@ -596,51 +604,45 @@
                                     <div class="col-md-12">
                                         <div class="col-md-12">
                                             <div class="form-group col-md-12">
-                                                <select class="form-control" id="opcion_etapas" onchange="muestra_etapas();">
-                                                    <option>N° de etapas</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                </select>
+                                                <label>No. de Etapas</label>
+                                                {{form.sEtapa}}
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <h2 style="text-align: center;">Etapa 1°</h2>
                                             </div>
                                             <div class="form-group col-md-12">
-                                                <label>Nombre de la etapa</label>
-                                                <input type="text" class="form-control" maxlength="24">
-                                                <label>No más de 24 caracteres</label>
+                                                <label>*Nombre de la etapa (no más de 24 caracteres)</label>
+                                                {{form.n_Etapa}}
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label>Fecha de inicio</label>
-                                                <input type="date" class="form-control">
+                                                <label>*Fecha de inicio</label>
+                                                {{form.etapaInicio}}
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label>Fecha de terminacion</label>
-                                                <input type="date" class="form-control">
+                                                <label>*Fecha de terminación</label>
+                                                {{form.etapaTermino}}
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label>Meses</label>
-                                                <input type="text" class="form-control">
+                                                {{form.etapaMeses}}
                                             </div>
                                             <div class="form-group col-md-2">
-                                                <label>Descripcion:</label>
+                                                <label>*Descripción:</label>
                                             </div>
                                             <div class="form-group col-md-10">
-                                                <textarea class="form-control" rows="6" style="resize: none;"></textarea>
+                                                {{form.etapaDes}}
                                             </div>
                                             <div class="form-group col-md-2">
-                                                <label>Actividades:</label>
+                                                <label>*Actividades:</label>
                                             </div>
                                             <div class="form-group col-md-10">
-                                                <textarea class="form-control" rows="6" style="resize: none;"></textarea>
+                                                {{form.etapaAct}}
                                             </div>
                                             <div class="form-group col-md-2">
-                                                <label>Productos:</label>
+                                                <label>*Productos:</label>
                                             </div>
                                             <div class="form-group col-md-10">
-                                                <textarea class="form-control" rows="6" style="resize: none;"></textarea>
+                                                {{form.etapaPro}}
                                             </div>
                                             
                                             <!--ETAPA 2-->
@@ -650,39 +652,38 @@
                                                     <h2 style="text-align: center;">Etapa 2°</h2>
                                                 </div>
                                                 <div class="form-group col-md-12">
-                                                    <label>Nombre de la etapa</label>
-                                                    <input type="text" class="form-control" maxlength="24">
-                                                    <label>No más de 24 caracteres</label>
+                                                    <label>*Nombre de la etapa (no más de 24 caracteres)</label>
+                                                    {{form.n_Etapa2}}
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Fecha de inicio</label>
-                                                    <input type="date" class="form-control">
+                                                    <label>*Fecha de inicio</label>
+                                                    {{form.etapaInicio2}}
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Fecha de terminacion</label>
-                                                    <input type="date" class="form-control">
+                                                    <label>*Fecha de terminación</label>
+                                                    {{form.etapaTermino2}}
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Meses</label>
-                                                    <input type="text" class="form-control">
+                                                    <label>*Meses</label>
+                                                    {{form.etapaMeses2}}
                                                 </div>
                                                 <div class="form-group col-md-2">
-                                                    <label>Descripcion:</label>
+                                                    <label>*Descripción:</label>
                                                 </div>
                                                 <div class="form-group col-md-10">
-                                                    <textarea class="form-control" rows="6" style="resize: none;"></textarea>
+                                                    {{form.etapaDes2}}
                                                 </div>
                                                 <div class="form-group col-md-2">
-                                                    <label>Actividades:</label>
+                                                    <label>*Actividades:</label>
                                                 </div>
                                                 <div class="form-group col-md-10">
-                                                    <textarea class="form-control" rows="6" style="resize: none;"></textarea>
+                                                    {{form.etapaAct2}}
                                                 </div>
                                                 <div class="form-group col-md-2">
-                                                    <label>Productos:</label>
+                                                    <label>*Productos:</label>
                                                 </div>
                                                 <div class="form-group col-md-10">
-                                                    <textarea class="form-control" rows="6" style="resize: none;"></textarea>
+                                                    {{form.etapaPro2}}
                                                 </div>
                                             </div>
                                             
@@ -695,39 +696,38 @@
                                                     <h2 style="text-align: center;">Etapa 3°</h2>
                                                 </div>
                                                 <div class="form-group col-md-12">
-                                                    <label>Nombre de la etapa</label>
-                                                    <input type="text" class="form-control" maxlength="24">
-                                                    <label>No más de 24 caracteres</label>
+                                                    <label>*Nombre de la etapa (no más de 24 caracteres)</label>
+                                                    {{form.n_Etapa3}}
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Fecha de inicio</label>
-                                                    <input type="date" class="form-control">
+                                                    <label>*Fecha de inicio</label>
+                                                    {{form.etapaInicio3}}
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Fecha de terminacion</label>
-                                                    <input type="date" class="form-control">
+                                                    <label>*Fecha de terminacion</label>
+                                                    {{form.etapaTermino3}}
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Meses</label>
-                                                    <input type="text" class="form-control">
+                                                    <label>*Meses</label>
+                                                    {{form.etapaMeses3}}
                                                 </div>
                                                 <div class="form-group col-md-2">
-                                                    <label>Descripcion:</label>
+                                                    <label>*Descripción:</label>
                                                 </div>
                                                 <div class="form-group col-md-10">
-                                                    <textarea class="form-control" rows="6" style="resize: none;"></textarea>
+                                                    {{form.etapaDes3}}
                                                 </div>
                                                 <div class="form-group col-md-2">
-                                                    <label>Actividades:</label>
+                                                    <label>*Actividades:</label>
                                                 </div>
                                                 <div class="form-group col-md-10">
-                                                    <textarea class="form-control" rows="6" style="resize: none;"></textarea>
+                                                    {{form.etapaAct3}}
                                                 </div>
                                                 <div class="form-group col-md-2">
-                                                    <label>Productos:</label>
+                                                    <label>*Productos:</label>
                                                 </div>
                                                 <div class="form-group col-md-10">
-                                                    <textarea class="form-control" rows="6" style="resize: none;"></textarea>
+                                                    {{form.etapaPro3}}
                                                 </div>
                                             </div>
                                             
@@ -740,45 +740,44 @@
                                                     <h2 style="text-align: center;">Etapa 4°</h2>
                                                 </div>
                                                 <div class="form-group col-md-12">
-                                                    <label>Nombre de la etapa</label>
-                                                    <input type="text" class="form-control" maxlength="24">
-                                                    <label>No más de 24 caracteres</label>
+                                                    <label>*Nombre de la etapa (no más de 24 caracteres)</label>
+                                                    {{form.n_Etapa4}}
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Fecha de inicio</label>
-                                                    <input type="date" class="form-control">
+                                                    <label>*Fecha de inicio</label>
+                                                    {{form.etapaInicio4}}
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Fecha de terminacion</label>
-                                                    <input type="date" class="form-control">
+                                                    <label>*Fecha de terminacion</label>
+                                                    {{form.etapaTermino4}}
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>Meses</label>
-                                                    <input type="text" class="form-control">
+                                                    <label>*Meses</label>
+                                                    {{form.etapaMeses4}}
                                                 </div>
                                                 <div class="form-group col-md-2">
-                                                    <label>Descripcion:</label>
+                                                    <label>*Descripción:</label>
                                                 </div>
                                                 <div class="form-group col-md-10">
-                                                    <textarea class="form-control" rows="6" style="resize: none;"></textarea>
+                                                    {{form.etapaDes4}}
                                                 </div>
                                                 <div class="form-group col-md-2">
-                                                    <label>Actividades:</label>
+                                                    <label>*Actividades:</label>
                                                 </div>
                                                 <div class="form-group col-md-10">
-                                                    <textarea class="form-control" rows="6" style="resize: none;"></textarea>
+                                                    {{form.etapaAct4}}
                                                 </div>
                                                 <div class="form-group col-md-2">
-                                                    <label>Productos:</label>
+                                                    <label>*Productos:</label>
                                                 </div>
                                                 <div class="form-group col-md-10">
-                                                    <textarea class="form-control" rows="6" style="resize: none;"></textarea>
+                                                    {{form.etapaPro4}}
                                                 </div>
                                             </div>
                                             
-                                            <!--FIN ETAPA2-->
+                                            <!--FIN ETAPA4-->
                                             <div class="form-group col-md-12">
-                                                <h5><b>NOTA:</b>Los proyectos pueden tener un maximo de 4 etapas y cada etapa tendra una duracion minimo de 3 meses y maximo de 6 meses, si el proyecto solo contempla 1  etapa su duracion debe ser de 6 meses</h5>
+                                                <h5><b>NOTA: </b>Los proyectos pueden tener un máximo de 4 etapas y cada etapa tendrá una duración mínima de 3 meses y máxima de 6 meses, si el proyecto sólo contempla 1  etapa, su duración debe ser de 6 meses</h5>
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <input onclick="prevStep()" class="btn btn-default" value="Regresar">
@@ -797,32 +796,25 @@
                                         <div class="col-md-12">
                                             <h2 style="text-align: center; margin-top: -20px; margin-bottom: 50px;">Financiamiento</h2>
                                             <div class="form-group col-md-6">
-                                                <label>¿Existe actualmente algún financiamiento del proyecto?</label>
+                                                <label>*¿Existe actualmente algún financiamiento del proyecto?</label>
                                             </div>
                                             <div class="form-group  col-md-2">
-                                                <label>Sí</label>
-                                                <input name="financiamientoR" type="radio" onclick="muestraFina()" value="si">
-                                            </div>
-                                            <div class="form-group  col-md-2">
-                                                <label><input name="financiamientoR" type="radio" onclick="muestraFina()" value="no" checked="">No</label>
+                                                {{form.financi}}
                                             </div>
                                             <div class="row hidden" id="financiamientoSi">
                                                 <div class="form-group col-md-12">
                                                     <label>En caso de que la respuesta sea sí</label>
                                                 </div>
                                                 <div class="form-group col-md-3">
-                                                    <label><input type="checkbox">Interno</label>
-                                                </div>
-                                                <div class="form-group col-md-3">
-                                                    <label><input type="checkbox">Externo</label>
+                                                    {{form.finanSi}}
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label>Especifique</label>
-                                                    <input type="text" class="form-control">
+                                                    {{form.fEspeci}}
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-12">
-                                                <label>En caso de que la respuesta sea no Desglose($)</label>
+                                                <label>*En caso de que la respuesta sea no desglose ($)</label>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-md-3">
@@ -830,7 +822,7 @@
                                                 </div>
                                                 <div class="form-group col-md-3">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon">$</span><input aria-describedby="inputGroupSuccess2Status" class="form-control"  id="infraestructura" onkeyup="sumar();" type="text">
+                                                        <span class="input-group-addon">$</span>{{form.fInfra}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -840,7 +832,7 @@
                                                 </div>
                                                 <div class="form-group col-md-3">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon">$</span><input aria-describedby="inputGroupSuccess2Status" class="form-control" id="consumibles" onkeyup="sumar();" type="text">
+                                                        <span class="input-group-addon">$</span>{{form.fCon}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -851,7 +843,7 @@
                                                 <div class="form-group col-md-3">
                                                     <div class="input-group">
                                                         <div class="input-group">
-                                                            <span class="input-group-addon">$</span><input aria-describedby="inputGroupSuccess2Status" class="form-control"  id="licencias" onkeyup="sumar();" type="text">
+                                                            <span class="input-group-addon">$</span>{{form.fLic}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -862,7 +854,7 @@
                                                 </div>
                                                 <div class="form-group col-md-3">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon">$</span><input aria-describedby="inputGroupSuccess2Status" class="form-control"  id="viaticos" onkeyup="sumar();" type="text">
+                                                        <span class="input-group-addon">$</span>{{form.fVia}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -872,7 +864,7 @@
                                                 </div>
                                                 <div class="form-group col-md-3">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon">$</span><input aria-describedby="inputGroupSuccess2Status" class="form-control"  id="publicaciones" onkeyup="sumar();" type="text">
+                                                        <span class="input-group-addon">$</span>{{form.fPubli}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -882,7 +874,7 @@
                                                 </div>
                                                 <div class="form-group col-md-3">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon">$</span><input aria-describedby="inputGroupSuccess2Status" class="form-control"  id="equipo" onkeyup="sumar();" type="text">
+                                                        <span class="input-group-addon">$</span>{{form.fEqui}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -892,24 +884,24 @@
                                                 </div>
                                                 <div class="form-group col-md-3">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon">$</span><input aria-describedby="inputGroupSuccess2Status" class="form-control"  id="patentes" onkeyup="sumar();" type="text">
+                                                        <span class="input-group-addon">$</span>{{form.fPat}}
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-md-3">
-                                                    <label>Otros(Especifique):</label>
+                                                    <label>Otros (Especifique):</label>
                                                 </div>
                                                 <div class="form-group col-md-3">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon">$</span><input aria-describedby="inputGroupSuccess2Status" class="form-control"  id="otros" onkeyup="sumar();" type="text">
+                                                        <span class="input-group-addon">$</span>{{form.fOtros}}
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-1">
                                                     <label>Desglosar:</label>
                                                 </div>
                                                 <div class="form-group col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    {{form.fDesglo}}
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -918,7 +910,7 @@
                                                 </div>
                                                 <div class="form-group col-md-3">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon">$</span><input aria-describedby="inputGroupSuccess2Status" class="form-control" disabled="false" id="total" type="text">
+                                                        <span class="input-group-addon">$</span>{{form.fTot}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -941,10 +933,10 @@
                                         <div class="col-md-12">
                                             <div class="form-group col-md-4">
                                                 <label>Total de alumnos colaboradores</label>
-                                                <input class="form-control" id="totalA" max="20" min="0" onkeypress="return validaN(event);" value="1" onkeyup="ValidaMaximo()" type="number">
+                                                {{form.alumTot}}
                                             </div>
                                              <div class=" form-group col-md-2">
-                                                <a aria-pressed="true" class="btn btn-primary" href="#tab9" onclick="TAlum()" role="button" style="margin-top: 25px;">Aceptar</a>
+                                                <a aria-pressed="true" class="btn btn-primary" onclick="TAlum()" role="button" style="margin-top: 25px;">Aceptar</a>
                                             </div>
                                         </div>
                                         <table>
@@ -954,58 +946,39 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <div class="form-group col-md-6" style="margin-top: 30px;">
-                                                            <label>* S.S.= Servicio Social, R.P.= Residencia Profesional, T= Tesis</label>
+                                                        <div class="form-group col-md-8" style="margin-top: 30px;">
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                              <h2 style="text-align: center;">Alumno colaborador 1°</h2>
                                                         </div>
                                                         <div class="row">
                                                             <div class="form-group col-md-6">
-                                                                <label>Nombre del alumno</label>
-                                                                <input class="form-control" type="text">
+                                                                <label>*Nombre del alumno</label>
+                                                                {{form.alumNomb}}
                                                             </div>
-                                                            <div class="form-group col-md-2">
-                                                                <label><input type="checkbox" style="margin-top: 35px;">S.S</label>
-                                                            </div>
-                                                            <div class="form-group col-md-2">
-                                                                <label><input type="checkbox" style="margin-top: 35px;">R.P</label>
-                                                            </div>
-                                                            <div class="form-group col-md-2">
-                                                                <label><input type="checkbox" style="margin-top: 35px;">T</label>
+                                                            <div class="form-group col-md-5">
+                                                                {{form.alumSRT}}
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="form-group col-md-4">
-                                                                <label>N° control</label>
-                                                                <input type="number" class="form-control">
+                                                                <label>*N° control</label>
+                                                                {{form.alumControl}}
                                                             </div>
-                                                            <div class="form-group col-md-4">
-                                                                <label>Semestre</label>
-                                                                <input type="text" class="form-control">
+                                                            <div class="form-group col-md-3">
+                                                                <label>*Semestre</label>
+                                                                {{form.alumSem}}
                                                             </div>
-                                                            <div class="form-group col-md-4">
-                                                                <label>Carrera</label>
-                                                                <select class="form-control">
-                                                                    <option>Seleccione una carrera</option>
-                                                                    <option>Ingenieria en sistemas computacionales</option>
-                                                                    <option>Ingenieria industrial</option>
-                                                                    <option>Ingenieria en industrias alimentarias</option>
-                                                                    <option>Ingenieria civil</option>
-                                                                    <option>Ingenieria electronica</option>
-                                                                    <option>Ingenieria electromecanica</option>
-                                                                    <option>Ingenieria bioquimica</option>
-                                                                    <option>Ingenieria en gestion empresarial</option>
-                                                                    <option>Ingeneiria mecatronica</option>
-                                                                    <option>Gastronomia</option>
-                                                                </select>
+                                                            <div class="form-group col-md-5">
+                                                                <label>*Carrera</label>
+                                                                    {{form.alumCar}}
                                                             </div>
                                                             <div class="form-group col-md-12">
-                                                                <label>Detalle de actividades</label>
-                                                                <textarea class="form-control" rows="6" style="resize: none; width: 98%;"></textarea>
+                                                                <label>*Detalle de actividades (máximo 256 caracteres)</label>
+                                                                {{form.alumActi}}
                                                             </div>
                                                             <div class="form-group col-md-12">
-                                                                <h5><b>NOTA:</b>La cantidad de alumnos colaboradores depende de la complejidad del proyecto, como máximo 20 alumnos</h5>
+                                                                <h5><b>NOTA:</b>La cantidad de alumnos colaboradores depende de la complejidad del proyecto, como máximo 20 alumnos.</h5>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -1014,7 +987,7 @@
                                             <div class="form-group col-md-12">
                                                 <input onclick="prevStep()" class="btn btn-default" value="Regresar">
                                                 <input class="btn btn-primary" value="Finalizar" style="float: right;" onclick="Finalizar()">
-                                                <a class="btn btn-info view-pdf" href="Preregistro.pdf" style="float: right; margin-right: 10px;">Vista previa</a>
+                                                <a disabled="true" class="btn btn-info view-pdf" style="float: right; margin-right: 10px;">Vista previa</a>
                                             </div>    
                                         </div>
                                     </div>

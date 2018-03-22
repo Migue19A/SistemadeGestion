@@ -278,6 +278,7 @@ function sumar() {
     var valor7 = verificar("patentes");
     var valor8 = verificar("otros");
     document.getElementById("total").value = parseFloat(valor1) + parseFloat(valor2) + parseFloat(valor3) + parseFloat(valor4) + parseFloat(valor5) + parseFloat(valor6) + parseFloat(valor7) + parseFloat(valor8);
+    console.log(document.getElementById("total").value);
 }
 
 function verificar(id) {
@@ -351,7 +352,7 @@ function respuestaF() {
 }
 
 function muestraFina() {
-    var $elegido = $("input[name=financiamientoR]:checked");
+    var $elegido = $("input[name=financi]:checked");
     var r = $elegido.val();
     if (r == "si") {
         document.getElementById('financiamientoSi').className = "row";
