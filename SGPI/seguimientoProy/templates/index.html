@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% load bootstrap %}
+{% load staticfiles %}
+
+ {% block title %}
+    <title>Logueo</title>
+ {% endblock %}
+
+ {% block paneLateral %}
+ {% endblock %}
+ {{ block.super}}
+ {% block contenido %}
+ {{ block.super}}
+ 	<div class="container" style="width: 50%; max-height: 100%;">
+            <div class="col-lg-8 col-md-offset-2 " id="sesion" style="margin-top: 10px;">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <label style="font-size: 25px; text-align: center;">
+                            Subdirección de Investigación y Posgrado
+                        </label>
+                    </div>
+                    <div class="panel-body">
+                        <!--<h1 style="margin-top: -65px; margin-bottom: -100px; font-size: 10px;"> Subdirección de Investigación y Posgrado</h1>-->
+                        <label style="font-size: 25px; margin-left: 80px;">
+                            Acceso al Sistema
+                        </label>
+                        <img class="profile-img-card" id="profile-img" src="{% static 'img/user-128.png' %}">
+                            <form method="POST">
+                                {% csrf_token %}
+                            <div class="col-lg-12 form-group">
+                                {{form.name_user}}                               
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                {{form.password_user}}                               
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label id="error" style="color: red">
+                                </label>
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <input class="btn btn-primary btn-lg btn-block" id="btn-p" style="margin-top: -40px;" type="submit" value="Iniciar Sesión">
+                            </div>
+                            </form>
+                        <script type="text/javascript">
+                            function alerta_mensaje(){
+                                alert("Porfavor, lea y acepte los terminos y condiciones para poder hacer uso del sistema")
+                            }
+                        </script>
+                            <div class="col-lg-12">
+                                <label>
+                                    <input class="form-group" name="pass" type="checkbox" value="">
+                                        Recordar contraseña                                    
+                                </label>
+                                <h5 style="float: right; margin-top: 5px;">¿Olvidaste tu contraseña? Clic<a data-toggle="modal" href="#myModal" style="cursor: pointer;"> aquí</a></h5>
+                            </div>
+                        <div class="col-lg-12">
+                            <h5 style="text-align: justify;">Al hacer uso del "Sistema de Gestión y Administración de Proyectos", aceptas todos los términos y condiciones del área de Subdirección de Investigación y Posgrado del Instituto Tecnológico Superior de Xalapa. <a data-toggle="modal" href="#myModal2" style="cursor: pointer;"> Más información</a></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal" type="button">×</button>
+                            <h4 style="text-align: center;">Solicitar contraseña</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Usuario</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Lugar favorito</label>
+                                    <input type="text" class="form-control">                                
+                                </div>   
+                            </div>                                                     
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Nueva contraseña</label>
+                                    <input type="password" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Repetir contraseña</label>
+                                    <input type="password" class="form-control">
+                                </div> 
+                            </div>
+                            <h5 style="margin-top: 25px;"><label>Nota:</label> La nueva contraseña será enviada a su correo electrónico</h5>
+                        </div>
+                        <div class="modal-footer">                            
+                            <button class="btn btn-info">Validar información</button>
+                            <button class="btn btn-primary" data-dismiss="modal" type="button">Solicitar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="modal fade" id="myModal2" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal" type="button">×</button>
+                            <h4 style="text-align: center;">Términos y condiciones del área de subdirección de investigación y posgrado</h4>
+                        </div>
+                        <div class="modal-body">
+                            
+                        </div>
+                        <div class="modal-footer">                            
+                            <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button class="btn btn-primary" type="button" onclick="SolicitudEnviada()">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+ {% endblock contenido %}
+
+

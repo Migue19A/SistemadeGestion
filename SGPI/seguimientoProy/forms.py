@@ -1,5 +1,6 @@
 from django import forms
-
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 OPCIONES_INV = (
     ('aplicada', 'Investigación Aplicada',),
@@ -1247,3 +1248,29 @@ class PreRegistroForm(forms.Form):
             }))
 
 
+class LoginForm(forms.Form):
+    name_user= forms.CharField(max_length= 20, required= True, label="", 
+        widget= (forms.TextInput(attrs={"placeholder":"Usuario", "class": "form-control"})))   
+    password_user= forms.CharField(max_length= 20, required= True, label="", 
+        widget= (forms.PasswordInput(attrs={"placeholder":"Contraseña", "class": "form-control"})))  
+
+
+class RegistroUsuarios(UserCreationForm):
+    class Meta:
+        model= User
+        fields= [
+                'username',
+                'first_name',
+                'last_name',
+                'email'
+        ]
+
+        labels= {
+                'username': 'Nombre de usuario',
+                'first_name': 'Nombre',
+                'last_name': 'Apellidos',
+                'email': 'Correo'
+        }
+        
+
+   

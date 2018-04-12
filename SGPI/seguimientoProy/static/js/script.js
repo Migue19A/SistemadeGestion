@@ -108,3 +108,20 @@ function() {
 
 });
 })(jQuery);
+            
+function SolicitudEnviada(){
+                swal({
+                    title: 'Términos y Condiciones',
+                    text: "Al aceptar los términos y condiciones utilizaremos toda tu información académica necesaria",
+                    type: 'info',                    
+                    confirmButtonColor: '#3085d6',                    
+                    confirmButtonText: 'Aceptar términos',
+                }).then(function () {
+                    swal(
+                        'Haz aceptado los términos y condiciones',
+                        '',
+                        'success'
+                    )
+                    $('#myModal2').modal('hide')
+                })
+            }
