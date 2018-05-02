@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -81,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'SGPI',
         'USER': 'postgres',
-        'PASSWORD': 'Rivazul19',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -125,4 +127,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+if DEBUG:
+    EMAIL_USE_TLS = True
+    EMAIL_HOST= 'smtp.gmail.com'
+    EMAIL_PORT = 587
+    EMAIL_HOST_USER= ''
+    EMAIL_HOST_PASSWORD= ''
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
 

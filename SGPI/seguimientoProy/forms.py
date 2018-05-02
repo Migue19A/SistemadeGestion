@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+from .models import Proyecto, Carrera, Perfil, EstadoProyecto
 from django.contrib.auth.forms import UserCreationForm
 
 OPCIONES_INV = (
@@ -1254,23 +1255,29 @@ class LoginForm(forms.Form):
     password_user= forms.CharField(max_length= 20, required= True, label="", 
         widget= (forms.PasswordInput(attrs={"placeholder":"Contraseña", "class": "form-control"})))  
 
+    
 
-class RegistroUsuarios(UserCreationForm):
+class UserForm(UserCreationForm):
     class Meta:
-        model= User
-        fields= [
-                'username',
-                'first_name',
-                'last_name',
-                'email'
-        ]
-
-        labels= {
-                'username': 'Nombre de usuario',
-                'first_name': 'Nombre',
-                'last_name': 'Apellidos',
-                'email': 'Correo'
+        model= Perfil
+        fields= '__all__' 
+        exclude= ['password']       
+        widgets= {
+            'carrera': forms.Select(attrs={'class':'form-control'})
         }
+
+class RCarrera(forms.ModelForm):
+    class Meta: 
+        model= Carrera
+        fields= '__all__'
+
+class REstado(forms.ModelForm):
+    class Meta: 
+        model= EstadoProyecto
+        fields= '__all__'
+
+
+
         
 
    

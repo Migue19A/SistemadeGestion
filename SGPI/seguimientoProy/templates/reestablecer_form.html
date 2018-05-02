@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load bootstrap %}
+{% load staticfiles %}
+
+ {% block title %}
+ 	<meta charset="UTF-8">
+    <title>Reestablecer contraseña</title>
+ {% endblock %}
+
+ {% block paneLateral %}
+ {% endblock %}
+ {{ block.super}}
+ {% block contenido %}
+ 	<form method="post" >
+ 		{%csrf_token%}
+            <div class="row">
+            <div class="col-md-6" style="position:relative; left:30%;">
+                {{ form.email.errors }}
+                <label for="id_email">Ingrese su correo electrónico: </label>
+                {{form.email}}                                   
+                <input type="submit" class="btn btn-primary" value="Solicitar"> 
+                <h5 style="margin-top: 25px;"><label>Nota:</label> Se enviarán instrucciones a su correo</h5>    
+            </div>   
+            </div>  
+ 	</form>
+ {% endblock contenido %}

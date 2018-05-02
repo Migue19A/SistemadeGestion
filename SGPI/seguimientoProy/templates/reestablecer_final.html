@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load bootstrap %}
+{% load staticfiles %}
+
+{% block title %}
+    <meta charset="UTF-8">
+    <title>Reestablecer contraseña</title>
+{% endblock %}
+
+{% block paneLateral %}
+{% endblock %}
+{{ block.super}}
+{% block contenido %}
+ 	<h1 class="text-center">Su contraseña se reestableció correctamente</h1>
+ 	<p class="text-center"><a href="{% url 'inicio' %}">Iniciar sesión</a></p>
+{% endblock contenido %}

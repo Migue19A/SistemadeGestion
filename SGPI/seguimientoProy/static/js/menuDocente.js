@@ -1,4 +1,4 @@
-function menu(opcion, Inicio, NPreRegistro, PreRegistros, Prorrogas, Seguimiento, CambioColaborador, CProyectos, ProyectosCancelados, ConfiCuenta, HistorialD) {
+function menu(opcion, Inicio, NPreRegistro, PreRegistros, Prorrogas, Seguimiento, CambioColaborador, CProyectos, ProyectosCancelados, ConfiCuenta, HistorialD, NombreU) {
     document.write("<div id='cssmenu' style='z-index:1'>");
     document.write("<ul>");
     if (opcion == 1) {
@@ -46,9 +46,9 @@ function menu(opcion, Inicio, NPreRegistro, PreRegistros, Prorrogas, Seguimiento
         document.write("<li ><a href='" + HistorialD + "'><span class='glyphicon glyphicon-save-file' style='margin-right: 10px;'></span>Historial</a>");
     }
     document.write("<li style='float: right;' class='has-sub'");
-    document.write("<li><a href='#'><span class='glyphicon glyphicon-user' style='margin-right: 10px;'></span>Docente Responsable</a>");
+    document.write("<li><a href='/'><span class='glyphicon glyphicon-user' style='margin-right: 10px;'></span>"+NombreU+"</a>");
     document.write(" <ul>");
-    document.write("<li><a href='float: right;'><span class='glyphicon glyphicon-remove-circle' style='margin-right: 10px;'></span>Cerrar Sesión</a></li>");
+    document.write("<li><a href='/accounts/login/' style:'float: right;'><span class='glyphicon glyphicon-remove-circle' style='margin-right: 10px;'></span>Cerrar Sesión</a></li>");
     document.write("<li><a href='" + ConfiCuenta + "'><span class='glyphicon glyphicon-wrench' style=' margin-right: 10px;'></span>Configuración</a></li>");
     document.write("</li>");
     document.write("</ul>");

@@ -7,7 +7,18 @@
 {% block menuInvest %}
 	<script src="{% static 'js/menuInv.js' %}"></script>
     <script type="text/javascript">
-                                 menuInv(1,"InicioInvestigacion.html","Registro/Registro.html","Entregables/ConsultaEntregables.html","Prorrogas/Prorroga.html","ReActivacion/ReActivacion.html","CambioColaboradores/CambioColaboradores.html","Consulta de Proyectos/Consulta de Proyectos.html","Configuracion de cuenta/Configuracion de cuenta.html","Reportes/Reportes.html", "Historial/HistorialP.html", "Historial/HistorialD.html","Gestion de Usuarios/GestiondeUsuarios.html");
+                                 menuInv(1,"{% url 'seguimientoProy:Investigacion' %}","Registro/Registro.html","Entregables/ConsultaEntregables.html","Prorrogas/Prorroga.html","ReActivacion/ReActivacion.html","CambioColaboradores/CambioColaboradores.html","Consulta de Proyectos/Consulta de Proyectos.html","Configuracion de cuenta/Configuracion de cuenta.html","Reportes/Reportes.html", "Historial/HistorialP.html", "Historial/HistorialD.html","Gestion de Usuarios/GestiondeUsuarios.html", '{{user.username}}');
         </script>        
  {% endblock menuInvest %}
  {% endblock menu%}
+ {% block contenido %}        
+        <div class="col-md-8">
+            <form method="POST">
+            {% csrf_token %}
+                <div class="center-block" ></div>
+                    <h1 class="text_center" style="position:relative; left:25%; font-size:50px;">Bienvenido(a) {{user.username}}</h1>
+                    <input class="btn btn-danger" name="logout" style="position:relative; left:50%; font-size:30px;" value="Salir" type="submit" style>
+                </div>
+            </form>        
+        </div>
+{% endblock contenido %}

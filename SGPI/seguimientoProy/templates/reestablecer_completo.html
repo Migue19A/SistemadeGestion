@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load bootstrap %}
+{% load staticfiles %}
+
+{% block title %}
+	<meta charset="UTF-8">
+    <title>Reestablecer contraseña</title>
+{% endblock %}
+
+{% block paneLateral %}
+{% endblock %}
+{{ block.super}}
+{% block contenido %}
+{% if validlink %}
+ 	<h1>Nueva contraseña</h1>
+ 	<form method="post">
+ 		{% csrf_token %}
+ 		{{form.errors}}
+ 		{{form.new_password1.errors}}
+ 		<label for="id_new_password1">Nueva contraseña: </label>
+ 		{{form.new_password1}}
+ 		{{form.new_password2.errors}}
+ 		<label for="id_new_password2">Confirme contraseña: </label> 		
+ 		{{form.new_password2}}
+ 		<br>
+ 		<input type="submit" hrf="{% url 'password_reset_complete'%}" value="Cambiar mi contraseña">
+ 	</form>
+{% else %}
+	<h1 class="text-center">ENLACE INVÁLIDO: ESTE ENLACE YA HA SIDO UTILIZADO</h1>
+{% endif %}
+{% endblock contenido %}

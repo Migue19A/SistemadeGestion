@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User, AbstractUser
 # Create your models here.
 
 
@@ -87,30 +87,42 @@ class Vinculacion(models.Model):
     descripcion_aportaciones = models.CharField(max_length=255)
 
 
-class Usuario(models.Model):
+"""class Usuario(models.Model):
     numero_personal = models.IntegerField(
         primary_key=True)
     nombre_usuario = models.CharField(max_length=45)
     apellido_paterno = models.CharField(max_length=45)
     apellido_materno = models.CharField(max_length=45)
-    fecha_nacimiento = models.DateField()
+    ## fecha_nacimiento = models.DateField()
     sexo = models.CharField(max_length=1)
-    correo_institucional = models.EmailField()
-
-
-class Docente (models.Model):
+    correo_institucional = models.EmailField()    
     numero_personal = models.OneToOneField(
         Usuario, null=False, blank=False, on_delete=models.CASCADE)
-    grado_maximo_estudios = models.CharField(max_length=45)
-    telefono_movil = models.IntegerField()
+    # tipo_usuario = models.CharFIeld(max_length=80)"""
 
+
+class Carrera(models.Model):
+    id_carrera = models.IntegerField(primary_key=True)
+    descripcion_carrera = models.CharField(max_length=60)
+
+    def __str__ (self):
+        return '{}'.format(self.descripcion_carrera) 
+
+class Perfil (User):
+    numero_personal = models.IntegerField(null=False)
+    sexo = models.CharField(max_length=1)
+    tipo_usuario = models.CharField(max_length=80)
+    grado_maximo_estudios = models.CharField(max_length=45)
+    telefono_movil = models.IntegerField(null=True, blank=True)
+    carrera = models.ForeignKey(Carrera, null=False, blank=True, on_delete=models.CASCADE)
+ 
 
 class ColaboradorDocente(models.Model):
     folio_proyecto = models.ForeignKey(
         Proyecto, null=True, blank=True, on_delete=models.CASCADE)
     actividades_colaborador = models.CharField(max_length=512)
     numero_personal = models.ForeignKey(
-        Docente, null=True, blank=False, on_delete=models.CASCADE)
+        Perfil, null=True, blank=False, on_delete=models.CASCADE)
 
 
 class EstadoProyecto(models.Model):
@@ -129,7 +141,7 @@ class Notificaciones(models.Model):
     id_notificaciones = models.IntegerField(
         primary_key=True)
     receptor = models.ForeignKey(
-        Docente, null=False, blank=False, on_delete=models.CASCADE)
+        Perfil, null=False, blank=False, on_delete=models.CASCADE)
     mensaje = models.CharField(max_length=45)
     fecha_notificacion = models.DateField('fecha de notificacion')
     estado_notificacion = models.BooleanField()
@@ -138,19 +150,12 @@ class Notificaciones(models.Model):
 
 class Sanciones(models.Model):
     numero_personal = models.ForeignKey(
-        Docente, null=False, blank=False, on_delete=models.CASCADE)
+        Perfil, null=False, blank=False, on_delete=models.CASCADE)
     id_catalogo_sancion = models.ForeignKey(
         CatSancion, null=False, blank=False, on_delete=models.CASCADE)
     fecha_sancion = models.DateField('fecha de sancion')
     folio_proyecto = models.ForeignKey(Proyecto, null=False,
                                        blank=False, on_delete=models.CASCADE)
-
-
-class Carrera(models.Model):
-    id_carrera = models.IntegerField(
-        primary_key=True)
-    descripcion_carrera = models.CharField(max_length=60)
-
 
 class Alumno(models.Model):
     numero_control = models.CharField(primary_key=True, max_length=9)

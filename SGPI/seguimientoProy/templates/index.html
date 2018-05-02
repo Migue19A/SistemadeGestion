@@ -28,14 +28,25 @@
                             <form method="POST">
                                 {% csrf_token %}
                             <div class="col-lg-12 form-group">
-                                {{form.name_user}}                               
+                                <input class="form-control" id="Usuario" name="name_user" placeholder="Usuario" type="text">                              
                             </div>
                             <div class="col-lg-12 form-group">
-                                {{form.password_user}}                               
+                                <input class="form-control" id="Contraseña" name="password_user" placeholder="Contraseña" type="password">                               
                             </div>
                             <div class="col-lg-12 form-group">
-                                <label id="error" style="color: red">
-                                </label>
+                                <div class="register">
+                                     <label style="font-size: 15px; color:red;">
+                                        {%if anonimo %}
+                                            {{anonimo}}
+                                        {% endif %}
+                                        {%if error%}
+                                            {{error}}
+                                        {% endif %}
+                                        {{form.errors}}
+                                    </label>
+                                </div>
+                                <br>
+                                <br>                                
                             </div>
                             <div class="col-lg-12 form-group">
                                 <input class="btn btn-primary btn-lg btn-block" id="btn-p" style="margin-top: -40px;" type="submit" value="Iniciar Sesión">
@@ -47,53 +58,10 @@
                             }
                         </script>
                             <div class="col-lg-12">
-                                <label>
-                                    <input class="form-group" name="pass" type="checkbox" value="">
-                                        Recordar contraseña                                    
-                                </label>
-                                <h5 style="float: right; margin-top: 5px;">¿Olvidaste tu contraseña? Clic<a data-toggle="modal" href="#myModal" style="cursor: pointer;"> aquí</a></h5>
+                                <h5 style="float: right; margin-top: 5px;">¿Olvidaste tu contraseña? Clic<a data-toggle="modal" href="{% url 'password_reset' %}" style="cursor: pointer;"> aquí</a></h5>
                             </div>
                         <div class="col-lg-12">
                             <h5 style="text-align: justify;">Al hacer uso del "Sistema de Gestión y Administración de Proyectos", aceptas todos los términos y condiciones del área de Subdirección de Investigación y Posgrado del Instituto Tecnológico Superior de Xalapa. <a data-toggle="modal" href="#myModal2" style="cursor: pointer;"> Más información</a></h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button class="close" data-dismiss="modal" type="button">×</button>
-                            <h4 style="text-align: center;">Solicitar contraseña</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Usuario</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Lugar favorito</label>
-                                    <input type="text" class="form-control">                                
-                                </div>   
-                            </div>                                                     
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Nueva contraseña</label>
-                                    <input type="password" class="form-control">
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Repetir contraseña</label>
-                                    <input type="password" class="form-control">
-                                </div> 
-                            </div>
-                            <h5 style="margin-top: 25px;"><label>Nota:</label> La nueva contraseña será enviada a su correo electrónico</h5>
-                        </div>
-                        <div class="modal-footer">                            
-                            <button class="btn btn-info">Validar información</button>
-                            <button class="btn btn-primary" data-dismiss="modal" type="button">Solicitar</button>
                         </div>
                     </div>
                 </div>

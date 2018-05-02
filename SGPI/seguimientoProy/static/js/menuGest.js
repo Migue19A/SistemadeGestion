@@ -1,4 +1,4 @@
-function menuGest(opcion, Inicio, PreRegistro, Seguimiento, Reporte, Prorrogas, Reactivacion, Cambio, GestionU, ConsultaP, Configuracion, Calendariza, HistorialP, HistorialD) {
+function menuGest(opcion, Inicio, PreRegistro, Seguimiento, Reporte, Prorrogas, Reactivacion, Cambio, GestionU, ConsultaP, Configuracion, Calendariza, HistorialP, HistorialD, NombreU) {
     document.write("<div id='cssmenu' style='z-index:1'>");
     document.write("<ul>");
     if (opcion == 1) {
@@ -62,10 +62,11 @@ function menuGest(opcion, Inicio, PreRegistro, Seguimiento, Reporte, Prorrogas, 
         document.write("class='active'><a href=''><span class='glyphicon glyphicon-user' style='margin-right: 3px;'></span>Oficina de Seguimiento de <br> Proyectos de Investigación</a>");
     } else {
         document.write("<li style='float: right;' class='has-sub'");
-        document.write("class='active'><a href=''><span class='glyphicon glyphicon-user' style='margin-right: 3px;'></span>Oficina de Seguimiento de <br>&nbsp;&nbsp;&nbsp;&nbsp; Proyectos de Investigación</a>");
+        document.write("class='active'><a href=''><span class='glyphicon glyphicon-user' style='margin-right: 3px;'></span>"+NombreU+"</a>");
+    document.write(" <ul>");
     }
     document.write(" <ul> ");
-    document.write("<li class=''><a href=''><span class='glyphicon glyphicon-remove-circle' style='color: #fff; margin-right: 10px;'></span>Cerrar Sesión</a> ");
+    document.write("<li class=''><a href='/accounts/login/'><span class='glyphicon glyphicon-remove-circle' style='color: #fff; margin-right: 10px;'></span>Cerrar Sesión</a> ");
     document.write("</li>");
     document.write("<li class=''><a href='" + Configuracion + "'><span class='glyphicon glyphicon-wrench' style='color: #fff; margin-right: 10px;'></span>Configuración</a> ");
     document.write(" </li>");

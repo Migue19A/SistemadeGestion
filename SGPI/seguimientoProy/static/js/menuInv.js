@@ -1,4 +1,4 @@
-function menuInv(opcion, Inicio, Registros, Etapas, Prorrogas, Reactivacion, CambioColaborador, CProyectos, ConfiCuenta, Reportes, HistorialD, HistorialP, GestionU) {
+function menuInv(opcion, Inicio, Registros, Etapas, Prorrogas, Reactivacion, CambioColaborador, CProyectos, ConfiCuenta, Reportes, HistorialD, HistorialP, GestionU, NombreU) {
     document.write("<div id='cssmenu' style='z-index:1'>");
     document.write("<ul>");
     if (opcion == 1) {
@@ -56,13 +56,13 @@ function menuInv(opcion, Inicio, Registros, Etapas, Prorrogas, Reactivacion, Cam
     }
     if (opcion == 8) {
         document.write("<li style='float: right;' class='active'");
-        document.write("class='active'><a href='#'><span class='glyphicon glyphicon-book' style='margin-right: 10px;'></span>Subdirección de Investigación y Posgrado</a>");
+        document.write("class='active'><a href='#'><span class='glyphicon glyphicon-book' style='margin-right: 10px;'></span>"+NombreU+"</a>");
     } else {
         document.write("<li style='float: right;' class='has-sub'");
-        document.write("class='active'><a href='#'><span class='glyphicon glyphicon-user' style='margin-right: 10px;'></span>Subdirección de Investigación y Posgrado</a>");
+        document.write("class='active'><a href='#'><span class='glyphicon glyphicon-user' style='margin-right: 10px;'></span>"+NombreU+"</a>");
     }
     document.write(" <ul> ");
-    document.write("<li class=''><a href='#'><span class='glyphicon glyphicon-remove-circle' style='color: #fff; margin-right: 10px;'></span>Cerrar Sesión</a> ");
+    document.write("<li class=''><a href='/accounts/login/'><span class='glyphicon glyphicon-remove-circle' style='color: #fff; margin-right: 10px;'></span>Cerrar Sesión</a> ");
     document.write("</li>");
     document.write("<li class=''><a href='" + ConfiCuenta + "'><span class='glyphicon glyphicon-wrench' style='color: #fff; margin-right: 10px;'></span>Configuración</a> ");
     document.write(" </li>");

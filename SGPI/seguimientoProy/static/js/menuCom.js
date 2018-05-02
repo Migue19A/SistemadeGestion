@@ -1,4 +1,4 @@
-function menu(opcion, inicio, Re, Seg, Pro, Rea, HistorialD, HistorialP, Configuracion) {
+function menu(opcion, inicio, Re, Seg, Pro, Rea, HistorialD, HistorialP, Configuracion, NombreU) {
     document.write("<div id='cssmenu' style='z-index:1'>");
     document.write("<ul>");
     if (opcion == 1) {
@@ -35,9 +35,9 @@ function menu(opcion, inicio, Re, Seg, Pro, Rea, HistorialD, HistorialP, Configu
         document.write("<li class=''><a href='" + Seg + "'><span class='glyphicon glyphicon-file' style='margin-right: 10px;'></span>Seguimiento de etapas</a></li>");
     }
     document.write("<li style='float: right;' class='has-sub'>");
-    document.write("<a href='#'><span class='glyphicon glyphicon-user' style='margin-right: 10px;'></span>Consejo de Investigación</a>");
+    document.write("<a href='#'><span class='glyphicon glyphicon-user' style='margin-right: 10px;'></span>"+NombreU+"</a>");
     document.write(" <ul>");
-    document.write("<li><a href='#'><span class='glyphicon glyphicon-remove-circle' style='margin-right: 10px;'></span>Cerrar Sesión</a></li>");
+    document.write("<li><a href='/accounts/login/'><span class='glyphicon glyphicon-remove-circle' style='margin-right: 10px;'></span>Cerrar Sesión</a></li>");
     document.write("<li><a href='" + Configuracion + "'><span class='glyphicon glyphicon-wrench' style=' margin-right: 10px;'></span>Configuración</a></li>");
     document.write("</ul>");
     document.write("</li>");

@@ -5,8 +5,18 @@
 {% block  menuComite %}
 	<script src="{% static 'js/menuCom.js' %}"></script>
     <script type="text/javascript">
-            menu(1,"InicioComite.html","Proyectos/Registro.html","Entregables/ConsultaEntregabxles.html","Prorrogas/Prorroga.html","ReActivacion/ReActivacion.html", "Historial/HistorialD.html","Historial/HistorialP.html","Configuracioncuenta/ConfiguracionCuenta.html");
+            menu(1,"{% url 'seguimientoProy:Consejo' %}","Proyectos/Registro.html","Entregables/ConsultaEntregabxles.html","Prorrogas/Prorroga.html","ReActivacion/ReActivacion.html", "Historial/HistorialD.html","Historial/HistorialP.html","Configuracioncuenta/ConfiguracionCuenta.html", '{{user.username}}');
     </script>
-}
 {% endblock menuComite%}
 {% endblock menu %}
+{% block contenido %}        
+        <div class="col-md-8">
+            <form method="POST">
+            {% csrf_token %}
+                <div class="center-block" ></div>
+                    <h1 class="text_center" style="position:relative; left:25%; font-size:50px;">Bienvenido(a) {{user.username}}</h1>
+                    <input class="btn btn-danger" name="logout" style="position:relative; left:50%; font-size:30px;" value="Salir" type="submit" style>
+                </div>
+            </form>        
+        </div>
+{% endblock contenido %}
