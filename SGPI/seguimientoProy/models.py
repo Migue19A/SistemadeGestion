@@ -18,6 +18,26 @@ class Proyecto(models.Model):
     objetivo_general = models.CharField(max_length=45)
     objetivo_especifico = models.CharField(max_length=45)
     resultados = models.CharField(max_length=45)
+    tipoInvestigacion = models.ForeignKey(
+        TipoInvestigacion, on_delete=models.CASCADE)
+    tipoSector = models.ForeignKey(TipoSector, on_delete=models.CASCADE)
+    lineaInvestigacion = models.ForeignKey(
+        LineaInvestigacion, on_delete=models.CASCADE)
+
+
+class TipoInvestigacion(models.Model):
+    id_tipo_investigacion = models.IntegerField(primary_key=True)
+    descripcion_tipo_investigacion = models.CharField(max_length=45)
+
+
+class TipoSector(models.Model):
+    id_tipo_sector = models.IntegerField(primary_key=True)
+    descripcion_sector = models.CharField(max_length=45)
+
+
+class LineaInvestigacion(models.Model):
+    id_linea_investigacion = models.IntegerField(primary_key=True)
+    descripcion_linea = models.CharField(max_length=45)
 
 
 class ProyectosCancelados(models.Model):
@@ -95,7 +115,7 @@ class Vinculacion(models.Model):
     apellido_materno = models.CharField(max_length=45)
     ## fecha_nacimiento = models.DateField()
     sexo = models.CharField(max_length=1)
-    correo_institucional = models.EmailField()    
+    correo_institucional = models.EmailField()
     numero_personal = models.OneToOneField(
         Usuario, null=False, blank=False, on_delete=models.CASCADE)
     # tipo_usuario = models.CharFIeld(max_length=80)"""
@@ -105,8 +125,9 @@ class Carrera(models.Model):
     id_carrera = models.IntegerField(primary_key=True)
     descripcion_carrera = models.CharField(max_length=60)
 
-    def __str__ (self):
-        return '{}'.format(self.descripcion_carrera) 
+    def __str__(self):
+        return '{}'.format(self.descripcion_carrera)
+
 
 class Perfil (User):
     numero_personal = models.IntegerField(null=False)
@@ -114,8 +135,12 @@ class Perfil (User):
     tipo_usuario = models.CharField(max_length=80)
     grado_maximo_estudios = models.CharField(max_length=45)
     telefono_movil = models.IntegerField(null=True, blank=True)
-    carrera = models.ForeignKey(Carrera, null=False, blank=True, on_delete=models.CASCADE)
- 
+    carrera = models.ForeignKey(
+        Carrera,
+        null=False,
+        blank=True,
+        on_delete=models.CASCADE)
+
 
 class ColaboradorDocente(models.Model):
     folio_proyecto = models.ForeignKey(
@@ -157,6 +182,7 @@ class Sanciones(models.Model):
     folio_proyecto = models.ForeignKey(Proyecto, null=False,
                                        blank=False, on_delete=models.CASCADE)
 
+
 class Alumno(models.Model):
     numero_control = models.CharField(primary_key=True, max_length=9)
     semestre = models.IntegerField()
@@ -190,21 +216,6 @@ class Recepcion(models.Model):
     nombre_recibio = models.CharField(max_length=45)
     folio_proyecto = models.ForeignKey(Proyecto, null=False,
                                        blank=False, on_delete=models.CASCADE)
-
-
-class TipoInvestigacion(models.Model):
-    id_tipo_investigacion = models.IntegerField(primary_key=True)
-    descripcion_tipo_investigacion = models.CharField(max_length=45)
-
-
-class TipoSector(models.Model):
-    id_tipo_sector = models.IntegerField(primary_key=True)
-    descripcion_sector = models.CharField(max_length=45)
-
-
-class LineaInvestigacion(models.Model):
-    id_linea_investigacion = models.IntegerField(primary_key=True)
-    descripcion_linea = models.CharField(max_length=45)
 
 
 class Prorroga(models.Model):
