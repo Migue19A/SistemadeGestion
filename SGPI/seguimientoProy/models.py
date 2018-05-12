@@ -5,7 +5,7 @@ from django.utils import timezone
 # Create your models here.
 
 
-"""class Proyecto(models.Model):
+class Proyecto(models.Model):
     folio_proyecto = models.CharField(primary_key=True, max_length=7)
     fecha_presentacion = models.DateTimeField('fecha presentacion')
     fecha_reactivacion = models.DateTimeField('fecha reactivacion')
@@ -19,7 +19,7 @@ from django.utils import timezone
     nombre_proyecto = models.CharField(max_length=45)
     objetivo_general = models.CharField(max_length=45)
     objetivo_especifico = models.CharField(max_length=45)
-    resultados = models.CharField(max_length=45)"""
+    resultados = models.CharField(max_length=45)
 
 class TipoInvestigacion(models.Model):
     id_tipo_investigacion = models.IntegerField(primary_key=True)
@@ -45,7 +45,7 @@ class LineaInvestigacion(models.Model):
         return '{}'.format(self.descripcion_linea)
 
 
-class Proyecto(models.Model):
+"""class Proyecto(models.Model):
     folio_proyecto = models.CharField(primary_key=True, max_length=7)
     fecha_presentacion = models.DateTimeField(default= timezone.now, blank=False, null=False)
     convocatoris_CPR = models.CharField(max_length=45, null=True, blank=True)
@@ -55,7 +55,7 @@ class Proyecto(models.Model):
     linea_investigacion= models.ManyToManyField(LineaInvestigacion, blank= True)
     nombre_proyecto = models.CharField(max_length=200, blank= False, null= False)
     fecha_inicio = models.DateTimeField(default= timezone.now, null=False, blank=False)
-    fecha_fin = models.DateTimeField(null=False, blank=False)
+    fecha_fin = models.DateTimeField(null=False, blank=False)"""
 
 class Responsable(models.Model):
     id_folio_proyecto = models.ForeignKey(Proyecto, null=False, blank=False, on_delete=models.CASCADE)
