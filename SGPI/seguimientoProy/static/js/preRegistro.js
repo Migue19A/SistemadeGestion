@@ -47,10 +47,7 @@ function TAlum() {
     }
 }
 
-function cambiarColor(valor) {
-    document.getElementById("Mtab" + valor).className = "morir";
-    $("#span" + (valor + 1)).click();
-}
+
 
 function muestra_colaborador() {
     opcion = document.getElementById("opcion_colabora").value;
@@ -374,30 +371,11 @@ function Finalizar() {
     }).then(function() {
         swal('Solicitud enviada', '', 'success').then(function(dimiss) {
             if (dimiss == true) {
-                location.href = "Finalizar.html"
+                location.href = "Finalizar"
             }
         })
     })
 }
-var currentStep = 1;
-$(document).ready(function() {
-    $('#sandbox-container .input-group.date').datepicker({
-        language: "es",
-        autoclose: true,
-        toggleActive: true
-    });
-    $('.li-nav').click(function() {
-        var $targetStep = $($(this).attr('step'));
-        currentStep = parseInt($(this).attr('id').substr(7));
-        if (!$(this).hasClass('disabled')) {
-            $('.li-nav.active').removeClass('active');
-            $(this).addClass('active');
-            $('.setup-content').hide();
-            $targetStep.show();
-        }
-    });
-    $('#navStep1').click();
-});
 
 function step1Next() {
     //You can make only one function for next, and inside you can check the current step

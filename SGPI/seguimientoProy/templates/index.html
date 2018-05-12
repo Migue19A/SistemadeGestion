@@ -28,10 +28,16 @@
                             <form method="POST">
                                 {% csrf_token %}
                             <div class="col-lg-12 form-group">
-                                <input class="form-control" id="Usuario" name="name_user" placeholder="Usuario" type="text">                              
+                                <input class="form-control" id="Usuario" name="name_user" placeholder="Usuario" type="text">      
+                                <label style="font-size: 15px; color:red;">
+                                {{form.name_user.errors}} 
+                                </label>                     
                             </div>
                             <div class="col-lg-12 form-group">
-                                <input class="form-control" id="Contraseña" name="password_user" placeholder="Contraseña" type="password">                               
+                                <input class="form-control" id="Contraseña" name="password_user" placeholder="Contraseña" type="password">
+                                <label style="font-size: 15px; color:red;">       
+                                {{form.password_user.errors}}  
+                                </label>                       
                             </div>
                             <div class="col-lg-12 form-group">
                                 <div class="register">
@@ -42,7 +48,6 @@
                                         {%if error%}
                                             {{error}}
                                         {% endif %}
-                                        {{form.errors}}
                                     </label>
                                 </div>
                                 <br>

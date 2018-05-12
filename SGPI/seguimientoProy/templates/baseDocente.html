@@ -9,6 +9,19 @@
     <script type="text/javascript">
             menu(1,"{% url 'seguimientoProy:Docente' %}","PreRegistro","Proyectos/RegistroProyectos.html","Prorroga/Prorroga.html","Proyectos/Seguimiento/ConsultaEntregables.html","Proyectos/CambioColaboradores.html","Consultas/ConsultaProyectos.html","Consultas/ConsultaProyectosCancelados.html","ConfigCuenta.html", "Historial/historialDocente.html", '{{user.username}}');
         </script>
+    <form method='POST'> 
+        {% csrf_token %}
+    <li style='float: right;' class='has-sub'
+    <li><a href='/'><span class='glyphicon glyphicon-user' style='margin-right: 10px;'></span>{{user.username}}</a>
+    <ul>
+    <li><input href='/accounts/login/' style:'float: right;' name="logout" type="submit" value="..."><span class='glyphicon glyphicon-remove-circle' style='margin-right: 10px;'></span>Cerrar Sesión</input></li>
+    <li><a href='" + ConfiCuenta + "'><span class='glyphicon glyphicon-wrench' style=' margin-right: 10px;'></span>Configuración</a></li>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </div>
+    </form>
 
     {% endblock menuDoc %}
 
@@ -19,7 +32,6 @@
             {% csrf_token %}
                 <div class="center-block" ></div>
                     <h1 class="text_center" style="position:relative; left:25%; font-size:50px;">Bienvenido(a) {{user.username}}</h1>
-                    <input class="btn btn-danger" name="logout" style="position:relative; left:50%; font-size:30px;" value="Salir" type="submit" style>
                 </div>
             </form>        
         </div>

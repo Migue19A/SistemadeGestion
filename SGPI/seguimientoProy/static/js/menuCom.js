@@ -37,7 +37,7 @@ function menu(opcion, inicio, Re, Seg, Pro, Rea, HistorialD, HistorialP, Configu
     document.write("<li style='float: right;' class='has-sub'>");
     document.write("<a href='#'><span class='glyphicon glyphicon-user' style='margin-right: 10px;'></span>"+NombreU+"</a>");
     document.write(" <ul>");
-    document.write("<li><a href='/accounts/login/'><span class='glyphicon glyphicon-remove-circle' style='margin-right: 10px;'></span>Cerrar Sesión</a></li>");
+    //document.write("<li><a href='/accounts/login/'><span class='glyphicon glyphicon-remove-circle' style='margin-right: 10px;'></span>Cerrar Sesión</a></li>");
     document.write("<li><a href='" + Configuracion + "'><span class='glyphicon glyphicon-wrench' style=' margin-right: 10px;'></span>Configuración</a></li>");
     document.write("</ul>");
     document.write("</li>");

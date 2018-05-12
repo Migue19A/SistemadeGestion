@@ -62,7 +62,7 @@ function menuInv(opcion, Inicio, Registros, Etapas, Prorrogas, Reactivacion, Cam
         document.write("class='active'><a href='#'><span class='glyphicon glyphicon-user' style='margin-right: 10px;'></span>"+NombreU+"</a>");
     }
     document.write(" <ul> ");
-    document.write("<li class=''><a href='/accounts/login/'><span class='glyphicon glyphicon-remove-circle' style='color: #fff; margin-right: 10px;'></span>Cerrar Sesión</a> ");
+    //document.write("<li class=''><a href='/accounts/login/'><span class='glyphicon glyphicon-remove-circle' style='color: #fff; margin-right: 10px;'></span>Cerrar Sesión</a> ");
     document.write("</li>");
     document.write("<li class=''><a href='" + ConfiCuenta + "'><span class='glyphicon glyphicon-wrench' style='color: #fff; margin-right: 10px;'></span>Configuración</a> ");
     document.write(" </li>");

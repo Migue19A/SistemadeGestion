@@ -63,11 +63,10 @@ function menuGest(opcion, Inicio, PreRegistro, Seguimiento, Reporte, Prorrogas, 
     } else {
         document.write("<li style='float: right;' class='has-sub'");
         document.write("class='active'><a href=''><span class='glyphicon glyphicon-user' style='margin-right: 3px;'></span>"+NombreU+"</a>");
-    document.write(" <ul>");
     }
     document.write(" <ul> ");
-    document.write("<li class=''><a href='/accounts/login/'><span class='glyphicon glyphicon-remove-circle' style='color: #fff; margin-right: 10px;'></span>Cerrar Sesión</a> ");
-    document.write("</li>");
+    //document.write("<li class=''><a href='/accounts/login/'><span class='glyphicon glyphicon-remove-circle' style='color: #fff; margin-right: 10px;'></span>Cerrar Sesión</a> ");
+    //document.write("</li>");
     document.write("<li class=''><a href='" + Configuracion + "'><span class='glyphicon glyphicon-wrench' style='color: #fff; margin-right: 10px;'></span>Configuración</a> ");
     document.write(" </li>");
     document.write("</ul>");

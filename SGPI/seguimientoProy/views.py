@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.views.generic import TemplateView, FormView, UpdateView, CreateView
-from .forms import PreRegistroForm, LoginForm, UserForm, RCarrera
+from .forms import LoginForm, UserForm, RCarrera, Recepcion, DResponsable
 from .models import Proyecto, Perfil, Carrera
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
@@ -8,13 +8,16 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.template import RequestContext
-
+from django.http import JsonResponse
+from django.utils import timezone
+import time
+from datetime import datetime, timedelta
 # Create your views here.
 
 
 """class Login(FormView):
     template_name = 'index.html'
-    form_class= LoginForm"""
+    form_class= LoginForm
 
 
 class Docente(TemplateView):
@@ -38,7 +41,7 @@ class PreRegistro(FormView):
     form_class = PreRegistroForm
 
 class Finalizar(TemplateView):
-	template_name= "Finalizar.html"
+	template_name= "Finalizar.html"""
 
 """class RegistraUsuarios(CreateView):
 	model= User
@@ -101,17 +104,24 @@ def pruebaRU(request):
 	if 'btnB' in request.POST:
 		doc= Perfil.objects.filter(last_name__startswith=request.POST.get('nDocente', 'Guest (or whatever)'))		
 		contexto = {'docente':doc}
-		return render (request, 'usuarios.html', contexto)
-		print (request.POST.get('seleccion', 'Guest (or whatever)'))
+		if doc:
+			return render (request, 'usuarios.html', contexto)
+		else:
+			return redirect('seguimientoProy:RegistroU')
+			print (request.POST.get('seleccion', 'Guest (or whatever)'))
 
 	for k in doce:
-		if k.username in request.POST and 'baja' in request.POST:
-			print("Dar de baja a", k.first_name)
-			k.is_active= False
-			k.save()
-			return render(request, 'usuarios.html', {'baja': 'Adiós mocoso', 'docentes':doce})
+		while k.username in request.POST and 'baja' in request.POST:
+			print(k.username)
+			if k.username == 'Korina123' or k.username == 'Salome123':
+				return render (request, 'usuarios.html', {'administrador': 'no se puede', 'docentes':doce})
+			else:
+				print("Dar de baja a", k.first_name)
+				k.is_active= False
+				k.save()
+				return render(request, 'usuarios.html', {'baja': 'Adiós mocoso', 'docentes':doce})
 
-		if k.username in request.POST and 'habilitar' in request.POST:
+		while k.username in request.POST and 'habilitar' in request.POST:
 			print("Habilitar a", k.first_name)
 			k.is_active= True
 			k.save()
@@ -119,10 +129,10 @@ def pruebaRU(request):
 		
 
 
-	context = {'f2': f2, 'docentes': doce}
+	contexto = {'f2': f2, 'docentes': doce}
 		
 
-	return render(request, 'usuarios.html', context)
+	return render(request, 'usuarios.html', contexto)
 
 def Docente(request):
 	usu = Perfil.objects.filter(username=request.user)
@@ -189,10 +199,69 @@ def Consejo(request):
 			return redirect('seguimientoProy:Investigacion')
 	return render(request, 'baseComite.html')
 
+def PreRegistro(request):
+	form= Recepcion(request.POST)
+	form1 = DResponsable(request.POST)
+	duplicado= 'No'
+	repeat= 'No'	
+	folios= Proyecto.objects.all()
+	datos_docente = Perfil.objects.get(username= request.user)
+	fecha= time.strftime("%Y-%m-%d")
+	nueva_fecha = datetime.strptime(fecha, '%Y-%m-%d').date()
+	fecha_max = nueva_fecha + timedelta(days=720)
+	fecha_min= nueva_fecha + timedelta(days=180)
+	print(fecha_max)
+	print(fecha_min)
+	folio = ''
+	nombre_pro= ''
+	continuar= ''
+	if folios:
+		continuar= 'Si'
 
+	if request.method == 'POST' :
+		if form.is_valid():
+			print("Entre1")
+			fo = request.POST['folio_proyecto']
+			fi = request.POST['fecha_inicio']
+			ff = request.POST['fecha_fin']
+			nombreP = request.POST['nombre_proyecto']	 	
+			if folios:
+				for fol in folios:	
+					folio = fol.folio_proyecto
+					nombre_pro= fol.nombre_proyecto
+			print(fi)
+			print(ff)
+			if fi == ff or nombre_pro == nombreP:
+				if fi == ff:
+					return JsonResponse({'duplicado':'Si'})
+				else:
+					return JsonResponse({'repeat':'Si'})
 
+			if nombre_pro == nombreP and fi == ff:
+				return JsonResponse({'repeat':'Si', 'duplicado':'Si'})
+			else:			
+				if fo == folio:
+					return JsonResponse({'continuar':'Si'})	
+				form.save()				
 
+		if form1.is_valid():			
+			print("Entre2")
+			form1.save()
 
+	else:
+		form= Recepcion()
+		form1= DResponsable()
+
+	contenido = {'form': form, 'continuar': continuar, 'fecha':fecha, 'dr':datos_docente, 'form1':form1,
+				'fecham': fecha_min, 'fechaM':fecha_max}
+
+	return render(request, 'PreRegistroForm.html', contenido)
+
+def Finalizar(request):
+	return render(request, 'Finalizar.html')
+
+def Imprimir(request):
+	response['Content-Disposition'] = 'attachment; filename="Preregistro.pdf"'
 
 
 

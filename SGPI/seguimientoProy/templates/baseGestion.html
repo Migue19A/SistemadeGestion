@@ -7,7 +7,7 @@
 	
 	<script src="{% static 'js/menuGest.js' %}"></script>
     <script type="text/javascript">
-            menuGest(1,"{% url 'seguimientoProy:Gestion' %}", "PreRegistro/PreRegistro.html","ConsultaEntregables/ConsultaEntregables.html","Reportes/Reportes.html","Prorrogas/Prorroga.html", "ReActivacion/ReActivacion.html", "CambioColaboradores/CambioColaboradores.html", "GestiondeUsuarios", "Consulta de Proyectos/Consulta de Proyectos.html", "ConfiguracionCuenta/ConfiguracionCuenta.html","Calendario/Calendario.html", "Historial/HistorialP.html", "Historial/HistorialD.html", '{{user.username}}');
+            menuGest(1,"{% url 'seguimientoProy:Gestion' %}", "PreRegistro/PreRegistro.html","ConsultaEntregables/ConsultaEntregables.html","Reportes/Reportes.html","Prorrogas/Prorroga.html", "ReActivacion/ReActivacion.html", "CambioColaboradores/CambioColaboradores.html", "{% url 'seguimientoProy:RegistroU' %}", "Consulta de Proyectos/Consulta de Proyectos.html", "ConfiguracionCuenta/ConfiguracionCuenta.html","Calendario/Calendario.html", "Historial/HistorialP.html", "Historial/HistorialD.html", '{{user.username}}');
         </script>    
 {% endblock %}
 {% endblock menu%}

@@ -6,16 +6,15 @@
     </script>
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css"/>
 
-        
-{% block contenido %}
 {{ block.super}}
+{% block contenido %}
 
 <div class="container" style="width: 90%; margin-left: 180px; display: block;">
 
 <h1 class="text-center" style="font-weight: Yu Gothic UI Light; margin-bottom: 4px;">Pre-registro finalizado</h1>
 <script>
 function descargar(){
-  window.open('Preregistro.pdf', '_blank');
+  window.open('Finalizar/Imprimir', '_blank');
 }
 
 var f = new Date();

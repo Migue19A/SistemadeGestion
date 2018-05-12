@@ -1,0 +1,37 @@
+<html>
+<head>
+	<title>BBB</title>
+</head>
+<body>
+	{%if mensaje %}
+		{{mensaje}}
+	{% else %}
+	<form method='POST'>
+		{% csrf_token %}
+		USUARIO: {{f2.username}}<br>
+		EMAIL: {{f2.email}}<br>	
+		CARRERA: {{f2.carrera}}<br>
+		NPERSONAL: {{f2.numero_personal}}<br>
+		SEXO: {{f2.sexo}}<br>
+		TIPO_USUARIO: {{f2.tipo_usuario}}<br>
+		TELEFONO_MOVIL: {{f2.telefono_movil}}<br>
+		ESTUDIOS MAX: {{f2.grado_maximo_estudios}}<br>
+		CONTRASEÑA: {{f2.password}}
+		{{f2.date_joined.as_hidden}}
+        {{f2.last_login.as_hidden}}
+		<input name="enviar" value="Enviar" type="submit">
+	</form>
+	{% endif %}
+
+	{% if f1.errors %}
+		{% for error in f1.errors %}
+			{{f1.errors}}
+		{% endfor %}
+	{% endif %}
+	{% if f2.errors %}
+		{% for error in f2.errors %}
+			{{f2.errors}}
+		{% endfor %}
+	{% endif %}
+</body>
+</html>

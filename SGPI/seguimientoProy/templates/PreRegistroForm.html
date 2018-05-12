@@ -5,11 +5,148 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js">
     </script>
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'js/preRegistro.js' %}" rel="stylesheet" type="text/javascript"/>
     <meta charset="UTF-8">
 
-        
+{{ block.super}}        
 {% block contenido %}
-{{ block.super}}
+<style type="text/css">
+    .djangoerror{
+        font-size: 15px; 
+        color:red;
+    }
+
+</style>
+<script type="text/javascript">
+            var currentStep = 1;
+            $(document).ready(function () {
+                $('.li-nav').click(function () {
+                    var $targetStep = $($(this).attr('step'));
+                    currentStep = parseInt($(this).attr('id').substr(7));
+                    if (!$(this).hasClass('disabled')) {
+                        $('.li-nav.active').removeClass('active');
+                        $(this).addClass('active');
+                        $('.setup-content').hide();
+                        $targetStep.show();
+                    }
+                });
+                $('#navStep1').click();
+            });
+</script> 
+
+<script type="text/javascript">
+    var x= "{{continuar}}";       
+    var cont = 0;
+    console.log(x);
+    if(x=="Si"){
+        step1Next();
+    }
+
+    function incrementar (cont){
+        cont++
+        return cont;
+    }
+
+    function inicio(){       
+       cont=0;
+       var cad1 = "PRE";
+       var cont = incrementar(cont);
+       document.form1.folio_proyecto.value = cad1 + cont;
+    }
+    window.onload = inicio;
+        $(function(){
+        'use strict';
+        $('#recepcion_form').on('submit', function(e){
+            var post_url = $("#recepcion_form").data("post-url");
+            var formData = new FormData(this);
+            $.ajax({
+                url:post_url,
+                type:"POST",
+                data:formData,
+                processData: false,
+                contentType: false,
+                success: function Respuesta(response){
+                    var message = response.duplicado;
+                    var message2 = response.repeat;
+                    console.log(message);
+                    console.log(message2);
+                    if (message== "Si" || message2 == "Si"){
+                        if (message== "Si"){
+                            document.getElementById('ErrorFechas').innerHTML='Estas fechas no deben coincidir';
+
+                        }else{
+                            document.getElementById('ErrorFechas').innerHTML='';
+                        }                        
+                        if (message2 == "Si"){
+                            document.getElementById('ErrorNombre').innerHTML='Ya existe un proyecto con este nombre';
+                        }else{
+                            document.getElementById('ErrorNombre').innerHTML='';
+                        }                   
+                    }else{
+                        $('#btnSig').attr("disabled", true);
+                        var foliopro = document.getElementById("foliop").value;
+                        document.form2.id_folio_proyecto.value= foliopro;
+                        console.log(foliopro)
+                        step1Next();
+                    }
+                } 
+
+            });
+            return false;
+        });            
+    });
+</script>
+
+<script type="text/javascript">
+    $(function(){
+        'use strict';
+        $('#responsable_form').on('submit', function(e){
+                e.preventDefault();
+                var post_url = $("#responsable_form").data("post-url");
+                var formData = new FormData(this);
+
+                $.ajax({
+                    url:post_url,
+                    type:"POST",
+                    data:formData,
+                    processData: false,
+                    contentType: false,
+                    success: step2Next()
+                });
+            });
+        });
+    /*function cargar(){
+         var post_url = $("#responsable_form").data("post-url");
+         var formData = new FormData(this);
+
+                $.ajax({
+                    url:post_url,
+                    type:"POST",
+                    data:formData,
+                    processData: false,
+                    contentType: false,
+                    success: step2Next()
+                });
+        }*/
+</script>
+
+<script type="text/javascript">
+            (function(a){a.createModal=function(b){defaults={title:"",message:"Your Message Goes Here!",closeButton:true,scrollable:false};var b=a.extend({},defaults,b);var c=(b.scrollable===true)?'style="max-height: 420px;overflow-y: auto;"':"";html='<div class="modal fade" id="myModal">';html+='<div class="modal-dialog modal-lg">';html+='<div class="modal-content">';html+='<div class="modal-header">';html+='<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>';if(b.title.length>0){html+='<h4 class="modal-title">'+b.title+"</h4>"}html+="</div>";html+='<div class="modal-body" '+c+">";html+=b.message;html+="</div>";html+='<div class="modal-footer">';if(b.closeButton===true){html+='<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>'}html+="</div>";html+="</div>";html+="</div>";html+="</div>";a("body").prepend(html);a("#myModal").modal().on("hidden.bs.modal",function(){a(this).remove()})}})(jQuery);
+
+            $(function(){    
+                $('.view-pdf').on('click',function(){
+                    var pdf_link = $(this).attr('href');
+                    var iframe = '<div class="iframe-container"><iframe src="'+pdf_link+'"></iframe></div>'
+                    $.createModal({
+                    title:'Pre registro completo',
+                    message: iframe,
+                    closeButton:true,
+                    scrollable:false
+                    });
+                    return false;        
+                });    
+            })
+</script>
 
 <div class="container">
     <div class="col-lg-9" >
@@ -80,41 +217,62 @@
                             <h2 class="text-center">Pre-Registro de Proyecto de Investigación y Desarrollo Tecnológico</h2> 
                         </div>
                         <div class="panel-body">
-                            <form class="container" onsubmit="cambiarColor(1)" method="GET" style="margin-left: 10px; width: 100%;">      
-
+                            <form id="recepcion_form" name="form1" class="container" method="POST" style="margin-left: 10px; width: 100%;" data-post-url="{% url 'seguimientoProy:preRegistro' %}">    
+                                {% csrf_token %}  
                                 <div class="row setup-content" id="step-1">
                                     <div class="col-md-12 col-lg-12">
                                         <div class="col-md-12">
+                                            <h2 style="text-align: center; margin-top: -20px; margin-bottom: 50px;">Recepción</h2>
                                             <div class="row">
+                                                {{form.folio_proyecto}}
+                                                <label class="djangoerror">
+                                                {{form.folio_proyecto.errors}}
+                                                </label>
                                                 <div class="form-group col-md-3 col-lg-6">
                                                     <div class="input-group date">
-                                                <label>*Fecha de presentación</label>       
-                                                {{ form.fecha_presentacion}}
+                                                <label>*Fecha de presentación</label>   
+                                                <input type="date" class="form-control" id="fechaPresentacion" required name = "fecha_presentacion" value="{{fecha}}" readonly>
+                                                <label class="djangoerror">
+                                                {{form.fecha_presentacion.errors}}  
+                                                </label> 
                                             </div>
                                                 </div>
                                                 <div class="form-group col-md-5 col-lg-5">                                 <label>*Convocatorio CPR</label>        
-                                                    {{ form.convocatoriaCPR}}
+                                                    {{form.convocatoris_CPR}}
+                                                    <label class="djangoerror">
+                                                    {{form.convocatoris_CPR.errors}}  
+                                                    </label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-4">                                                    
                                                     <div class="row">
                                                         <label>*Tipo de investigación</label>
-                                                        {{ form.tipoInvest}} 
+                                                        {{form.tipo_investigacion}}
+
+                                                        <label class="djangoerror">
+                                                        {{form.tipo_investigacion.errors}}  
+                                                        </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8">                                                
                                                     <div class="row">
                                                         <label>*Tipo de sector</label>
-                                                        {{ form.tipoSector}}
+                                                        {{ form.tipo_sector}}
                                                     <label for="id_tipoSector_5"><input id="id_tipoSector_5" onchange="habilitarEspecifique()" type="checkbox" name="tipoSector" value="otro">Otro</label>
+                                                    <label class="djangoerror">
+                                                    {{form.tipo_sector.errors}}  
+                                                    </label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12 form-group"> 
                                                     <label>Especifique</label>
-                                                    {{ form.especifique}}
+                                                    {{form.otro_sector}}
+                                                    <label class="djangoerror">
+                                                    {{form.otro_sector.errors}}  
+                                                    </label>
                                                 </div>
                                             </div>
                                             
@@ -122,12 +280,19 @@
                                             <div class="row">
                                                 <div class="col-md-12 form-group">
                                                     <label>*Línea de investigación</label>
-                                                    {{form.lineaInv}}
+                                                    {{form.linea_investigacion}}
+                                                    <label class="djangoerror">
+                                                    {{form.linea_investigacion.errors}}  
+                                                    </label>
                                                 </div>    
                                             </div> 
                                             <div class="row">
                                                 <div class="col-md-12">                             <label>*Nombre del proyecto</label>
-                                                    {{form.nombreProy}}
+                                                    {{form.nombre_proyecto}}
+                                                    <label>Total de caracteres: 200</label><br>
+                                                    <label id="ErrorNombre" class="djangoerror">
+                                                    {{form.nombre_proyecto.errors}}  
+                                                    </label>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -137,16 +302,23 @@
                                                 <div class="col-md-5 form-group">
                                                 <div class="input-group date">
                                                 <label>Inicio</label>    
-                                                {{ form.fecha_inicio}}
+                                                <input type="date" value="{{fecha}}" class="form-control" required name="fecha_inicio" readonly min="{{fecha}}">
                                                 </div>
+                                                <label id="ErrorFechas" class="djangoerror">
+                                                {{form.fecha_inicio.errors}}          
+                                                {{duplicado}}   
+                                                </label>
                                                 </div>
                                                 <div class=" input-group date">
-                                                <label>Fin</label>
-                                                {{ form.fecha_fin}}
+                                                <label>Fin {{fecham}}</label>
+                                                <input type="date" class="form-control" required name="fecha_fin" min="{{fecham}}" max="{{fechaM}}">
                                                 </div>
+                                                <label class="djangoerror">
+                                                {{form.fecha_fin.errors}}  
+                                                </label>
                                                 </div>                                           
                                             <div class="row">
-                                                <input onclick="step1Next()" class="btn btn-primary" value="Siguiente" style="float: right;">
+                                                <input id="btnSig" type="submit" class="btn btn-primary" value="Siguiente" name="btnSgt" style="float: right;" >
                                             </div>
                                         </div>
                                     </div>
@@ -154,69 +326,66 @@
                             </form>
                             
                             <!--RESPONSABLE-->
-                            
-                            <form class="container" style="width: 100%;">
+                            <form id="responsable_form" name="form2" class="container" method="POST" style="margin-left: 10px; width: 100%;" data-post-url="{% url 'seguimientoProy:preRegistro' %}">
+                                {% csrf_token %} 
                                 <div class="row setup-content" id="step-2">
                                     <div class="col-md-12">
                                         <div class="col-md-12">
                                             <h2 style="text-align: center; margin-top: -20px; margin-bottom: 50px;">Responsable</h2>
-                                            <div class="form-group col-md-4">
-                                                <label>*Apellido paterno</label>
-                                                {{form.apPat}}
+                                            <input type="text" name="id_folio_proyecto" class="hidden" readonly>
+                                            <input typw="number" readonly name="id_docente" class="hidden" value="{{user.id}}">
+                                            <div class="form-group col-md-5" readonly>
+                                                <label>*Apellidos</label>
+                                                <input type="text" class="form-control" readonly value="{{user.last_name}}"> 
                                             </div>
-                                            <div class="form-group col-md-4">
-                                                <label>*Apellido materno</label>
-                                                {{form.apMat}}
-                                            </div>
-                                            <div class="form-group col-md-4">
+                                            <div class="form-group col-md-5" readonly>
                                                 <label>*Nombre(s)</label>
-                                                {{form.nombreDoc}}
+                                                <input type="text" class="form-control" readonly value="{{user.first_name}}">
                                             </div>
-                                            <div class="form-group col-md-4">
+                                            <div class="form-group col-md-4" readonly>      
                                                 <label>*Grado máximo de estudios</label>
-                                                {{form.estudiosMax}}
+                                                <input type="text" class="form-control" readonly value="{{dr.grado_maximo_estudios}}">
                                             </div>
-                                            <div class="form-group col-md-6">
+                                            <div class="form-group col-md-6" readonly>
                                                 <label>*Academia a la que pertenece</label>
-                                                {{form.academia}}
+                                                <input type="text" class="form-control" readonly value="{{dr.carrera}}">                  
                                             </div>
-                                            <div class="form-group col-md-2">
+                                            <div class="form-group col-md-2" readonly>
                                                 <label>*N° de personal</label>
-                                                {{form.personal}}
+                                                <input type="text" class="form-control" readonly value="{{dr.numero_personal}}">
                                             </div>
-                                            <div class="form-group col-md-3">
+                                            <div class="form-group col-md-3" readonly>
                                                 <label>Móvil</label>
-                                                {{form.movil}}
-                                            </div>
+                                                <input type="text" class="form-control" readonly value="{{dr.telefono_movil}}"></div>
                                             <div class="form-group col-md-4">
                                                 <label>*Correo institucional</label>
-                                                {{form.correoI}}
+                                                <input type="email" class="form-control" readonly value="{{user.email}}">    
                                             </div>
                                             <div class="form-group col-md-3">
                                                 <label>Correo alternativo</label>
-                                                {{form.correoA}}
+                                                <input type="email" class="form-control">
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label>*Descripción de las principales actividades a desarrollar en el proyecto</label>
-                                                {{form.actividades}}
+                                                <textarea class="form-control" name="descricpion_actividades" required rows="5" cols="200"></textarea>
                                             </div>
                                             <div class="form-group col-md-3">
                                                 <label>*Palabras clave:</label>
                                             </div>
                                             <div class="form-group col-md-3">
                                                 <label>*(1)</label>
-                                                {{form.palabrasClave}}
+                                                <input class="form-control" onKeyPress="return palabrasClave(event);" name="palabra_clave1" type="text" required/>
                                             </div>
                                             <div class="form-group col-md-3">
                                                 <label>*(2)</label>
-                                                {{form.palabrasClave}}
+                                                <input class="form-control" onKeyPress="return palabrasClave(event);" name="palabra_clave2" type="text" required/>
                                             </div>
                                             <div class="form-group col-md-3">
                                                 <label>*(3)</label>
-                                                {{form.palabrasClave}}
+                                                <input class="form-control" onKeyPress="return palabrasClave(event);" name="palabra_clave3" type="text" required/>
                                             </div>
                                             <input onclick="prevStep()" class="btn btn-default" value="Regresar">
-                                            <input onclick="step2Next()" class="btn btn-primary" value="Siguiente" style="float: right;">
+                                            <input type="submit" class="btn btn-primary" value="Siguiente" name="botonS2" style="float: right;">
                                         </div>
                                     </div>
                                 </div>
@@ -987,7 +1156,7 @@
                                             <div class="form-group col-md-12">
                                                 <input onclick="prevStep()" class="btn btn-default" value="Regresar">
                                                 <input class="btn btn-primary" value="Finalizar" style="float: right;" onclick="Finalizar()">
-                                                <a disabled="true" class="btn btn-info view-pdf" style="float: right; margin-right: 10px;">Vista previa</a>
+                                                <a class="btn btn-info view-pdf" style="float: right; margin-right: 10px;">Vista previa</a>
                                             </div>    
                                         </div>
                                     </div>
