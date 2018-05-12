@@ -2,6 +2,27 @@ from django.db import models
 from django.contrib.auth.models import User, AbstractUser
 # Create your models here.
 
+class TipoInvestigacion(models.Model):
+    id_tipo_investigacion = models.IntegerField(primary_key=True)
+    descripcion_tipo_investigacion = models.CharField(max_length=45)
+
+    def __str__(self):
+        return '{}'.format(self.descripcion_tipo_investigacion)
+
+class TipoSector(models.Model):
+    id_tipo_sector = models.IntegerField(primary_key=True)
+    descripcion_sector = models.CharField(max_length=45)
+
+    def __str__(self):
+        return '{}'.format(self.descripcion_sector)
+
+
+class LineaInvestigacion(models.Model):
+    id_linea_investigacion = models.IntegerField(primary_key=True)
+    descripcion_linea = models.CharField(max_length=45)
+
+    def __str__(self):
+        return '{}'.format(self.descripcion_linea)
 
 class Proyecto(models.Model):
     folio_proyecto = models.CharField(primary_key=True, max_length=7)
@@ -25,19 +46,6 @@ class Proyecto(models.Model):
         LineaInvestigacion, on_delete=models.CASCADE)
 
 
-class TipoInvestigacion(models.Model):
-    id_tipo_investigacion = models.IntegerField(primary_key=True)
-    descripcion_tipo_investigacion = models.CharField(max_length=45)
-
-
-class TipoSector(models.Model):
-    id_tipo_sector = models.IntegerField(primary_key=True)
-    descripcion_sector = models.CharField(max_length=45)
-
-
-class LineaInvestigacion(models.Model):
-    id_linea_investigacion = models.IntegerField(primary_key=True)
-    descripcion_linea = models.CharField(max_length=45)
 
 
 class ProyectosCancelados(models.Model):

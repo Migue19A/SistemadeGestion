@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.views.generic import TemplateView, FormView, UpdateView, CreateView
-from .forms import LoginForm, UserForm, RCarrera
+from .forms import LoginForm, UserForm, RCarrera, NuevoPreregistro
 from .models import Proyecto, Perfil, Carrera
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
@@ -199,63 +199,31 @@ def Consejo(request):
 			return redirect('seguimientoProy:Investigacion')
 	return render(request, 'baseComite.html')
 
-"""def PreRegistro(request):
-	form= Recepcion(request.POST)
-	form1 = DResponsable(request.POST)
-	duplicado= 'No'
-	repeat= 'No'	
-	folios= Proyecto.objects.all()
-	datos_docente = Perfil.objects.get(username= request.user)
+def Preregistro(request):
+	if 'logout' in request.POST:
+		logout(request)
+		return redirect(Loguear)
+	form = NuevoPreregistro(request.POST)
+	proyect = Proyecto.objects.all()
 	fecha= time.strftime("%Y-%m-%d")
-	nueva_fecha = datetime.strptime(fecha, '%Y-%m-%d').date()
-	fecha_max = nueva_fecha + timedelta(days=720)
-	fecha_min= nueva_fecha + timedelta(days=180)
-	print(fecha_max)
-	print(fecha_min)
-	folio = ''
-	nombre_pro= ''
-	continuar= ''
-	if folios:
-		continuar= 'Si'
-
-	if request.method == 'POST' :
+	if request.method == "POST":
 		if form.is_valid():
-			print("Entre1")
-			fo = request.POST['folio_proyecto']
-			fi = request.POST['fecha_inicio']
-			ff = request.POST['fecha_fin']
-			nombreP = request.POST['nombre_proyecto']	 	
-			if folios:
-				for fol in folios:	
-					folio = fol.folio_proyecto
-					nombre_pro= fol.nombre_proyecto
-			print(fi)
-			print(ff)
-			if fi == ff or nombre_pro == nombreP:
-				if fi == ff:
-					return JsonResponse({'duplicado':'Si'})
-				else:
-					return JsonResponse({'repeat':'Si'})
-
-			if nombre_pro == nombreP and fi == ff:
-				return JsonResponse({'repeat':'Si', 'duplicado':'Si'})
-			else:			
-				if fo == folio:
-					return JsonResponse({'continuar':'Si'})	
-				form.save()				
-
-		if form1.is_valid():			
-			print("Entre2")
-			form1.save()
-
+			for i in proyecto:
+				i.fecha_presentacion = request.POST['fecha_presentacion']
+				i.convocatoris_CPR = request.POST['convocatoris_CPR']
+				i.tipoInvestigacion = request.POST['tipoInvestigacion']
+				i.tipoSector = request.POST['tipoSector']
+				i.lineaInvestigacion= request.POST['lineaInvestigacion']
+				i.nombre_proyecto = request.POST['nombre_proyecto']
+				i.inicio = request.POST['inicio']
+				i.fin = request.POST['fin']
+				i.save()
 	else:
-		form= Recepcion()
-		form1= DResponsable()
+		form = NuevoPreregistro()
 
-	contenido = {'form': form, 'continuar': continuar, 'fecha':fecha, 'dr':datos_docente, 'form1':form1,
-				'fecham': fecha_min, 'fechaM':fecha_max}
+	return render(request, "PreRegistroForm.html", {'fecha':fecha, 'form':form}) 
+		
 
-	return render(request, 'PreRegistroForm.html', contenido)"""
 
 def Finalizar(request):
 	return render(request, 'Finalizar.html')

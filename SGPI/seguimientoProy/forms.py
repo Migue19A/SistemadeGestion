@@ -30,7 +30,7 @@ class REstado(forms.ModelForm):
         model= EstadoProyecto
         fields= '__all__'
 
-class Recepcion(forms.ModelForm):
+class NuevoPreregistro(forms.ModelForm):
     class Meta:
         model= Proyecto
         fields = '__all__'
@@ -40,15 +40,14 @@ class Recepcion(forms.ModelForm):
                     'class': 'hidden',
                     'id': 'foliop'
                 }),
+
+
             'convocatoris_CPR': forms.TextInput(attrs= {
                     "readonly":"readonly",
                     'class': 'form-control',
                     'id':'cpr'
                     #'value': '123QWE'
                 }), 
-            'tipo_investigacion': forms.CheckboxSelectMultiple(),
-            'tipo_sector':forms.CheckboxSelectMultiple(),
-            'linea_investigacion':forms.CheckboxSelectMultiple(),
             'nombre_proyecto': forms.Textarea(attrs= {
                 'type': 'text',
                 'rows': '5',
