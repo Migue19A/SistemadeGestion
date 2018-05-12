@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Proyecto, Carrera, Perfil, EstadoProyecto, Responsable
+from .models import Proyecto, Carrera, Perfil, EstadoProyecto
 from django.contrib.auth.forms import UserCreationForm
 
 class LoginForm(forms.Form):
@@ -63,10 +63,7 @@ class Recepcion(forms.ModelForm):
                 })
         }
 
-class DResponsable(forms.ModelForm):
-    class Meta:
-        model= Responsable
-        fields= '__all__'
+
 
 
 

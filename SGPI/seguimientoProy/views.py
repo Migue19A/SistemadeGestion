@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.views.generic import TemplateView, FormView, UpdateView, CreateView
-from .forms import LoginForm, UserForm, RCarrera, Recepcion, DResponsable
+from .forms import LoginForm, UserForm, RCarrera
 from .models import Proyecto, Perfil, Carrera
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
@@ -199,7 +199,7 @@ def Consejo(request):
 			return redirect('seguimientoProy:Investigacion')
 	return render(request, 'baseComite.html')
 
-def PreRegistro(request):
+"""def PreRegistro(request):
 	form= Recepcion(request.POST)
 	form1 = DResponsable(request.POST)
 	duplicado= 'No'
@@ -255,7 +255,7 @@ def PreRegistro(request):
 	contenido = {'form': form, 'continuar': continuar, 'fecha':fecha, 'dr':datos_docente, 'form1':form1,
 				'fecham': fecha_min, 'fechaM':fecha_max}
 
-	return render(request, 'PreRegistroForm.html', contenido)
+	return render(request, 'PreRegistroForm.html', contenido)"""
 
 def Finalizar(request):
 	return render(request, 'Finalizar.html')
