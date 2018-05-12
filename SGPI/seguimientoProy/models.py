@@ -1,7 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
-from django.utils import timezone
-
+from django.contrib.auth.models import User, AbstractUser
 # Create your models here.
 
 
@@ -20,50 +18,6 @@ class Proyecto(models.Model):
     objetivo_general = models.CharField(max_length=45)
     objetivo_especifico = models.CharField(max_length=45)
     resultados = models.CharField(max_length=45)
-
-class TipoInvestigacion(models.Model):
-    id_tipo_investigacion = models.IntegerField(primary_key=True)
-    descripcion_tipo_investigacion = models.CharField(max_length=45)
-
-    def __str__ (self):
-        return '{}'.format(self.descripcion_tipo_investigacion)
-
-
-class TipoSector(models.Model):
-    id_tipo_sector = models.IntegerField(primary_key=True)
-    descripcion_sector = models.CharField(max_length=45)
-
-    def __str__ (self):
-        return '{}'.format(self.descripcion_sector)
-
-
-class LineaInvestigacion(models.Model):
-    id_linea_investigacion = models.IntegerField(primary_key=True)
-    descripcion_linea = models.CharField(max_length=60)
-
-    def __str__ (self):
-        return '{}'.format(self.descripcion_linea)
-
-
-"""class Proyecto(models.Model):
-    folio_proyecto = models.CharField(primary_key=True, max_length=7)
-    fecha_presentacion = models.DateTimeField(default= timezone.now, blank=False, null=False)
-    convocatoris_CPR = models.CharField(max_length=45, null=True, blank=True)
-    tipo_investigacion = models.ManyToManyField(TipoInvestigacion, blank=True)
-    tipo_sector = models.ManyToManyField(TipoSector, blank=True)
-    otro_sector = models.CharField(max_length=20, null=True, blank=True)
-    linea_investigacion= models.ManyToManyField(LineaInvestigacion, blank= True)
-    nombre_proyecto = models.CharField(max_length=200, blank= False, null= False)
-    fecha_inicio = models.DateTimeField(default= timezone.now, null=False, blank=False)
-    fecha_fin = models.DateTimeField(null=False, blank=False)"""
-
-class Responsable(models.Model):
-    id_folio_proyecto = models.ForeignKey(Proyecto, null=False, blank=False, on_delete=models.CASCADE)
-    id_docente = models.OneToOneField(User, null=False, blank=False, on_delete=models.CASCADE)
-    descricpion_actividades= models. CharField(max_length=200, null=False, blank=False)
-    palabra_clave1 = models.CharField(max_length=45, null=False, blank=False)
-    palabra_clave2 = models.CharField(max_length=45, null=False, blank=False)
-    palabra_clave3 = models.CharField(max_length=45, null=False, blank=False) 
 
 
 class ProyectosCancelados(models.Model):
@@ -161,6 +115,7 @@ class Perfil (User):
     grado_maximo_estudios = models.CharField(max_length=45)
     telefono_movil = models.IntegerField(null=True, blank=True)
     carrera = models.ForeignKey(Carrera, null=False, blank=True, on_delete=models.CASCADE)
+ 
 
 class ColaboradorDocente(models.Model):
     folio_proyecto = models.ForeignKey(
@@ -225,7 +180,8 @@ class MetasAlumnos(models.Model):
         Alumno, null=False, blank=False, on_delete=models.CASCADE)
     folio_proyecto = models.ForeignKey(Proyecto, null=False,
                                        blank=False, on_delete=models.CASCADE)
-    catalogo_metas_alumno = models.ForeignKey(CatMetasAlumno, null=False, blank=False, on_delete=models.CASCADE)
+    catalogo_metas_alumno = models.ForeignKey(
+        CatMetasAlumno, null=False, blank=False, on_delete=models.CASCADE)
 
 
 class Recepcion(models.Model):
@@ -234,6 +190,22 @@ class Recepcion(models.Model):
     nombre_recibio = models.CharField(max_length=45)
     folio_proyecto = models.ForeignKey(Proyecto, null=False,
                                        blank=False, on_delete=models.CASCADE)
+
+
+class TipoInvestigacion(models.Model):
+    id_tipo_investigacion = models.IntegerField(primary_key=True)
+    descripcion_tipo_investigacion = models.CharField(max_length=45)
+
+
+class TipoSector(models.Model):
+    id_tipo_sector = models.IntegerField(primary_key=True)
+    descripcion_sector = models.CharField(max_length=45)
+
+
+class LineaInvestigacion(models.Model):
+    id_linea_investigacion = models.IntegerField(primary_key=True)
+    descripcion_linea = models.CharField(max_length=45)
+
 
 class Prorroga(models.Model):
     id_prorroga = models.IntegerField(primary_key=True)
