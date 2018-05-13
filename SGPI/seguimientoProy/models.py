@@ -148,6 +148,8 @@ class Perfil (User):
         null=False,
         blank=True,
         on_delete=models.CASCADE)
+    def __str__(self):
+        return '{} {}'.format(self.first_name, self.last_name)
 
 
 class ColaboradorDocente(models.Model):

@@ -35,12 +35,25 @@
 </script> 
 
 <script type="text/javascript">
-    var x= "{{continuar}}";       
-    var cont = 0;
-    console.log(x);
-    if(x=="Si"){
-        step1Next();
-    }
+    $(document).ready(function()
+    {
+        $('#btnSig').click(function()
+        {
+            var folio=$('#foliop').val();
+            $('input[name=folio_proyecto]').each(function()
+                {
+                    $(this).val(folio);
+                });
+        });
+    });
+    
+    
+    // var x= "{{continuar}}";       
+    // var cont = 0;
+    // console.log(x);
+    // if(x=="Si"){
+    //     step1Next();
+    // }
 
     function incrementar (cont){
         cont++
@@ -48,59 +61,76 @@
     }
 
     function inicio(){       
-       cont=0;
+       cont=5;
        var cad1 = "PRE";
        var cont = incrementar(cont);
        document.form1.folio_proyecto.value = cad1 + cont;
-    }
+     }
     window.onload = inicio;
-        $(function(){
-        'use strict';
-        $('#recepcion_form').on('submit', function(e){
-            var post_url = $("#recepcion_form").data("post-url");
-            var formData = new FormData(this);
-            $.ajax({
-                url:post_url,
-                type:"POST",
-                data:formData,
-                processData: false,
-                contentType: false,
-                success: function Respuesta(response){
-                    var message = response.duplicado;
-                    var message2 = response.repeat;
-                    console.log(message);
-                    console.log(message2);
-                    if (message== "Si" || message2 == "Si"){
-                        if (message== "Si"){
-                            document.getElementById('ErrorFechas').innerHTML='Estas fechas no deben coincidir';
+    //     $(function(){
+    //     'use strict';
+    //     $('#recepcion_form').on('submit', function(e){
+    //         var post_url = $("#recepcion_form").data("post-url");
+    //         var formData = new FormData(this);
+    //         $.ajax({
+    //             url:post_url,
+    //             type:"POST",
+    //             data:formData,
+    //             processData: false,
+    //             contentType: false,
+    //             success: function Respuesta(response){
+    //                 var message = response.duplicado;
+    //                 var message2 = response.repeat;
+    //                 console.log(message);
+    //                 console.log(message2);
+    //                 if (message== "Si" || message2 == "Si"){
+    //                     if (message== "Si"){
+    //                         document.getElementById('ErrorFechas').innerHTML='Estas fechas no deben coincidir';
 
-                        }else{
-                            document.getElementById('ErrorFechas').innerHTML='';
-                        }                        
-                        if (message2 == "Si"){
-                            document.getElementById('ErrorNombre').innerHTML='Ya existe un proyecto con este nombre';
-                        }else{
-                            document.getElementById('ErrorNombre').innerHTML='';
-                        }                   
-                    }else{
-                        $('#btnSig').attr("disabled", true);
-                        var foliopro = document.getElementById("foliop").value;
-                        document.form2.id_folio_proyecto.value= foliopro;
-                        console.log(foliopro)
-                        step1Next();
-                    }
-                } 
+    //                     }else{
+    //                         document.getElementById('ErrorFechas').innerHTML='';
+    //                     }                        
+    //                     if (message2 == "Si"){
+    //                         document.getElementById('ErrorNombre').innerHTML='Ya existe un proyecto con este nombre';
+    //                     }else{
+    //                         document.getElementById('ErrorNombre').innerHTML='';
+    //                     }                   
+    //                 }else{
+    //                     $('#btnSig').attr("disabled", true);
+    //                     var foliopro = document.getElementById("foliop").value;
+    //                     document.form2.folio_proyecto.value= foliopro;
+    //                     console.log(foliopro)
+    //                     step1Next();
+    //                 }
+    //             } 
 
-            });
-            return false;
-        });            
-    });
+    //         });
+    //         return false;
+    //     });            
+    // });
 </script>
 
 <script type="text/javascript">
     $(function(){
         'use strict';
-        $('#responsable_form').on('submit', function(e){
+        $('#recepcion_form').on('submit', function(e){
+                e.preventDefault();
+                var post_url = $("#recepcion_form").data("post-url");
+                var formData = new FormData(this);
+
+                $.ajax({
+                    url:post_url,
+                    type:"POST",
+                    data:formData,
+                    processData: false,
+                    contentType: false,
+                    success: step1Next()
+                });
+            });
+        });
+
+    function cargar(){
+         $('#responsable_form').on('submit', function(e){
                 e.preventDefault();
                 var post_url = $("#responsable_form").data("post-url");
                 var formData = new FormData(this);
@@ -114,10 +144,12 @@
                     success: step2Next()
                 });
             });
-        });
-    /*function cargar(){
-         var post_url = $("#responsable_form").data("post-url");
-         var formData = new FormData(this);
+        }
+        function cargarColaborador(){
+         $('#colaborador_form').on('submit', function(e){
+                e.preventDefault();
+                var post_url = $("#colaborador_form").data("post-url");
+                var formData = new FormData(this);
 
                 $.ajax({
                     url:post_url,
@@ -125,9 +157,10 @@
                     data:formData,
                     processData: false,
                     contentType: false,
-                    success: step2Next()
+                    success: step3Next()
                 });
-        }*/
+            });
+        }
 </script>
 
 <script type="text/javascript">
@@ -225,44 +258,28 @@
                                             <h2 style="text-align: center; margin-top: -20px; margin-bottom: 50px;">Recepción</h2>
                                             <div class="row">
                                                 {{form.folio_proyecto}}
-                                                <label class="djangoerror">
-                                                {{form.folio_proyecto.errors}}
-                                                </label>
                                                 <div class="form-group col-md-3 col-lg-6">
                                                     <div class="input-group date">
                                                 <label>*Fecha de presentación</label>   
                                                 <input type="date" class="form-control" id="fechaPresentacion" required name = "fecha_presentacion" value="{{fecha}}" readonly>
-                                                <label class="djangoerror">
-                                                {{form.fecha_presentacion.errors}}  
-                                                </label> 
                                             </div>
                                                 </div>
                                                 <div class="form-group col-md-5 col-lg-5">                                 <label>*Convocatorio CPR</label>        
                                                     {{form.convocatoris_CPR}}
-                                                    <label class="djangoerror">
-                                                    {{form.convocatoris_CPR.errors}}  
-                                                    </label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-4">                                                    
                                                     <div class="row">
                                                         <label>*Tipo de investigación</label>
-                                                        {{form.tipo_investigacion}}
-
-                                                        <label class="djangoerror">
-                                                        {{form.tipo_investigacion.errors}}  
-                                                        </label>
+                                                        {{form.tipoInvestigacion}}
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8">                                                
                                                     <div class="row">
                                                         <label>*Tipo de sector</label>
-                                                        {{ form.tipo_sector}}
+                                                        {{ form.tipoSector}}
                                                     <label for="id_tipoSector_5"><input id="id_tipoSector_5" onchange="habilitarEspecifique()" type="checkbox" name="tipoSector" value="otro">Otro</label>
-                                                    <label class="djangoerror">
-                                                    {{form.tipo_sector.errors}}  
-                                                    </label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -270,9 +287,6 @@
                                                 <div class="col-md-12 form-group"> 
                                                     <label>Especifique</label>
                                                     {{form.otro_sector}}
-                                                    <label class="djangoerror">
-                                                    {{form.otro_sector.errors}}  
-                                                    </label>
                                                 </div>
                                             </div>
                                             
@@ -280,19 +294,14 @@
                                             <div class="row">
                                                 <div class="col-md-12 form-group">
                                                     <label>*Línea de investigación</label>
-                                                    {{form.linea_investigacion}}
-                                                    <label class="djangoerror">
-                                                    {{form.linea_investigacion.errors}}  
-                                                    </label>
+                                                    {{form.lineaInvestigacion}}
                                                 </div>    
                                             </div> 
                                             <div class="row">
                                                 <div class="col-md-12">                             <label>*Nombre del proyecto</label>
                                                     {{form.nombre_proyecto}}
                                                     <label>Total de caracteres: 200</label><br>
-                                                    <label id="ErrorNombre" class="djangoerror">
-                                                    {{form.nombre_proyecto.errors}}  
-                                                    </label>
+                                                
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -302,20 +311,15 @@
                                                 <div class="col-md-5 form-group">
                                                 <div class="input-group date">
                                                 <label>Inicio</label>    
-                                                <input type="date" value="{{fecha}}" class="form-control" required name="fecha_inicio" readonly min="{{fecha}}">
+                                                <input type="date" value="{{fecha}}" class="form-control" required name="inicio" readonly min="{{fecha}}">
                                                 </div>
-                                                <label id="ErrorFechas" class="djangoerror">
-                                                {{form.fecha_inicio.errors}}          
-                                                {{duplicado}}   
+                                               
                                                 </label>
                                                 </div>
                                                 <div class=" input-group date">
                                                 <label>Fin {{fecham}}</label>
-                                                <input type="date" class="form-control" required name="fecha_fin" min="{{fecham}}" max="{{fechaM}}">
+                                                <input type="date" class="form-control" required name="fin" min="{{fecham}}" max="{{fechaM}}">
                                                 </div>
-                                                <label class="djangoerror">
-                                                {{form.fecha_fin.errors}}  
-                                                </label>
                                                 </div>                                           
                                             <div class="row">
                                                 <input id="btnSig" type="submit" class="btn btn-primary" value="Siguiente" name="btnSgt" style="float: right;" >
@@ -332,8 +336,8 @@
                                     <div class="col-md-12">
                                         <div class="col-md-12">
                                             <h2 style="text-align: center; margin-top: -20px; margin-bottom: 50px;">Responsable</h2>
-                                            <input type="text" name="id_folio_proyecto" class="hidden" readonly>
-                                            <input typw="number" readonly name="id_docente" class="hidden" value="{{user.id}}">
+                                            <input type="text" name="folio_proyecto"  readonly>
+                                            <input typw="number" readonly name="id_docente"  value="{{user.id}}">
                                             <div class="form-group col-md-5" readonly>
                                                 <label>*Apellidos</label>
                                                 <input type="text" class="form-control" readonly value="{{user.last_name}}"> 
@@ -367,7 +371,7 @@
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label>*Descripción de las principales actividades a desarrollar en el proyecto</label>
-                                                <textarea class="form-control" name="descricpion_actividades" required rows="5" cols="200"></textarea>
+                                                <textarea class="form-control" name="actividades_responsable" required rows="5" cols="200"></textarea>
                                             </div>
                                             <div class="form-group col-md-3">
                                                 <label>*Palabras clave:</label>
@@ -385,7 +389,7 @@
                                                 <input class="form-control" onKeyPress="return palabrasClave(event);" name="palabra_clave3" type="text" required/>
                                             </div>
                                             <input onclick="prevStep()" class="btn btn-default" value="Regresar">
-                                            <input type="submit" class="btn btn-primary" value="Siguiente" name="botonS2" style="float: right;">
+                                            <input type="submit" class="btn btn-primary" value="Siguiente" name="botonS2" style="float: right;" onclick="cargar()">
                                         </div>
                                     </div>
                                 </div>
@@ -393,65 +397,86 @@
                             
                             <!--COLABORADORES-->
                             
-                            <form class="container" style="width: 100%;">
+                            <form id="colaborador_form" name="form2" class="container" method="POST" style="margin-left: 10px; width: 100%;" data-post-url="{% url 'seguimientoProy:preRegistro' %}">
                                 <div class="row setup-content" id="step-3">
+                                <input type="text" name="folio_proyecto"  readonly>
                                     <div class="col-md-12">
                                         <div class="col-md-12">
-                                            <div class="form-group col-md-12">  
-                                                <label>N° de colaboradores a participar en el proyecto</label>
-                                                {{form.ncolaborador}}                                             
+                                            <div class="form-group col-md-12">
+                                                <select class="form-control" id="opcion_colabora" onchange="muestra_colaborador();" name="select_colaborador">
+                                                    <option>N° de colaboradores a participar en el proyecto</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                </select>                                                
                                             </div>                                            
                                             <div class="form-group col-md-12">
                                                 <h3 style="text-align: center;">Colaborador 1°</h3>
                                             </div>
                                             <div class="form-group col-md-12">
-                                                <label>*Seleccione un docente</label>
-                                                {{form.sDocente}}
+                                                {% for c in consulta %}
+                                                <select class="form-control" id="opcion_colabora" name="numero_personal">                                                    
+                                                    <option>{{c.id}}</option>
+                                                </select>                                                
+                                                {% endfor %}
+                                            </div>      
+                                            <!--<div class="form-group col-md-4">
+                                                <label>Apellido Paterno</label>
+                                                <input type="text" class="form-control" required>
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label>*Apellido paterno</label>
-                                                {{form.apPat}}
+                                                <label>Apellido Materno</label>
+                                                <input type="text" class="form-control" required>
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label>*Apellido materno</label>
-                                                {{form.apMat}}
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label>*Nombre(s)</label>
-                                                {{form.nombreDoc}}
+                                                <label>Nombre(s)</label>
+                                                <input type="text" class="form-control" required>
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label>*Grado máximo de estudios</label>
-                                                {{form.estudiosMax}}
+                                                <label>Grado maximo de estudios</label>
+                                                <input type="text" class="form-control" required>
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label>*Academia a la que pertenece</label>
-                                                {{form.academia}}
+                                                <label>Academia a la que pertenece</label>
+                                                <select class="form-control" required>
+                                                    <option>Ingenieria en sistemas computacionales</option>
+                                                    <option>Ingenieria industrial</option>
+                                                    <option>Ingenieria en industrias alimentarias</option>
+                                                    <option>Ingenieria civil</option>
+                                                    <option>Ingenieria electronica</option>
+                                                    <option>Ingenieria electromecanica</option>
+                                                    <option>Ingenieria bioquimica</option>
+                                                    <option>Ingenieria en gestion empresarial</option>
+                                                    <option>Ingeneiria mecatronica</option>
+                                                    <option>Gastronomia</option>
+                                                </select>
                                             </div>
                                             <div class="form-group col-md-2">
-                                                <label>*N° de Personal</label>
-                                                {{form.personal}}
+                                                <label>N° personal</label>
+                                                <input type="number" class="form-control" required>
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label>Móvil</label>
-                                                {{form.movil}}
+                                                <label>Movil</label>
+                                                <input type="number" class="form-control" pattern="^\d{10}$" required>
                                             </div>
                                             <div class="form-grup col-md-3">
-                                                <label>*Correo Institucional</label>
-                                                {{form.correoI}}
+                                                <label>Correo intitucional</label>
+                                                <input type="email" class="form-control" required>
                                             </div>
                                             <div class="form-grup col-md-3">
-                                                <label>Correo Alternativo</label>
-                                                {{form.correoA}}
-                                            </div>
+                                                <label>Correo alternativo</label>
+                                                <input type="email" class="form-control" required>
+                                            </div>-->
                                             <div class="form-group col-md-12">
-                                                <label>*Descripción de las principales actividades a desarrollar en el proyecto</label>
-                                                {{form.actividades}}
+                                                <label>Descripción de las principales actividades a desarrollar en el proyecto</label>
+                                                <textarea class="form-control" rows="6" style="resize: none;" required name="actividades_colaborador"></textarea>
                                             </div>
                                             <div class="hidden" id="colabora2">
                                                 <div class="col-sm-12" style="background:#000">
                                                 </div>
                                             </div>
+                                            {% endfor %}
                                             
                                             <!--COLABORADOR 2-->
                                             
@@ -460,50 +485,60 @@
                                                     <h3 style="text-align: center;" class="hidden" id="colabora2.1">Colaborador 2°</h3>
                                                 </div>
                                                 <div class="form-group col-md-12">
-                                                    <label>*Seleccione un docente</label>
-                                                    {{form.sDocente}}
+                                                <!--{{formColaborador.numero_personal}}-->
+                                            </div>   
+                                                <div class="form-group col-md-4">
+                                                    <label>Apellido Paterno</label>
+                                                    <input type="text" class="form-control" id="apCol2">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>*Apellido paterno</label>
-                                                    {{form.apPat2}}
+                                                    <label>Apellido Materno</label>
+                                                    <input type="text" class="form-control" id="amCol2">    <!--programaCol2-->
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>*Apellido materno</label>
-                                                    {{form.apMat2}}   <!--programaCol2-->
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <label>*Nombre(s)</label>
-                                                    {{form.nombreDoc2}}
+                                                    <label>Nombre(s)</label>
+                                                    <input type="text" class="form-control" id="nombresCol2">
                                                 </div>
                                                 <div class="hidden" id="colabora2.3">
                                                     <div class="form-group col-md-6">
-                                                        <label>*Grado máximo de estudios</label>
-                                                        {{form.estudiosMax2}}
+                                                        <label>Grado maximo de estudios</label>
+                                                        <input type="text" class="form-control" id="gradoMCol2">
                                                     </div>
                                                     <div class="form-group col-md-6">
-                                                        <label>*Academia a la que pertenece</label>
-                                                        {{form.academia2}}
+                                                        <label>Academia a la que pertenece</label>
+                                                        <select class="form-control" id="programaCol2">
+                                                            <option>Ingenieria en sistemas computacionales</option>
+                                                            <option>Ingenieria industrial</option>
+                                                            <option>Ingenieria en industrias alimentarias</option>
+                                                            <option>Ingenieria civil</option>
+                                                            <option>Ingenieria electronica</option>
+                                                            <option>Ingenieria electromecanica</option>
+                                                            <option>Ingenieria bioquimica</option>
+                                                            <option>Ingenieria en gestion empresarial</option>
+                                                            <option>Ingeneiria mecatronica</option>
+                                                            <option>Gastronomia</option>
+                                                        </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label>*N° de personal</label>
-                                                        {{form.personal2}}
+                                                        <label>N° personal</label>
+                                                        <input type="number" class="form-control" id="noPersonalCol2">
                                                     </div>
                                                     <div class="form-group col-md-4">
-                                                        <label>Móvil</label>
-                                                        {{form.movil2}}
+                                                        <label>Movil</label>
+                                                        <input type="number" class="form-control" pattern="^\d{10}$" id="movilCol2">
                                                     </div>
                                                     <div class="form-grup col-md-3">
-                                                        <label>*Correo institucional</label>
-                                                        {{form.correoI2}}
+                                                        <label>Correo intitucional</label>
+                                                        <input type="email" class="form-control" id="correoCol2">
                                                     </div>
                                                     <div class="form-grup col-md-3">
                                                         <label>Correo alternativo</label>
-                                                        {{form.correoA2}}
+                                                        <input type="email" class="form-control" id="correoAlCol2">
                                                     </div>
                                                     <div class="hidden" id="colabora2.4">
                                                         <div class="form-group col-md-12">
-                                                            <label>*Descripción de las principales actividades a desarrollar en el proyecto</label>
-                                                            {{form.actividades2}}
+                                                            <label>Descripción de las principales actividades a desarrollar en el proyecto</label>
+                                                            <textarea class="form-control" rows="6" style="resize: none;" id="actividadesCol2"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="hidden" id="colabora3">
@@ -521,50 +556,60 @@
                                                     <h3 style="text-align: center;" class="hidden" id="colabora3.1">Colaborador 3°</h3>
                                                 </div>
                                                 <div class="form-group col-md-12">
-                                                    <label>*Seleccione un docente</label>
-                                                    {{form.sDocente}}
+                                                <!--{{formColaborador.numero_personal}}-->
+                                            </div>   
+                                                <div class="form-group col-md-4">
+                                                    <label>Apellido Paterno</label>
+                                                    <input type="text" class="form-control" id="apCol3">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>*Apellido paterno</label>
-                                                    {{form.apPat3}}
+                                                    <label>Apellido Materno</label>
+                                                    <input type="text" class="form-control" id="amCol3">    <!--programaCol2-->
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>*Apellido materno</label>
-                                                    {{form.apMat3}}     <!--programaCol3-->
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <label>*Nombre(s)</label>
-                                                    {{form.nombreDoc3}}
+                                                    <label>Nombre(s)</label>
+                                                    <input type="text" class="form-control" id="nombresCol3">
                                                 </div>
                                                 <div class="hidden" id="colabora3.3">
                                                     <div class="form-group col-md-6">
-                                                        <label>*Grado máximo de estudios</label>
-                                                         {{form.estudiosMax3}}
+                                                        <label>Grado maximo de estudios</label>
+                                                        <input type="text" class="form-control" id="gradoMCol3">
                                                     </div>
                                                     <div class="form-group col-md-6">
-                                                        <label>*Academia a la que pertenece</label>
-                                                        {{form.academia3}}
+                                                        <label>Academia a la que pertenece</label>
+                                                        <select class="form-control" id="programaCol3">
+                                                            <option>Ingenieria en sistemas computacionales</option>
+                                                            <option>Ingenieria industrial</option>
+                                                            <option>Ingenieria en industrias alimentarias</option>
+                                                            <option>Ingenieria civil</option>
+                                                            <option>Ingenieria electronica</option>
+                                                            <option>Ingenieria electromecanica</option>
+                                                            <option>Ingenieria bioquimica</option>
+                                                            <option>Ingenieria en gestion empresarial</option>
+                                                            <option>Ingeneiria mecatronica</option>
+                                                            <option>Gastronomia</option>
+                                                        </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label>*N° de personal</label>
-                                                        {{form.personal3}}
+                                                        <label>N° personal</label>
+                                                        <input type="number" class="form-control" id="noPersonalCol3">
                                                     </div>
                                                     <div class="form-group col-md-4">
-                                                        <label>Móvil</label>
-                                                        {{form.movil3}}
+                                                        <label>Movil</label>
+                                                        <input type="number" class="form-control" pattern="^\d{10}$" id="movilCol3">
                                                     </div>
                                                     <div class="form-grup col-md-3">
-                                                        <label>*Correo institucional</label>
-                                                        {{form.correoI3}}
+                                                        <label>Correo intitucional</label>
+                                                        <input type="email" class="form-control" id="correoCol3">
                                                     </div>
                                                     <div class="form-grup col-md-3">
                                                         <label>Correo alternativo</label>
-                                                        {{form.correoA3}}
+                                                        <input type="email" class="form-control" id="correoAlCol3">
                                                     </div>
                                                     <div class="hidden" id="colabora3.4">
                                                         <div class="form-group col-md-12">
-                                                            <label>*Descripción de las principales actividades a desarrollar en el proyecto</label>
-                                                            {{form.actividades3}}
+                                                            <label>Descripción de las principales actividades a desarrollar en el proyecto</label>
+                                                            <textarea class="form-control" rows="6" style="resize: none;" id="actividadesCol3"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="hidden" id="colabora4">
@@ -583,49 +628,60 @@
                                                     <h3 style="text-align: center;" class="hidden" id="colabora4.1">Colaborador 4°</h3>
                                                 </div>
                                                 <div class="form-group col-md-12">
-                                                    <label>*Seleccione un docente</label>
-                                                     {{form.sDocente}}
+                                                <!--{{formColaborador.numero_personal}}-->
+                                            </div>   
+                                                <div class="form-group col-md-4">
+                                                    <label>Apellido Paterno</label>
+                                                    <input type="text" class="form-control" id="apCol4">
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>*Apellido paterno</label>
-                                                    {{form.apPat4}}
+                                                    <label>Apellido Materno</label>
+                                                    <input type="text" class="form-control" id="amCol4">    <!--programaCol2-->
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label>*Apellido materno</label>
-                                                    {{form.apMat4}}     <!--programaCol4-->
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <label>*Nombre(s)</label>                                                 {{form.nombreDoc4}}
+                                                    <label>Nombre(s)</label>
+                                                    <input type="text" class="form-control" id="nombresCol4">
                                                 </div>
                                                 <div class="hidden" id="colabora4.3">
                                                      <div class="form-group col-md-6">
-                                                        <label>*Grado máximo de estudios</label>
-                                                        {{form.estudiosMax4}}
+                                                        <label>Grado maximo de estudios</label>
+                                                        <input type="text" class="form-control" id="gradoMCol4">
                                                     </div>
                                                     <div class="form-group col-md-6">
-                                                        <label>*Academia a la que pertenece</label>
-                                                         {{form.academia4}}
+                                                        <label>Academia a la que pertenece</label>
+                                                        <select class="form-control" id="programaCol4">
+                                                            <option>Ingenieria en sistemas computacionales</option>
+                                                            <option>Ingenieria industrial</option>
+                                                            <option>Ingenieria en industrias alimentarias</option>
+                                                            <option>Ingenieria civil</option>
+                                                            <option>Ingenieria electronica</option>
+                                                            <option>Ingenieria electromecanica</option>
+                                                            <option>Ingenieria bioquimica</option>
+                                                            <option>Ingenieria en gestion empresarial</option>
+                                                            <option>Ingeneiria mecatronica</option>
+                                                            <option>Gastronomia</option>
+                                                        </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label>*N° de personal</label>
-                                                        {{form.personal4}}
+                                                        <label>N° personal</label>
+                                                        <input type="number" class="form-control" id="noPersonalCol4">
                                                     </div>
                                                     <div class="form-group col-md-4">
-                                                        <label>Móvil</label>
-                                                        {{form.movil4}}
+                                                        <label>Movil</label>
+                                                        <input type="number" class="form-control" pattern="^\d{10}$" id="movilCol4">
                                                     </div>
                                                     <div class="form-grup col-md-3">
-                                                        <label>*Correo institucional</label>
-                                                         {{form.correoI4}}
+                                                        <label>Correo intitucional</label>
+                                                        <input type="email" class="form-control" id="correoCol4">
                                                     </div>
                                                     <div class="form-grup col-md-3">
                                                         <label>Correo alternativo</label>
-                                                         {{form.correoA4}}
+                                                        <input type="email" class="form-control" id="correoAlCol4">
                                                     </div>
                                                     <div class="hidden" id="colabora4.4">
                                                         <div class="form-group col-md-12">
-                                                            <label>*Descripción de las principales actividades a desarrollar en el proyecto</label>
-                                                            {{form.actividades4}}
+                                                            <label>Descripción de las principales actividades a desarrollar en el proyecto</label>
+                                                            <textarea class="form-control" rows="6" style="resize: none;" id="actividadesCol4"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -635,11 +691,12 @@
                                             
                                             <div class="form-group col-md-12">
                                                 <input onclick="prevStep()" class="btn btn-default" value="Regresar">
-                                                <input onclick="step3Next()" class="btn btn-primary" value="Siguiente" style="float: right;">
+                                                <input onclick="cargarColaborador()" class="btn btn-primary" value="Siguiente" type="submit" style="float: right;">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </form>
                             </form>
                             
                             <!--OBJETIVOS-->
@@ -648,6 +705,7 @@
                                 <div class="row setup-content" id="step-4">
                                     <div class="col-md-12">
                                         <div class="col-md-12">
+                                        <input type="text" name="folio_proyecto"  readonly>
                                             <h2 style="text-align: center; margin-top: -20px; margin-bottom: 50px;">Objetivos</h2>
                                             <div class="form-group col-md-12">
                                                 <label>*Indique el objetivo general(No más de 512 caracteres)</label>
@@ -676,6 +734,7 @@
                                 <div class="row setup-content" id="step-5">
                                     <div class="col-md-12">
                                         <div class="col-md-12">
+                                        <input type="text" name="folio_proyecto"  readonly>
                                             <h2 style="text-align: center; margin-top: -20px; margin-bottom: 50px;">Vinculación</h2>
                                             <div class="form-group col-md-3">
                                                 <label>*Existe convenio:</label>
@@ -736,6 +795,7 @@
                                 <div class="row setup-content" id="step-6">
                                     <div class="col-md-12">
                                         <div class="col-md-12">
+                                        <input type="text" name="folio_proyecto"  readonly>
                                             <h2 style="text-align: center; margin-top: -20px; margin-bottom: 50px;">Productos académicos</h2>
                                             <label>*Seleccione al menos uno</label>
                                             {{form.productosA}}
@@ -771,6 +831,7 @@
                             <form class="container" style="width: 100%;">
                                 <div class="row setup-content" id="step-7">
                                     <div class="col-md-12">
+                                    <input type="text" name="folio_proyecto"  readonly>
                                         <div class="col-md-12">
                                             <div class="form-group col-md-12">
                                                 <label>No. de Etapas</label>
@@ -816,7 +877,7 @@
                                             
                                             <!--ETAPA 2-->
                                             
-                                            <div class="hidden" id="etapa2">
+                                            <div  id="etapa2">
                                                 <div class="form-group col-md-12">
                                                     <h2 style="text-align: center;">Etapa 2°</h2>
                                                 </div>
@@ -860,7 +921,7 @@
                                             
                                             <!--ETAPA 3-->
                                             
-                                            <div class="hidden" id="etapa3">
+                                            <div  id="etapa3">
                                                 <div class="form-group col-md-12">
                                                     <h2 style="text-align: center;">Etapa 3°</h2>
                                                 </div>
@@ -904,7 +965,7 @@
                                             
                                             <!--ETAPA 4-->
                                             
-                                            <div class="hidden" id="etapa4">
+                                            <div  id="etapa4">
                                                 <div class="form-group col-md-12">
                                                     <h2 style="text-align: center;">Etapa 4°</h2>
                                                 </div>
@@ -962,6 +1023,7 @@
                             <form class="container" style="width: 100%;">
                                 <div class="row setup-content" id="step-8">
                                     <div class="col-md-12">
+                                    <input type="text" name="folio_proyecto"  readonly>
                                         <div class="col-md-12">
                                             <h2 style="text-align: center; margin-top: -20px; margin-bottom: 50px;">Financiamiento</h2>
                                             <div class="form-group col-md-6">
@@ -1099,6 +1161,7 @@
                             <form class="container" style="width: 100%;">
                                 <div class="row setup-content" id="step-9">
                                     <div class="col-md-12">
+                                    <input type="text" name="folio_proyecto"  readonly>
                                         <div class="col-md-12">
                                             <div class="form-group col-md-4">
                                                 <label>Total de alumnos colaboradores</label>
