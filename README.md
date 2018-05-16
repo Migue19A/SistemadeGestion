@@ -38,4 +38,4 @@ Repositorio para el proyecto.
     **lista pendiente
 
 #las inserciones están en la raíz del repositorio. Por lógica van a saber a qué tabla pertenece cada archivo,
-se actualizó el modelo, tienen que hacer de nuevo la migración. Borren mi superusuario y creen uno ustedes
+se actualizó el modelo, tienen que hacer de nuevo la migración. Borren mi superusuario y hagan uno ustedes
