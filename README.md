@@ -1,4 +1,4 @@
-# Sistema de Gestion y Seguimiento de Proyectos
+﻿# Sistema de Gestion y Seguimiento de Proyectos
 
 Repositorio para el proyecto.
 
@@ -36,3 +36,6 @@ Repositorio para el proyecto.
     dentro de la ubicación del entorno virtual instalar los paquetes de pip
     necesarios para la ejecución del programa
     **lista pendiente
+
+#las inserciones están en la raíz del repositorio. Por lógica van a saber a qué tabla pertenece cada archivo,
+se actualizó el modelo, tienen que hacer de nuevo la migración. Borren mi superusuario y creen uno ustedes
